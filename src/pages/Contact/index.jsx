@@ -2,39 +2,99 @@ import SideActions from '@/components/common/SideActions';
 import { site } from '@/config/site';
 import usePageMeta from '@/hooks/usePageMeta';
 import stylesheet from '@/styles/webflow/home.css?url';
+import ContactForm from './ContactForm';
+import ContactMap from './ContactMap';
+import './contact.css';
 
 const meta = {
   title: 'Contact Us | Hipco Montra Electric',
-  description: 'Get in touch with Hipco for Montra Electric vehicles: customer care, sales and inquiries.',
+  description:
+    'Visit or contact Hipco at BNJ Tower, Tripureshwor, Kathmandu for Montra Electric vehicles: customer care, sales, directions and inquiries.',
   stylesheet,
   bodyClass: 'body-4',
 };
+
+const phones = site.contact.filter((item) => item.href.startsWith('tel:'));
+const emails = site.contact.filter((item) => item.href.startsWith('mailto:'));
+
+const SOCIAL = [
+  { key: 'facebook', label: 'Facebook' },
+  { key: 'instagram', label: 'Instagram' },
+  { key: 'youtube', label: 'YouTube' },
+  { key: 'linkedin', label: 'LinkedIn' },
+  { key: 'x', label: 'X' },
+];
+
+function InfoCard({ title, children }) {
+  return (
+    <div className="contact-card contact-info">
+      <h3 className="contact-info__title">{title}</h3>
+      {children}
+    </div>
+  );
+}
 
 export default function ContactPage() {
   usePageMeta(meta);
   return (
     <>
-      <div style={{ background: '#0b0f14', color: '#fff', paddingTop: 110, paddingBottom: 56 }}>
-        <div className="base-container-padding-flex-gap">
-          <div className="carousel-header">
-            <h2 className="heading-2" style={{ color: '#fff' }}>
-              Contact <span className="text-span">Us</span>
-            </h2>
-            <p className="paragraph-2" style={{ color: '#fff' }}>
-              We&apos;re here to help you explore our range of electric vehicles.
-            </p>
-          </div>
+      <div className="contact-hero">
+        <div className="contact-container">
+          <p className="contact-eyebrow">Hipco &middot; Montra Electric</p>
+          <h1 className="contact-title">
+            Contact <span>Us</span>
+          </h1>
+          <p className="contact-lead">
+            Questions about our electric vehicles, a test drive or dealership? Reach out or visit our office in Kathmandu.
+          </p>
         </div>
       </div>
-      <div className="base-container-padding-flex-gap" style={{ paddingTop: 48, paddingBottom: 80, minHeight: '40vh' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          {site.contact.map((item) => (
-            <p key={item.label} className="paragraph-2" style={{ margin: 0 }}>
-              <strong>{item.label}: </strong>
-              <a href={item.href}>{item.text}</a>
-            </p>
-          ))}
+
+      <div className="contact-container contact-body">
+        <div className="contact-layout">
+          <div className="contact-info-column">
+            <InfoCard title="Visit us">
+              <address className="contact-address">
+                {site.address.lines.map((line) => (
+                  <span key={line}>{line}</span>
+                ))}
+              </address>
+            </InfoCard>
+            <InfoCard title="Call us">
+              <ul className="contact-list">
+                {phones.map((item) => (
+                  <li key={item.label}>
+                    <span className="contact-muted">{item.label}</span>
+                    <a href={item.href}>{item.text}</a>
+                  </li>
+                ))}
+              </ul>
+            </InfoCard>
+            <InfoCard title="Email us">
+              <ul className="contact-list">
+                {emails.map((item) => (
+                  <li key={item.label}>
+                    <span className="contact-muted">{item.label}</span>
+                    <a href={item.href}>{item.text}</a>
+                  </li>
+                ))}
+              </ul>
+            </InfoCard>
+            <InfoCard title="Follow us">
+              <ul className="contact-social">
+                {SOCIAL.map((item) => (
+                  <li key={item.key}>
+                    <a href={site.social[item.key]} target="_blank" rel="noreferrer">
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </InfoCard>
+          </div>
+          <ContactForm />
         </div>
+        <ContactMap />
       </div>
       <SideActions variant="home" />
     </>

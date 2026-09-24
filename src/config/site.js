@@ -6,6 +6,10 @@ export const site = {
     endpoint: 'https://www.montraelectric.com/mdataapi/post/download-brouchure',
     phoneCountryCode: '+91',
   },
+  address: {
+    lines: ['BNJ Tower, Tripureshwor', 'Kathmandu, Nepal'],
+    mapQuery: 'BNJ Tower, Tripureshwor, Kathmandu, Nepal',
+  },
   contact: [
     { label: 'Customer care', text: '+977 971-7101010', href: 'tel:+9779717101010', primary: true },
     { label: 'Sales', text: '+977 985-1407701', href: 'tel:+9779851407701' },

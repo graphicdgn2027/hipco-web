@@ -4,6 +4,7 @@ export const primaryNav = [
   { label: 'Our Product', className: 'nav1-our-products', opensProducts: true },
   { label: 'About Us', className: 'nav-2-about-us', href: '#' },
   { label: 'Find a Dealer', className: 'nav-4-test-drive', href: '#' },
+  { label: 'Contact Us', className: 'nav-4-test-drive', href: ROUTES.contact },
 ];
 
 export const mobileMenu = [
@@ -11,6 +12,7 @@ export const mobileMenu = [
   { label: 'About Us', href: '#' },
   { label: 'Become a Dealer', href: '/become-a-dealer' },
   { label: 'Find a Dealer', href: '#' },
+  { label: 'Contact Us', href: ROUTES.contact },
 ];
 
 export const productCategories = [
@@ -59,16 +61,13 @@ export const footerColumns = [
   {
     id: 'w-node-ad4fc399-69b2-4256-755a-c0ca2328859e-23288569',
     links: [
-      { label: 'Investors', href: '/investors', className: 'link-block-45' },
       { label: 'Find a Dealer', href: '#', className: 'link-block-46' },
-      { label: 'Become a Dealer', href: '/become-a-dealer', className: 'link-block-48' },
-      { label: 'Contact Us', href: '/contact-us', className: 'link-block-49' },
+      { label: 'Contact Us', href: ROUTES.contact, className: 'link-block-49' },
     ],
   },
   {
     id: 'w-node-ad4fc399-69b2-4256-755a-c0ca232885b1-23288569',
     links: [
-      { label: 'Brand Assets', href: '/brand-assets', className: 'link-block-51' },
       { label: 'Media & Accolades', href: '/media-accolades', className: 'link-block-42' },
       { label: 'Blogs', href: '/blogs', className: 'link-block-50' },
     ],

@@ -3,6 +3,7 @@ export const ROUTES = {
   superAuto: '/lastmile/superauto',
   superCargo: '/lastmile/supercargo',
   eviator: '/e-scv/eviator',
+  contact: '/contact-us',
 };
 
 const appPaths = Object.values(ROUTES);

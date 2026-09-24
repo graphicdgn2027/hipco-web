@@ -3,7 +3,7 @@ export const faqs = {
     {
       question: 'What is the real-world range and mileage of Montra Electric Super Auto in daily operations?',
       answer:
-        'The Montra Electric Super Auto electric three wheeler delivers 160±5 km real-world range under normal driving conditions with passengers and city traffic. While the certified range is 239 km under ideal conditions, actual daily operations typically achieve 160 km per full charge. This electric passenger 3-wheeler range varies based on passenger load, traffic conditions, and driving patterns.',
+        'The Montra Electric Super Auto electric three wheeler delivers 150+ km real-world range under normal driving conditions with passengers and city traffic. While the certified range is 239 km under ideal conditions, actual daily operations typically achieve 160 km per full charge. This electric passenger 3-wheeler range varies based on passenger load, traffic conditions, and driving patterns.',
     },
     {
       question:

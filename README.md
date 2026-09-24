@@ -4,12 +4,12 @@ React 19 + Vite + React Router site for Montra Electric vehicles (Hipco, Nepal).
 
 ## Scripts
 
-Run from the repo root or from `app/`:
+Run from the repo root (`npm install` first):
 
 | Command           | What it does                     |
 | ----------------- | -------------------------------- |
 | `npm run dev`     | Dev server on http://localhost:5173 |
-| `npm run build`   | Production build into `app/dist` |
+| `npm run build`   | Production build into `dist`     |
 | `npm run preview` | Serve the production build       |
 | `npm run lint`    | Oxlint                           |
 

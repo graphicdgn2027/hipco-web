@@ -1,16 +1,52 @@
-# React + Vite
+# Hipco Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+React 19 + Vite + React Router site for Montra Electric vehicles (Hipco, Nepal).
 
-Currently, two official plugins are available:
+## Scripts
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Run from the repo root or from `app/`:
 
-## React Compiler
+| Command           | What it does                     |
+| ----------------- | -------------------------------- |
+| `npm run dev`     | Dev server on http://localhost:5173 |
+| `npm run build`   | Production build into `app/dist` |
+| `npm run preview` | Serve the production build       |
+| `npm run lint`    | Oxlint                           |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Structure
 
-## Expanding the Oxlint configuration
+```
+src/
+  main.jsx                 entry: router + third-party scripts
+  App.jsx
+  routes/                  route table (index.jsx) and path constants (paths.js)
+  layouts/MainLayout.jsx   Header + page + Footer
+  pages/<Page>/
+    index.jsx              page meta + section composition
+    sections/*.jsx         one component per page section
+  components/
+    layout/                Header (nav + products menu), Footer
+    common/                SideActions (floating buttons), BrochureModal
+    sections/              sections shared across pages (Faq, MediaAccolades, MediaTabs, ColorPicker)
+    ui/                    AppLink, Slider, Tabs, Dropdown, Carousel (Swiper)
+  config/                  site-wide settings: contacts, social links, analytics, chat widget
+  data/                    content: navigation, FAQs, media articles
+  hooks/                   usePageMeta, useBodyScrollLock
+  services/                API calls (brochure lead form)
+  utils/                   third-party script loaders
+  styles/
+    global.css
+    webflow/<page>.css     per-page stylesheet, swapped by usePageMeta
+public/
+  images/                  content images (content-hashed names)
+  logo/                    brand logos
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Common edits
+
+- Contact numbers, emails, social links: `src/config/site.js` (per-product social overrides in `src/config/social.js`).
+- Navbar, footer links and the products menu: `src/data/navigation.js`.
+- FAQs: `src/data/faqs.js`. Media & Accolades articles: `src/data/media.js`.
+- Page content: `src/pages/<Page>/sections/`.
+
+Styling comes from the original Webflow stylesheets, so keep the existing `className`s when editing markup.

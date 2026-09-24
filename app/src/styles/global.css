@@ -1,0 +1,5 @@
+/* Prevent accidental pull-to-refresh reloads on trackpad/mobile scrolling. */
+html,
+body {
+  overscroll-behavior-y: none;
+}

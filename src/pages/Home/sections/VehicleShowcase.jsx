@@ -3,7 +3,7 @@ import { Slider, Slide } from '@/components/ui/Slider';
 
 export default function VehicleShowcase() {
   return (
-    <div className="base-container-padding-flex-gap">
+    <div id="vehicle-range" className="base-container-padding-flex-gap">
       <div className="frame-79">
         <div className="carousel-header">
           <h2 className="heading-2">

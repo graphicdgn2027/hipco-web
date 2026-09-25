@@ -1,5 +1,5 @@
 import { AppLink } from '@/components/ui/AppLink';
-import MediaCarousel from '@/components/sections/MediaCarousel';
+import MediaTabs from '@/components/sections/MediaTabs';
 import { sharedMedia } from '@/data/media';
 
 export default function MediaAccolades({ learnMoreClassName = 'link-block-56' }) {
@@ -20,7 +20,7 @@ export default function MediaAccolades({ learnMoreClassName = 'link-block-56' })
         </div>
       </div>
       <div className="div-block-189">
-        <MediaCarousel items={sharedMedia} />
+        <MediaTabs tabs={sharedMedia} />
       </div>
     </div>
   );

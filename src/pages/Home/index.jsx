@@ -1,11 +1,9 @@
 import SideActions from '@/components/common/SideActions';
 import usePageMeta from '@/hooks/usePageMeta';
 import stylesheet from '@/styles/webflow/home.css?url';
-import ContactCta from './sections/ContactCta';
+import MediaAccolades from '@/components/sections/MediaAccolades';
 import HeroSlider from './sections/HeroSlider';
-import NewsSection from './sections/NewsSection';
-import RangeSection from './sections/RangeSection';
-import './home.css';
+import VehicleShowcase from './sections/VehicleShowcase';
 
 const meta = {
   title: "Montra Electric | India's Leading Electric Commercial Vehicle Company",
@@ -18,12 +16,11 @@ const meta = {
 export default function HomePage() {
   usePageMeta(meta);
   return (
-    <div className="hp">
+    <>
       <HeroSlider />
-      <RangeSection />
-      <NewsSection />
-      <ContactCta />
+      <VehicleShowcase />
+      <MediaAccolades />
       <SideActions variant="home" />
-    </div>
+    </>
   );
 }

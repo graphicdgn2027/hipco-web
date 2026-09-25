@@ -196,7 +196,7 @@
 }
 
 .hx-btn--solid {
-  background: var(--hx-ink);
+  background: #000;
   color: #fff;
 }
 
@@ -206,6 +206,14 @@
 
 .hx-btn--solid:hover {
   background: var(--hx-accent);
+  color: #06240a;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(31, 184, 31, 0.32);
+}
+
+.hx-btn--solid:active {
+  transform: translateY(0);
+  box-shadow: none;
 }
 
 .hx-btn--solid:hover svg {
@@ -219,8 +227,10 @@
 }
 
 .hx-btn--ghost:hover {
-  background: rgba(15, 23, 42, 0.06);
-  border-color: rgba(15, 23, 42, 0.4);
+  background: #000;
+  border-color: #000;
+  color: #fff;
+  transform: translateY(-2px);
 }
 
 .hx-btn:focus-visible,

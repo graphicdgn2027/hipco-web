@@ -27,7 +27,12 @@ function scrollToRange(event) {
 
 function Arrow({ direction, onClick }) {
   return (
-    <button type="button" className="hx-arrow" onClick={onClick} aria-label={direction === 'prev' ? 'Previous slide' : 'Next slide'}>
+    <button
+      type="button"
+      className="hx-arrow"
+      onClick={onClick}
+      aria-label={direction === 'prev' ? 'Previous slide' : 'Next slide'}
+    >
       <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
         <path
           d={direction === 'prev' ? 'M15 5l-7 7 7 7' : 'M9 5l7 7-7 7'}
@@ -130,7 +135,12 @@ export default function HeroSlider() {
     >
       <h1 className="hx-sr-only">Montra Electric commercial vehicles</h1>
 
-      <div className="hx-stage" onPointerDown={handlePointerDown} onPointerUp={handlePointerUp} onPointerCancel={() => (swipeStart.current = null)}>
+      <div
+        className="hx-stage"
+        onPointerDown={handlePointerDown}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={() => (swipeStart.current = null)}
+      >
         {heroSlides.map((slide, i) => (
           <article
             key={slide.id}
@@ -141,23 +151,38 @@ export default function HeroSlider() {
             inert={i !== index}
           >
             <div className="hx-media">
-              <img src={slide.image} alt="" loading={i === 0 ? 'eager' : 'lazy'} fetchPriority={i === 0 ? 'high' : 'auto'} draggable="false" />
+              <img
+                src={slide.image}
+                alt=""
+                style={{ objectPosition: slide.position }}
+                loading={i === 0 ? 'eager' : 'lazy'}
+                fetchPriority={i === 0 ? 'high' : 'auto'}
+                draggable="false"
+              />
             </div>
-            <div className="hx-shade" />
             <div className="hx-content">
-              <span className="hx-chip">{slide.category}</span>
-              <h2 className="hx-title">{slide.title}</h2>
-              <p className="hx-text">{slide.text}</p>
-              <div className="hx-actions">
-                <AppLink href={slide.href} className="hx-btn hx-btn--solid">
-                  Explore {slide.label}
-                  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                    <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </AppLink>
-                <a href="#vehicle-range" className="hx-btn hx-btn--ghost" onClick={scrollToRange}>
-                  View all vehicles
-                </a>
+              <div className="hx-card">
+                <span className="hx-chip">{slide.category}</span>
+                <h2 className="hx-title">{slide.title}</h2>
+                <p className="hx-text">{slide.text}</p>
+                <div className="hx-actions">
+                  <AppLink href={slide.href} className="hx-btn hx-btn--solid">
+                    Explore {slide.label}
+                    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                      <path
+                        d="M5 12h14M13 6l6 6-6 6"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </AppLink>
+                  <a href="#vehicle-range" className="hx-btn hx-btn--ghost" onClick={scrollToRange}>
+                    View all vehicles
+                  </a>
+                </div>
               </div>
             </div>
           </article>

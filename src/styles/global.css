@@ -3,3 +3,8 @@ html,
 body {
   overscroll-behavior-y: none;
 }
+
+/* Keep the floating navbar legible over both photos and light sections. */
+html body .nav-bar-container {
+  background-color: rgba(15, 23, 42, 0.78);
+}

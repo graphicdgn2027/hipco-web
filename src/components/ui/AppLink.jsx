@@ -21,6 +21,14 @@ export function AppLink({ href = '#', className, onClick, children, ...rest }) {
     );
   }
 
+  if (/^(https?:|tel:|mailto:)/.test(href)) {
+    return (
+      <a href={href} className={className} onClick={onClick} {...rest}>
+        {children}
+      </a>
+    );
+  }
+
   const isCurrent = stripQueryAndHash(href) === pathname;
   const classes = join(className, isCurrent && 'w--current');
   const aria = isCurrent ? { 'aria-current': 'page' } : {};

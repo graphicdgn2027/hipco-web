@@ -1,0 +1,105 @@
+/* Home page scope: applies the design-system tokens to the sections below and to shared cards rendered inside them. */
+.hp {
+  background: var(--color-surface-page);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-base);
+}
+
+.hp-section {
+  padding: var(--space-section) 0;
+}
+
+.hp-section--page {
+  background: var(--color-surface-page);
+}
+
+.hp-section--raised {
+  background: var(--color-surface-raised);
+}
+
+.hp-container {
+  width: 100%;
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-gutter);
+  box-sizing: border-box;
+}
+
+.hp-heading {
+  max-width: 720px;
+}
+
+.hp-heading--row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-9);
+  max-width: none;
+  margin-bottom: var(--space-10);
+}
+
+.hp-eyebrow {
+  margin: 0 0 var(--space-4);
+  color: var(--color-text-link);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hp-title {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+
+.hp-lead {
+  margin: var(--space-7) 0 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-body);
+}
+
+.hp a:focus-visible,
+.hp button:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Shared media cards adopt the design tokens on the home page. */
+.hp .media-card {
+  border-color: var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-3);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-primary);
+}
+
+.hp .media-card:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-1);
+}
+
+.hp .media-card__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+.hp .media-card__date {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.hp .media-card__source {
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-raised);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+}

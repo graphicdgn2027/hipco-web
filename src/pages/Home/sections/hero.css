@@ -60,10 +60,14 @@
 
 .hx-media {
   position: absolute;
-  inset: 0 0 0 36%;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 24%);
-  mask-image: linear-gradient(90deg, transparent 0, #000 24%);
-  transform: translate3d(calc(var(--hx-px) * -12px), calc(var(--hx-py) * -8px), 0);
+  top: 96px;
+  right: var(--hx-pad);
+  bottom: 104px;
+  left: 50%;
+  overflow: hidden;
+  border-radius: 28px;
+  background: #dfe6ec;
+  transform: translate3d(calc(var(--hx-px) * -8px), calc(var(--hx-py) * -6px), 0);
   transition: transform 0.5s ease-out;
 }
 
@@ -72,7 +76,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1.06);
+  transform: scale(1.08);
   transition: transform 9s cubic-bezier(0.2, 0.6, 0.2, 1);
 }
 
@@ -97,7 +101,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: min(500px, 100%);
+  width: min(480px, 44vw);
   pointer-events: auto;
 }
 
@@ -362,10 +366,13 @@
   }
 
   .hx-media {
-    inset: 0 0 auto 0;
-    height: 52%;
-    -webkit-mask-image: linear-gradient(0deg, transparent 0, #000 24%);
-    mask-image: linear-gradient(0deg, transparent 0, #000 24%);
+    top: 84px;
+    right: 16px;
+    bottom: auto;
+    left: 16px;
+    height: 40%;
+    border-radius: 22px;
+    transform: none;
   }
 
   .hx-content {

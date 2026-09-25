@@ -1,5 +1,5 @@
 import { AppLink } from '@/components/ui/AppLink';
-import MediaTabs from '@/components/sections/MediaTabs';
+import MediaCarousel from '@/components/sections/MediaCarousel';
 import { eviatorMedia } from '@/data/media';
 
 export default function MediaAccolades() {
@@ -20,7 +20,7 @@ export default function MediaAccolades() {
         </div>
       </div>
       <div className="div-block-189">
-        <MediaTabs tabs={eviatorMedia} />
+        <MediaCarousel items={eviatorMedia} />
       </div>
     </div>
   );

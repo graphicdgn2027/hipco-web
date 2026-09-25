@@ -1,18 +1,18 @@
 import { Carousel, CarouselItem } from '@/components/ui/Carousel';
 import { TabContent, TabLink, TabMenu, TabPane, Tabs } from '@/components/ui/Tabs';
+import './media-card.css';
 
 function MediaCard({ href, image, imageSrcSet, imageSizes, date, title, source }) {
   return (
-    <a href={href} className="div-block-167 w-inline-block">
-      <img className="image-102" src={image} srcSet={imageSrcSet} sizes={imageSizes} loading="lazy" alt="" />
-      <div className="div-block-166">
-        <div className="text-block-100">{date}</div>
-        <div className="text-block-99 blog-text-class">{title}</div>
-        <div className="div-block-168">
-          <div className="text-block-34">{source}</div>
-        </div>
+    <a href={href} className="media-card" target="_blank" rel="noreferrer">
+      <div className="media-card__image">
+        <img src={image} srcSet={imageSrcSet} sizes={imageSizes} loading="lazy" alt="" draggable="false" />
       </div>
-      <div className="w-embed" />
+      <div className="media-card__body">
+        <time className="media-card__date">{date}</time>
+        <h3 className="media-card__title">{title}</h3>
+        <span className="media-card__source">{source}</span>
+      </div>
     </a>
   );
 }

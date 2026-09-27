@@ -87,7 +87,7 @@ export default function Efficiency() {
                   </div>
                   <div className="div-block-111">
                     <div className="text-block-70">
-                      <span className="text-span-10">10</span>kWh
+                      <span className="text-span-10">9</span>kW
                       <br />
                       Peak Power{' '}
                     </div>

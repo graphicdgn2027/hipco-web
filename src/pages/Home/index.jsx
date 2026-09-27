@@ -1,6 +1,7 @@
 import SideActions from '@/components/common/SideActions';
 import usePageMeta from '@/hooks/usePageMeta';
 import stylesheet from '@/styles/webflow/home.css?url';
+import MediaAccolades from '@/components/sections/MediaAccolades';
 import HeroSlider from './sections/HeroSlider';
 import VehicleShowcase from './sections/VehicleShowcase';
 
@@ -18,6 +19,7 @@ export default function HomePage() {
     <>
       <HeroSlider />
       <VehicleShowcase />
+      <MediaAccolades />
       <SideActions variant="home" />
     </>
   );

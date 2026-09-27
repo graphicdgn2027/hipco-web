@@ -13,6 +13,8 @@ import Ecosystem from './sections/Ecosystem';
 import Colors from './sections/Colors';
 import BuiltFor from './sections/BuiltFor';
 import Advantage from './sections/Advantage';
+import MediaAccolades from './sections/MediaAccolades';
+
 const meta = {
   title: 'EVIATOR Electric Small Commercial Vehicle | Montra Electric',
   description:
@@ -35,6 +37,7 @@ export default function EviatorPage() {
       <Colors />
       <BuiltFor />
       <Advantage />
+      <MediaAccolades />
       <Faq title="Montra Electric Eviator Electric Mini Truck FAQs" items={faqs.eviator} />
       <SideActions
         brochure={{

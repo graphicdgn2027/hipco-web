@@ -1,10 +1,10 @@
 import SideActions from '@/components/common/SideActions';
 import usePageMeta from '@/hooks/usePageMeta';
 import stylesheet from '@/styles/webflow/super-cargo.css?url';
+import MediaAccolades from '@/components/sections/MediaAccolades';
 import Faq from '@/components/sections/Faq';
 import { faqs } from '@/data/faqs';
 import Hero from './sections/Hero';
-import Models from './sections/Models';
 import WhatSetsItApart from './sections/WhatSetsItApart';
 import Interior from './sections/Interior';
 import Features from './sections/Features';
@@ -28,7 +28,6 @@ export default function SuperCargoPage() {
   return (
     <>
       <Hero />
-      <Models />
       <WhatSetsItApart />
       <Interior />
       <Features />
@@ -37,6 +36,7 @@ export default function SuperCargoPage() {
       <Colors />
       <BuiltFor />
       <Advantage />
+      <MediaAccolades />
       <Blogs />
       <Faq title="Montra Electric Super Cargo FAQs" items={faqs.superCargo} />
       <SideActions

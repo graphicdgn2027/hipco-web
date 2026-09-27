@@ -85,7 +85,7 @@ export default function WhatSetsItApart() {
                 />
                 <div className="div-block-415">
                   <h3 className="text-block-67">Super power</h3>
-                  <div className="text-block-68">12kW Peak Power</div>
+                  <div className="text-block-68">9kW Peak Power</div>
                 </div>
               </div>
             </div>

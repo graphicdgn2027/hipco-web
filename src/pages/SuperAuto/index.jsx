@@ -1,7 +1,6 @@
 import SideActions from '@/components/common/SideActions';
 import usePageMeta from '@/hooks/usePageMeta';
 import stylesheet from '@/styles/webflow/super-auto.css?url';
-import MediaAccolades from '@/components/sections/MediaAccolades';
 import Faq from '@/components/sections/Faq';
 import { faqs } from '@/data/faqs';
 import Hero from './sections/Hero';
@@ -37,7 +36,6 @@ export default function SuperAutoPage() {
       <BuiltFor />
       <Advantage />
       <Blogs />
-      <MediaAccolades learnMoreClassName="link-block-55" />
       <Faq title="Montra Electric Super Auto FAQs" items={faqs.superAuto} />
       <SideActions
         brochure={{

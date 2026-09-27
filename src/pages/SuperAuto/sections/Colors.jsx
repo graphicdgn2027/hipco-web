@@ -2,7 +2,7 @@ import ColorPicker from '@/components/sections/ColorPicker';
 
 export default function Colors() {
   return (
-    <section className="base-padding-flex">
+    <section id="colors" className="base-padding-flex">
       <div className="base-container">
         <div className="carousel-header">
           <h2 className="heading-2">

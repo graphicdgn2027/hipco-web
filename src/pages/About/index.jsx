@@ -68,6 +68,58 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section className="about-story about-shell">
+        <p className="about-section-label">Our journey</p>
+        <div className="about-intro__grid">
+          <h2>
+            Our Road to <em>Success, Innovation &amp; Redefining Mobility</em>
+          </h2>
+          <div className="about-copy">
+            <p>
+              Montra Nepal was founded with a clear purpose: to transform mobility through advanced commercial
+              electric vehicle solutions for Nepal’s sustainability, innovation, and customer value. We build on
+              DGO’s long legacy, combining engineering expertise with advanced manufacturing capabilities to deliver
+              superior products, convenience, and after-sales support.
+            </p>
+            <p>
+              By focusing on total cost of ownership, reliability, charging convenience, and after-sales support, we
+              aim to deliver a seamless and efficient electric mobility experience. Our goal goes beyond distributing
+              vehicles — we are building an ecosystem for clean, accessible, and sustainable mobility.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="about-principles">
+        <div className="about-shell">
+          <div className="about-section-heading">
+            <p className="about-section-label">What drives us</p>
+            <h2>Our Core Principles, Designed to Perform.</h2>
+          </div>
+          <div className="about-principles__grid">
+            <article className="about-principles__card">
+              <h3>Our Vision</h3>
+              <p>
+                To advance the quality of life by delivering a sustainable, more responsible and efficient e-mobility
+                ecosystem that makes transportation in Nepal more accessible, innovative, and reliable.
+              </p>
+            </article>
+            <article className="about-principles__card">
+              <h3>Our Mission</h3>
+              <p>
+                Our mission is to empower the dreams and ambitions of a new generation by bringing clean, reliable,
+                and affordable electric three-wheelers to Nepal’s roads — supporting progress and promoting
+                environmental responsibility while keeping service and quality at the centre of everything we do.
+              </p>
+              <p>
+                Through every dealer we onboard, every vehicle we deliver, and every customer we support, we are
+                building the EV infrastructure Nepal needs to move forward sustainably.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section className="about-focus">
         <div className="about-shell">
           <div className="about-section-heading">
@@ -83,6 +135,24 @@ export default function AboutPage() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="about-green">
+        <div className="about-shell about-green__content">
+          <p className="about-section-label">Sustainability</p>
+          <h2>
+            Advancing <em>Green Solutions Every Day</em>
+          </h2>
+          <p className="about-green__text">
+            Delivering green mobility is a commitment we live through every policy, partnership, and product
+            decision. As a responsible company, connecting people and places with zero-emission vehicles is how we
+            stay true to Nepal’s natural heritage while building its economic future. We continue to focus on
+            sustainable and advanced electric mobility solutions.
+          </p>
+          <a href="https://www.montranepal.com" target="_blank" rel="noreferrer" className="about-cta">
+            Visit Montra Nepal
+          </a>
         </div>
       </section>
 

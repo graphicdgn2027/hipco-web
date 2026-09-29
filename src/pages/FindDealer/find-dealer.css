@@ -95,7 +95,7 @@
 .fd-btn {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 8px;
   padding: 10px 18px;
   border: 1px solid transparent;
   border-radius: 10px;
@@ -104,6 +104,19 @@
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
+  transition:
+    transform 0.18s ease,
+    background-color 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.fd-btn svg {
+  flex: none;
+}
+
+.fd-btn:active {
+  transform: translateY(0);
 }
 
 .fd-btn--solid {
@@ -112,7 +125,10 @@
 }
 
 .fd-btn--solid:hover {
-  background: #1c2a36;
+  background: #1fb81f;
+  color: #06240a;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(31, 184, 31, 0.28);
 }
 
 .fd-btn--ghost {
@@ -122,7 +138,10 @@
 }
 
 .fd-btn--ghost:hover {
-  background: #f1f4f7;
+  background: #0b0f14;
+  color: #fff;
+  border-color: #0b0f14;
+  transform: translateY(-2px);
 }
 
 @media (max-width: 900px) {

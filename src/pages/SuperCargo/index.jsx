@@ -1,7 +1,6 @@
 import SideActions from '@/components/common/SideActions';
 import usePageMeta from '@/hooks/usePageMeta';
 import stylesheet from '@/styles/webflow/super-cargo.css?url';
-import MediaAccolades from '@/components/sections/MediaAccolades';
 import Faq from '@/components/sections/Faq';
 import { faqs } from '@/data/faqs';
 import Hero from './sections/Hero';
@@ -13,7 +12,6 @@ import Utility from './sections/Utility';
 import Colors from './sections/Colors';
 import BuiltFor from './sections/BuiltFor';
 import Advantage from './sections/Advantage';
-import Blogs from './sections/Blogs';
 
 const meta = {
   title: 'Super Cargo | Electric Cargo Auto Rickshaw | Montra Electric',
@@ -36,8 +34,6 @@ export default function SuperCargoPage() {
       <Colors />
       <BuiltFor />
       <Advantage />
-      <MediaAccolades />
-      <Blogs />
       <Faq title="Montra Electric Super Cargo FAQs" items={faqs.superCargo} />
       <SideActions
         brochure={{

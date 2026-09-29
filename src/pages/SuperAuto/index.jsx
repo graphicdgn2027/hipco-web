@@ -1,7 +1,6 @@
 import SideActions from '@/components/common/SideActions';
 import usePageMeta from '@/hooks/usePageMeta';
 import stylesheet from '@/styles/webflow/super-auto.css?url';
-import MediaAccolades from '@/components/sections/MediaAccolades';
 import Faq from '@/components/sections/Faq';
 import { faqs } from '@/data/faqs';
 import Hero from './sections/Hero';
@@ -12,7 +11,6 @@ import Exteriors from './sections/Exteriors';
 import Colors from './sections/Colors';
 import BuiltFor from './sections/BuiltFor';
 import Advantage from './sections/Advantage';
-import Blogs from './sections/Blogs';
 
 const meta = {
   title: 'Super Auto | Electric Passenger Auto Rickshaw | Montra Electric',
@@ -34,8 +32,6 @@ export default function SuperAutoPage() {
       <Colors />
       <BuiltFor />
       <Advantage />
-      <Blogs />
-      <MediaAccolades learnMoreClassName="link-block-55" />
       <Faq title="Montra Electric Super Auto FAQs" items={faqs.superAuto} />
       <SideActions
         brochure={{

@@ -23,12 +23,12 @@ export const site = {
     linkedin: 'https://www.linkedin.com/company/montraelectric',
     youtube: 'https://www.youtube.com/@montraelectriclastmile',
     whatsapp:
-      'https://api.whatsapp.com/send?phone=919240298953&text=Hi,%20I%27m%20interested%20in%20more%20information%20about%20montra%20commercial%20vehicles.',
+      'https://api.whatsapp.com/send?phone=9779851407701&text=Hi,%20I%27m%20interested%20in%20more%20information%20about%20Hipco%20vehicles.',
   },
   whatsappChat:
-    'https://api.whatsapp.com/send/?phone=9240298953&text=Hi%2C+I%27m+interested+in+more+information+about+Montra+Electric+Commercial+Vehicles.&type=phone_number&app_absent=0',
+    'https://api.whatsapp.com/send/?phone=9779851407701&text=Hi%2C+I%27m+interested+in+more+information+about+Hipco+vehicles.&type=phone_number&app_absent=0',
   features: {
-    chatWidget: true,
+    chatWidget: false,
     analytics: true,
   },
   chat: {

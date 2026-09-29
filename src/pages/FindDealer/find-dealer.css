@@ -1,0 +1,146 @@
+.fd-hero {
+  background: linear-gradient(135deg, #0b0f14 0%, #10202a 100%);
+  color: #fff;
+  padding: 120px 0 64px;
+}
+
+.fd-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+.fd-eyebrow {
+  margin: 0 0 12px;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #29d329;
+}
+
+.fd-title {
+  margin: 0;
+  font-family: Poppins, sans-serif;
+  font-size: clamp(36px, 6vw, 56px);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.fd-title span {
+  color: #29d329;
+}
+
+.fd-lead {
+  max-width: 640px;
+  margin: 16px 0 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #d3dbe2;
+}
+
+.fd-body {
+  padding-top: 48px;
+  padding-bottom: 80px;
+}
+
+.fd-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.fd-card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid #e3e8ee;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 6px 24px rgba(15, 23, 42, 0.05);
+  box-sizing: border-box;
+}
+
+.fd-card__location {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0b6b0b;
+}
+
+.fd-card__name {
+  margin: 8px 0 0;
+  font-family: Poppins, sans-serif;
+  font-size: 19px;
+  font-weight: 500;
+  color: #0b0f14;
+}
+
+.fd-card__owner {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: #5b6773;
+}
+
+.fd-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.fd-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.fd-btn--solid {
+  background: #0b0f14;
+  color: #fff;
+}
+
+.fd-btn--solid:hover {
+  background: #1c2a36;
+}
+
+.fd-btn--ghost {
+  background: #fff;
+  color: #0b0f14;
+  border-color: #ccd5df;
+}
+
+.fd-btn--ghost:hover {
+  background: #f1f4f7;
+}
+
+@media (max-width: 900px) {
+  .fd-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .fd-hero {
+    padding: 104px 0 40px;
+  }
+
+  .fd-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .fd-btn {
+    flex: 1 1 auto;
+  }
+}

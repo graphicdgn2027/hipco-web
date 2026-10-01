@@ -4,7 +4,10 @@ body {
   overscroll-behavior-y: none;
 }
 
-/* Keep the floating navbar legible over both photos and light sections. */
+/* Navbar dark glass effect */
 html body .nav-bar-container {
-  background-color: rgba(15, 23, 42, 0.78);
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }

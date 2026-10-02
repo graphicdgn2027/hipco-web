@@ -10,6 +10,7 @@ const EviatorPage = lazy(() => import('@/pages/Eviator'));
 const AboutPage = lazy(() => import('@/pages/About'));
 const ContactPage = lazy(() => import('@/pages/Contact'));
 const FindDealerPage = lazy(() => import('@/pages/FindDealer'));
+const BookTestDrivePage = lazy(() => import('@/pages/BookTestDrive'));
 
 export default function AppRoutes() {
   return (
@@ -23,6 +24,7 @@ export default function AppRoutes() {
           <Route path={ROUTES.about} element={<AboutPage />} />
           <Route path={ROUTES.contact} element={<ContactPage />} />
           <Route path={ROUTES.findDealer} element={<FindDealerPage />} />
+          <Route path={ROUTES.bookTestDrive} element={<BookTestDrivePage />} />
           <Route path="*" element={<Navigate to={ROUTES.home} replace />} />
         </Route>
       </Routes>

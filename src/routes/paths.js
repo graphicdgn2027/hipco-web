@@ -6,6 +6,7 @@ export const ROUTES = {
   about: '/about-us',
   contact: '/contact-us',
   findDealer: '/find-a-dealer',
+  bookTestDrive: '/book-test-drive',
 };
 
 const appPaths = Object.values(ROUTES);

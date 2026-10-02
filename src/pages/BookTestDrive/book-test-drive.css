@@ -1,0 +1,364 @@
+/* ── Book Test Drive page ─────────────────────── */
+
+.btd-page {
+  font-family: Poppins, sans-serif;
+  color: #0a0a0a;
+}
+
+.btd-shell {
+  width: min(100% - 48px, 1200px);
+  margin: 0 auto;
+}
+
+/* Hero */
+.btd-hero {
+  background: linear-gradient(135deg, #080c10 0%, #0e1f2c 100%);
+  color: #fff;
+  padding: 120px 0 72px;
+}
+
+.btd-eyebrow {
+  margin: 0 0 16px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.btd-hero__title {
+  margin: 0 0 20px;
+  font-size: clamp(44px, 7vw, 80px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.btd-hero__title span {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.btd-hero__lead {
+  margin: 0;
+  max-width: 540px;
+  font-size: 17px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Body layout */
+.btd-body {
+  padding: 64px 0 96px;
+  background: #f5f5f3;
+}
+
+.btd-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+/* Side info */
+.btd-info {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  position: sticky;
+  top: 100px;
+}
+
+.btd-info__block {
+  padding: 24px;
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #e8e8e6;
+}
+
+.btd-info__label {
+  margin: 0 0 14px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #888;
+}
+
+.btd-info__vehicles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btd-info__vehicle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.btd-info__vehicle:hover {
+  background: #f5f5f3;
+}
+
+.btd-info__vehicle.is-selected {
+  background: #0a0a0a;
+  color: #fff;
+  border-color: #0a0a0a;
+}
+
+.btd-info__vehicle-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+
+.btd-info__vehicle.is-selected .btd-info__vehicle-dot {
+  opacity: 1;
+}
+
+.btd-info__steps {
+  margin: 0;
+  padding: 0 0 0 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #555;
+}
+
+.btd-info__link {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #0a0a0a;
+  text-decoration: none;
+  margin-bottom: 6px;
+  transition: opacity 0.2s;
+}
+
+.btd-info__link:hover {
+  opacity: 0.6;
+}
+
+/* Form card */
+.btd-card {
+  background: #fff;
+  border-radius: 20px;
+  border: 1px solid #e8e8e6;
+  padding: 48px;
+  box-shadow: 0 4px 32px -8px rgba(0, 0, 0, 0.07);
+}
+
+.btd-card__heading {
+  margin: 0 0 32px;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+
+/* Form grid */
+.btd-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 24px;
+  margin-bottom: 32px;
+}
+
+.btd-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #444;
+}
+
+.btd-field--wide {
+  grid-column: 1 / -1;
+}
+
+.btd-field em {
+  font-style: normal;
+  color: #0a0a0a;
+}
+
+.btd-field input,
+.btd-field select,
+.btd-field textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  color: #0a0a0a;
+  background: #fafafa;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.btd-field select {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%23888' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 36px;
+}
+
+.btd-field input:focus,
+.btd-field select:focus,
+.btd-field textarea:focus {
+  border-color: #0a0a0a;
+  box-shadow: 0 0 0 3px rgba(10, 10, 10, 0.06);
+  background: #fff;
+}
+
+.btd-field textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Footer */
+.btd-form__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btd-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  border-radius: 10px;
+  font-family: Poppins, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  text-decoration: none;
+  border: none;
+  align-self: flex-start;
+}
+
+.btd-btn--primary {
+  background: #0a0a0a;
+  color: #fff;
+}
+
+.btd-btn--primary:hover:not(:disabled) {
+  opacity: 0.82;
+  transform: translateY(-1px);
+}
+
+.btd-btn--primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btd-btn--outline {
+  background: transparent;
+  color: #0a0a0a;
+  border: 1.5px solid #0a0a0a;
+}
+
+.btd-btn--outline:hover {
+  background: #0a0a0a;
+  color: #fff;
+}
+
+.btd-form__note {
+  margin: 0;
+  font-size: 12px;
+  color: #888;
+  line-height: 1.5;
+}
+
+.btd-form__error {
+  margin: 0;
+  font-size: 13px;
+  color: #c0392b;
+  font-weight: 500;
+}
+
+/* Success state */
+.btd-success {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.btd-success__icon {
+  width: 56px;
+  height: 56px;
+  color: #0a0a0a;
+}
+
+.btd-success__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.btd-success__heading {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.btd-success__body {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #555;
+  max-width: 520px;
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+  .btd-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .btd-info {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .btd-info__block {
+    flex: 1 1 200px;
+  }
+}
+
+@media (max-width: 640px) {
+  .btd-card {
+    padding: 28px 20px;
+  }
+
+  .btd-form__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .btd-info {
+    flex-direction: column;
+  }
+}

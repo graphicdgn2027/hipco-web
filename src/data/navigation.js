@@ -3,6 +3,7 @@ import { ROUTES } from '@/routes/paths';
 export const primaryNav = [
   { label: 'Our Product', className: 'nav1-our-products', opensProducts: true },
   { label: 'About Us', className: 'nav-2-about-us', href: ROUTES.about },
+  { label: 'Book a Test Drive', className: 'nav-4-test-drive', href: ROUTES.bookTestDrive },
   { label: 'Find a Dealer', className: 'nav-4-test-drive', href: ROUTES.findDealer },
   { label: 'Contact Us', className: 'nav-4-test-drive', href: ROUTES.contact },
 ];
@@ -10,6 +11,7 @@ export const primaryNav = [
 export const mobileMenu = [
   { label: 'Our Products', opensProducts: true },
   { label: 'About Us', href: ROUTES.about },
+  { label: 'Book a Test Drive', href: ROUTES.bookTestDrive },
   { label: 'Become a Dealer', href: '/become-a-dealer' },
   { label: 'Find a Dealer', href: ROUTES.findDealer },
   { label: 'Contact Us', href: ROUTES.contact },

@@ -240,7 +240,7 @@
 .ct-detail-block__address strong {
   display: block;
   font-size: 17px;
-  font-weight: 700;
+  font-weight: 600;
   color: #0a0a0a;
   letter-spacing: -0.015em;
   margin-bottom: 3px;
@@ -302,7 +302,7 @@
   align-items: center;
   gap: 6px;
   font-size: 17px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.02em;
   color: #0a0a0a;
   min-width: 0;

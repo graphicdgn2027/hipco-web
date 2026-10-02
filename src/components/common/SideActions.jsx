@@ -44,10 +44,15 @@ export default function SideActions({ variant = 'product', brochure }) {
   const variantClass = VARIANTS[variant];
   const isHome = variant === 'home';
 
+  const BROCHURE_PDF = '/Brochure/Montra Brochure.pdf';
+
   const handleDownload = () => {
-    if (!brochure?.pdf) return;
-    if (brochure.requireForm) setModalOpen(true);
-    else downloadFile(brochure.pdf);
+    if (brochure?.requireForm) {
+      setModalOpen(true);
+    } else {
+      const pdf = brochure?.pdf ?? BROCHURE_PDF;
+      downloadFile(pdf, 'Montra Electric Brochure.pdf');
+    }
   };
 
   // rowVariantOn: the label row also carries the variant class (matches the Webflow component markup).

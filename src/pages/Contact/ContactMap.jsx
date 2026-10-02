@@ -9,8 +9,8 @@ export default function ContactMap() {
     <section className="contact-map" aria-labelledby="contact-map-title">
       <div className="contact-map__head">
         <div>
-          <h3 id="contact-map-title" className="contact-section-title">Find us</h3>
-          <p className="contact-muted">{CORPORATE_ADDRESS}</p>
+          <h2 id="contact-map-title" className="contact-map__title">Find us</h2>
+          <p className="contact-map__addr">{CORPORATE_ADDRESS}</p>
         </div>
         <div className="contact-map__actions">
           <a className="contact-btn contact-btn--primary" href={directionsUrl} target="_blank" rel="noreferrer">

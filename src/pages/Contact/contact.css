@@ -573,27 +573,41 @@
 }
 .contact-btn--ghost:hover { background: #ebebea; transform: translateY(-1px); }
 
-.contact-section-title {
-  margin: 0 0 4px;
-  font-size: 19px;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-}
-
+/* legacy aliases kept for safety */
+.contact-section-title { margin: 0 0 4px; font-size: 19px; font-weight: 600; letter-spacing: -0.03em; }
 .contact-muted { margin: 0; font-size: 13px; color: #999; }
 
-.ct-shell > .contact-map { margin: 0 0 80px; }
+.ct-shell > .contact-map {
+  margin: 56px 0 80px;
+  padding-top: 0;
+}
 
 .contact-map__head {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   gap: 24px;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
   flex-wrap: wrap;
 }
 
-.contact-map__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.contact-map__title {
+  margin: 0 0 6px;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: #0a0a0a;
+  line-height: 1;
+}
+
+.contact-map__addr {
+  margin: 0;
+  font-size: 14px;
+  color: #999;
+  font-family: Poppins, sans-serif;
+}
+
+.contact-map__actions { display: flex; gap: 10px; flex-wrap: wrap; align-self: flex-end; }
 
 .contact-map__frame {
   position: relative;

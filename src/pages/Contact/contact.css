@@ -92,11 +92,11 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-template-areas:
-    "form  form  addr"
-    "form  form  phone"
-    "form  form  email"
-    "map   map   hours"
-    "map   map   social";
+    "addr   form  form"
+    "phone  form  form"
+    "email  form  form"
+    "hours  map   map"
+    "social map   map";
   gap: 10px;
 }
 

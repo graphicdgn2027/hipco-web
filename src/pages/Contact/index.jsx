@@ -16,7 +16,7 @@ const meta = {
 };
 
 const phones = site.contact.filter((item) => item.href.startsWith('tel:'));
-const emails  = site.contact.filter((item) => item.href.startsWith('mailto:'));
+const emails = site.contact.filter((item) => item.href.startsWith('mailto:'));
 
 const SOCIAL = [
   { key: 'facebook',  label: 'Facebook',
@@ -54,8 +54,8 @@ const CHECK_ICON = (
 
 export default function ContactPage() {
   usePageMeta(meta);
-  const [copied, setCopied]  = useState(null);
-  const open                 = isOfficeOpen();
+  const [copied, setCopied] = useState(null);
+  const open = isOfficeOpen();
 
   const copy = (text, key) => {
     navigator.clipboard?.writeText(text).then(() => {
@@ -63,6 +63,24 @@ export default function ContactPage() {
       setTimeout(() => setCopied(null), 2000);
     });
   };
+
+  const renderContactRows = (items) =>
+    items.map((item) => (
+      <li key={item.label}>
+        <span>{item.label}</span>
+        <div className="ct-contact-item">
+          <a href={item.href}>{item.text}</a>
+          <button
+            className={`ct-copy-btn${copied === item.label ? ' is-copied' : ''}`}
+            onClick={() => copy(item.text, item.label)}
+            aria-label={`Copy ${item.text}`}
+            title={copied === item.label ? 'Copied!' : 'Copy'}
+          >
+            {copied === item.label ? CHECK_ICON : COPY_ICON}
+          </button>
+        </div>
+      </li>
+    ));
 
   return (
     <main className="ct-page">
@@ -94,163 +112,127 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ── Main body ── */}
+      {/* ── Bento grid ── */}
       <section className="ct-body">
         <div className="ct-shell">
-          <div className="ct-layout">
+          <div className="ct-bento">
 
-            {/* ── Sidebar ── */}
-            <aside className="ct-details">
+            {/* Form */}
+            <div className="ct-area ct-area--form">
+              <ContactForm />
+            </div>
 
-              {/* Address */}
-              <div className="ct-detail-block">
-                <div className="ct-detail-block__icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" /><circle cx="12" cy="9" r="2.5" />
+            {/* Address */}
+            <div className="ct-detail-block ct-area--addr">
+              <div className="ct-detail-block__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" /><circle cx="12" cy="9" r="2.5" />
+                </svg>
+              </div>
+              <div className="ct-detail-block__content">
+                <p className="ct-detail-block__title">Corporate office</p>
+                <address className="ct-detail-block__address">
+                  <strong>HIPCO Trading Pvt. Ltd.</strong>
+                  <span>A Subsidiary of Diwakar Golchha Organisation</span>
+                  <span>Golchha House, Ganabahal</span>
+                  <span>Kathmandu, Nepal</span>
+                </address>
+                <a
+                  className="ct-dir-link"
+                  href={`https://www.google.com/maps/dir/?api=1&destination=${MAP_QUERY}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Get directions
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M3 8h10M9 4l4 4-4 4" />
                   </svg>
+                </a>
+              </div>
+            </div>
+
+            {/* Phone */}
+            <div className="ct-detail-block ct-area--phone">
+              <div className="ct-detail-block__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.14 12.5 19.79 19.79 0 0 1 1.07 3.9 2 2 0 0 1 3.04 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6.01 6.01l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+              </div>
+              <div className="ct-detail-block__content">
+                <p className="ct-detail-block__title">Phone</p>
+                <ul className="ct-detail-block__list">{renderContactRows(phones)}</ul>
+              </div>
+            </div>
+
+            {/* Email */}
+            <div className="ct-detail-block ct-area--email">
+              <div className="ct-detail-block__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" />
+                </svg>
+              </div>
+              <div className="ct-detail-block__content">
+                <p className="ct-detail-block__title">Email</p>
+                <ul className="ct-detail-block__list">{renderContactRows(emails)}</ul>
+              </div>
+            </div>
+
+            {/* Map */}
+            <div className="ct-area ct-area--map">
+              <ContactMap />
+            </div>
+
+            {/* Hours */}
+            <div className="ct-detail-block ct-area--hours">
+              <div className="ct-detail-block__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" /><polyline points="12,6 12,12 16,14" />
+                </svg>
+              </div>
+              <div className="ct-detail-block__content">
+                <div className="ct-hours-head">
+                  <p className="ct-detail-block__title">Office hours</p>
+                  <span className={`ct-status ct-status--${open ? 'open' : 'closed'}`}>
+                    <span className="ct-status__dot" />
+                    {open ? 'Open now' : 'Closed'}
+                  </span>
                 </div>
-                <div className="ct-detail-block__content">
-                  <p className="ct-detail-block__title">Corporate office</p>
-                  <address className="ct-detail-block__address">
-                    <strong>HIPCO Trading Pvt. Ltd.</strong>
-                    <span>A Subsidiary of Diwakar Golchha Organisation</span>
-                    <span>Golchha House, Ganabahal</span>
-                    <span>Kathmandu, Nepal</span>
-                  </address>
-                  <a
-                    className="ct-dir-link"
-                    href={`https://www.google.com/maps/dir/?api=1&destination=${MAP_QUERY}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Get directions
-                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M3 8h10M9 4l4 4-4 4" />
-                    </svg>
-                  </a>
+                <ul className="ct-hours-list">
+                  <li>
+                    <span>Sunday &ndash; Friday</span>
+                    <span>9:00 AM &ndash; 6:00 PM</span>
+                  </li>
+                  <li className="is-closed">
+                    <span>Saturday</span>
+                    <span>Closed</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Social */}
+            <div className="ct-detail-block ct-area--social">
+              <div className="ct-detail-block__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" />
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" /><line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+                </svg>
+              </div>
+              <div className="ct-detail-block__content">
+                <p className="ct-detail-block__title">Follow us</p>
+                <div className="ct-social-grid">
+                  {SOCIAL.map((s) => (
+                    <a key={s.key} className="ct-social-item" href={site.social[s.key]} target="_blank" rel="noreferrer" aria-label={s.label} title={s.label}>
+                      {s.icon}
+                    </a>
+                  ))}
                 </div>
               </div>
+            </div>
 
-              {/* Phone */}
-              <div className="ct-detail-block">
-                <div className="ct-detail-block__icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.14 12.5 19.79 19.79 0 0 1 1.07 3.9 2 2 0 0 1 3.04 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6.01 6.01l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-                  </svg>
-                </div>
-                <div className="ct-detail-block__content">
-                  <p className="ct-detail-block__title">Phone</p>
-                  <ul className="ct-detail-block__list">
-                    {phones.map((p) => (
-                      <li key={p.label}>
-                        <span>{p.label}</span>
-                        <div className="ct-contact-item">
-                          <a href={p.href}>{p.text}</a>
-                          <button
-                            className={`ct-copy-btn${copied === p.label ? ' is-copied' : ''}`}
-                            onClick={() => copy(p.text, p.label)}
-                            aria-label={`Copy ${p.text}`}
-                            title={copied === p.label ? 'Copied!' : 'Copy'}
-                          >
-                            {copied === p.label ? CHECK_ICON : COPY_ICON}
-                          </button>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              {/* Email */}
-              <div className="ct-detail-block">
-                <div className="ct-detail-block__icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" />
-                  </svg>
-                </div>
-                <div className="ct-detail-block__content">
-                  <p className="ct-detail-block__title">Email</p>
-                  <ul className="ct-detail-block__list">
-                    {emails.map((e) => (
-                      <li key={e.label}>
-                        <span>{e.label}</span>
-                        <div className="ct-contact-item">
-                          <a href={e.href}>{e.text}</a>
-                          <button
-                            className={`ct-copy-btn${copied === e.label ? ' is-copied' : ''}`}
-                            onClick={() => copy(e.text, e.label)}
-                            aria-label={`Copy ${e.text}`}
-                            title={copied === e.label ? 'Copied!' : 'Copy'}
-                          >
-                            {copied === e.label ? CHECK_ICON : COPY_ICON}
-                          </button>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              {/* Hours */}
-              <div className="ct-detail-block">
-                <div className="ct-detail-block__icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10" /><polyline points="12,6 12,12 16,14" />
-                  </svg>
-                </div>
-                <div className="ct-detail-block__content">
-                  <div className="ct-hours-head">
-                    <p className="ct-detail-block__title">Office hours</p>
-                    <span className={`ct-status ct-status--${open ? 'open' : 'closed'}`}>
-                      <span className="ct-status__dot" />
-                      {open ? 'Open now' : 'Closed'}
-                    </span>
-                  </div>
-                  <ul className="ct-hours-list">
-                    <li>
-                      <span>Sunday – Friday</span>
-                      <span>9:00 AM – 6:00 PM</span>
-                    </li>
-                    <li className="is-closed">
-                      <span>Saturday</span>
-                      <span>Closed</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Social */}
-              <div className="ct-detail-block ct-detail-block--social">
-                <div className="ct-detail-block__icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" />
-                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" /><line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
-                  </svg>
-                </div>
-                <div className="ct-detail-block__content">
-                  <p className="ct-detail-block__title">Follow us</p>
-                  <div className="ct-social-grid">
-                    {SOCIAL.map((s) => (
-                      <a key={s.key} className="ct-social-item" href={site.social[s.key]} target="_blank" rel="noreferrer" aria-label={s.label} title={s.label}>
-                        {s.icon}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-            </aside>
-
-            {/* ── Form ── */}
-            <ContactForm />
           </div>
         </div>
       </section>
-
-      {/* ── Map ── */}
-      <div className="ct-shell">
-        <ContactMap />
-      </div>
     </main>
   );
 }

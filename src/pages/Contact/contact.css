@@ -87,21 +87,76 @@
   background: #f5f5f3;
 }
 
-.ct-layout {
+/* ── Bento grid ────────────────────────────────── */
+.ct-bento {
   display: grid;
-  grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
-  gap: 28px;
-  align-items: start;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-areas:
+    "form  form  addr"
+    "form  form  phone"
+    "form  form  email"
+    "map   map   hours"
+    "map   map   social";
+  gap: 10px;
 }
 
-/* ── Sidebar ───────────────────────────────────── */
-.ct-details {
+.ct-area--form   { grid-area: form; }
+.ct-area--addr   { grid-area: addr; }
+.ct-area--phone  { grid-area: phone; }
+.ct-area--email  { grid-area: email; }
+.ct-area--map    { grid-area: map; }
+.ct-area--hours  { grid-area: hours; }
+.ct-area--social { grid-area: social; }
+
+/* Form tile — card fills its area */
+.ct-area--form { display: flex; flex-direction: column; }
+.ct-area--form .ct-form-card { flex: 1; height: 100%; box-sizing: border-box; }
+
+/* Map tile */
+.ct-area--map {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  position: sticky;
-  top: 96px;
+  background: #fff;
+  border: 1px solid #ebebea;
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 400px;
+  transition: box-shadow 0.25s ease, border-color 0.2s ease;
 }
+
+.ct-area--map:hover {
+  box-shadow: 0 6px 24px -6px rgba(0, 0, 0, 0.1);
+  border-color: #d8d8d6;
+}
+
+.ct-area--map .contact-map {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.ct-area--map .contact-map__head {
+  padding: 22px 24px 18px;
+  margin: 0;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.ct-area--map .contact-map__title {
+  font-size: clamp(22px, 2.4vw, 28px);
+}
+
+.ct-area--map .contact-map__frame {
+  flex: 1;
+  padding-bottom: 0;
+  border: none;
+  border-top: 1px solid #ebebea;
+  border-radius: 0;
+  min-height: 260px;
+}
+
+.ct-area--map .contact-map__frame:hover { box-shadow: none; }
 
 /* ── Detail block ──────────────────────────────── */
 .ct-detail-block {
@@ -577,11 +632,6 @@
 .contact-section-title { margin: 0 0 4px; font-size: 19px; font-weight: 600; letter-spacing: -0.03em; }
 .contact-muted { margin: 0; font-size: 13px; color: #999; }
 
-.ct-shell > .contact-map {
-  margin: 56px 0 80px;
-  padding-top: 0;
-}
-
 .contact-map__head {
   display: flex;
   align-items: flex-end;
@@ -653,22 +703,37 @@
 
 /* ── Responsive ─────────────────────────────────── */
 @media (max-width: 960px) {
-  .ct-layout {
-    grid-template-columns: minmax(0, 1fr);
+  .ct-bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "form   form"
+      "addr   phone"
+      "email  hours"
+      "social social"
+      "map    map";
   }
 
-  .ct-details {
-    position: static;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
-  }
+  .ct-area--form .ct-form-card { height: auto; }
 }
 
 @media (max-width: 640px) {
   .ct-hero { padding: 100px 0 56px; }
+
+  .ct-bento {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "form"
+      "addr"
+      "phone"
+      "email"
+      "hours"
+      "social"
+      "map";
+    gap: 8px;
+  }
+
   .ct-form-card { padding: 28px 20px; }
   .ct-form__grid { grid-template-columns: minmax(0, 1fr); }
-  .ct-details { grid-template-columns: minmax(0, 1fr); }
-  .contact-map__frame { padding-bottom: 58%; }
+  .ct-area--map { min-height: 340px; }
+  .ct-area--map .contact-map__head { padding: 20px 18px 16px; }
 }

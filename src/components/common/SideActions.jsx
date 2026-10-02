@@ -53,8 +53,8 @@ export default function SideActions({ variant = 'product', brochure }) {
   // rowVariantOn: the label row also carries the variant class (matches the Webflow component markup).
   const actions = [
     { id: 1, label: 'Find Dealer', icon: '/images/d06736c0568e.svg', href: ROUTES.findDealer, variantOn: isHome, rowVariantOn: isHome },
-    { id: 2, label: 'Book A Test Drive', icon: '/images/42406fb6988b.svg', href: '#' },
-    { id: 3, label: 'View Brochure', icon: '/images/37132f2c09d9.svg', variantOn: !isHome },
+    { id: 2, label: 'Book A Test Drive', icon: '/images/42406fb6988b.svg', href: ROUTES.bookTestDrive },
+    { id: 3, label: 'Contact Us', icon: '/images/37132f2c09d9.svg', variantOn: !isHome, href: ROUTES.contact },
     { id: 4, label: 'Download Brochure', icon: '/images/217bd0c755e6.svg', variantOn: isHome, rowVariantOn: !isHome, onClick: handleDownload },
     { id: 5, label: 'WhatsApp Chat', icon: '/images/0baef1d87799.svg', href: site.whatsappChat, external: true, iconClassName: 'image-28' },
   ];

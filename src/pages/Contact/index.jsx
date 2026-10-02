@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import SideActions from '@/components/common/SideActions';
 import { site } from '@/config/site';
 import usePageMeta from '@/hooks/usePageMeta';
@@ -40,45 +39,26 @@ function isOfficeOpen() {
 
 const MAP_QUERY = encodeURIComponent('Golchha House, Ganabahal, Kathmandu, Nepal');
 
-const COPY_ICON = (
-  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="5" y="5" width="8" height="9" rx="1.5" />
-    <path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2h-6A1.5 1.5 0 0 0 2 3.5v8A1.5 1.5 0 0 0 3.5 13H5" />
-  </svg>
-);
-const CHECK_ICON = (
-  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M3 8l4 4 6-7" />
+const ARROW_ICON = (
+  <svg className="ct-contact-row__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M3 8h10M9 4l4 4-4 4" />
   </svg>
 );
 
 export default function ContactPage() {
   usePageMeta(meta);
-  const [copied, setCopied] = useState(null);
   const open = isOfficeOpen();
-
-  const copy = (text, key) => {
-    navigator.clipboard?.writeText(text).then(() => {
-      setCopied(key);
-      setTimeout(() => setCopied(null), 2000);
-    });
-  };
 
   const renderContactRows = (items) =>
     items.map((item) => (
       <li key={item.label}>
-        <span>{item.label}</span>
-        <div className="ct-contact-item">
-          <a href={item.href}>{item.text}</a>
-          <button
-            className={`ct-copy-btn${copied === item.label ? ' is-copied' : ''}`}
-            onClick={() => copy(item.text, item.label)}
-            aria-label={`Copy ${item.text}`}
-            title={copied === item.label ? 'Copied!' : 'Copy'}
-          >
-            {copied === item.label ? CHECK_ICON : COPY_ICON}
-          </button>
-        </div>
+        <a className="ct-contact-row" href={item.href}>
+          <span className="ct-contact-row__tag">{item.label}</span>
+          <span className="ct-contact-row__val">
+            {item.text}
+            {ARROW_ICON}
+          </span>
+        </a>
       </li>
     ));
 

@@ -12,6 +12,8 @@ const VARIANTS = {
   product: 'w-variant-8b046784-2286-f1de-a1a3-d2bff07b69f4',
 };
 
+const BROCHURE_PDF = '/Brochure/Montra%20Brochure.pdf';
+
 const join = (...parts) => parts.filter(Boolean).join(' ');
 
 function ActionIcon({ href, icon, iconClassName, external }) {
@@ -44,8 +46,6 @@ export default function SideActions({ variant = 'product', brochure }) {
   const variantClass = VARIANTS[variant];
   const isHome = variant === 'home';
 
-  const BROCHURE_PDF = '/Brochure/Montra Brochure.pdf';
-
   const handleDownload = () => {
     if (brochure?.requireForm) {
       setModalOpen(true);
@@ -59,7 +59,7 @@ export default function SideActions({ variant = 'product', brochure }) {
   const actions = [
     { id: 1, label: 'Find Dealer', icon: '/images/d06736c0568e.svg', href: ROUTES.findDealer, variantOn: isHome, rowVariantOn: isHome },
     { id: 2, label: 'Book A Test Drive', icon: '/images/42406fb6988b.svg', href: ROUTES.bookTestDrive },
-    { id: 3, label: 'Contact Us', icon: '/images/37132f2c09d9.svg', variantOn: !isHome, href: ROUTES.contact },
+    { id: 3, label: 'View Brochure', icon: '/images/37132f2c09d9.svg', variantOn: !isHome, href: BROCHURE_PDF, external: true },
     { id: 4, label: 'Download Brochure', icon: '/images/217bd0c755e6.svg', variantOn: isHome, rowVariantOn: !isHome, onClick: handleDownload },
     { id: 5, label: 'WhatsApp Chat', icon: '/images/0baef1d87799.svg', href: site.whatsappChat, external: true, iconClassName: 'image-28' },
   ];

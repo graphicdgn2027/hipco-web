@@ -1,10 +1,8 @@
-import { site } from '@/config/site';
-
 const CORPORATE_ADDRESS = 'Golchha House, Ganabahal, Kathmandu, Nepal';
-const query = encodeURIComponent(CORPORATE_ADDRESS);
-const embedUrl = `https://www.google.com/maps?q=${query}&output=embed`;
+const query         = encodeURIComponent(CORPORATE_ADDRESS);
+const embedUrl      = `https://www.google.com/maps?q=${query}&output=embed`;
 const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${query}`;
-const mapUrl = `https://www.google.com/maps/search/?api=1&query=${query}`;
+const mapUrl        = `https://www.google.com/maps/search/?api=1&query=${query}`;
 
 export default function ContactMap() {
   return (

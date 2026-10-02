@@ -1,7 +1,8 @@
 import { useState } from 'react';
 
-const EMPTY = { name: '', phone: '', email: '', topic: 'General inquiry', message: '' };
+const EMPTY  = { name: '', phone: '', email: '', topic: 'General inquiry', message: '' };
 const TOPICS = ['General inquiry', 'Book a test drive', 'Sales & pricing', 'Service & support', 'Dealership'];
+const MAX_MSG = 2000;
 
 export default function ContactForm() {
   const [values, setValues] = useState(EMPTY);
@@ -17,15 +18,15 @@ export default function ContactForm() {
     setStatus('sending');
     try {
       const res = await fetch('https://formsubmit.co/ajax/info@hipco.com.np', {
-        method: 'POST',
+        method:  'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          _subject: `${values.topic} – ${values.name}`,
+          _subject:  `${values.topic} – ${values.name}`,
           _template: 'table',
-          Name: values.name,
-          Phone: values.phone,
-          Email: values.email,
-          Topic: values.topic,
+          Name:    values.name,
+          Phone:   values.phone,
+          Email:   values.email,
+          Topic:   values.topic,
           Message: values.message,
         }),
       });
@@ -35,6 +36,10 @@ export default function ContactForm() {
       setStatus('error');
     }
   };
+
+  const msgLen  = values.message.length;
+  const isNear  = msgLen > MAX_MSG * 0.85;
+  const isMaxed = msgLen >= MAX_MSG;
 
   if (status === 'success') {
     return (
@@ -50,10 +55,7 @@ export default function ContactForm() {
           Thanks, <strong>{values.name}</strong>. We&rsquo;ve received your message and will reply
           to <strong>{values.email}</strong> within one business day.
         </p>
-        <button
-          className="ct-btn ct-btn--outline"
-          onClick={() => { setValues(EMPTY); setStatus('idle'); }}
-        >
+        <button className="ct-btn ct-btn--outline" onClick={() => { setValues(EMPTY); setStatus('idle'); }}>
           Send another
         </button>
       </div>
@@ -88,15 +90,29 @@ export default function ContactForm() {
           </select>
         </label>
 
-        <label className="ct-field ct-field--wide">
-          <span>Message <em>*</em></span>
-          <textarea name="message" rows={5} value={values.message} onChange={update} required maxLength={2000} placeholder="Tell us what you'd like to know..." />
-        </label>
+        <div className="ct-field ct-field--wide">
+          <label>
+            <span>Message <em>*</em></span>
+            <textarea name="message" rows={5} value={values.message} onChange={update} required maxLength={MAX_MSG} placeholder="Tell us what you'd like to know..." />
+          </label>
+          <div className="ct-field__footer">
+            <span className={`ct-field__counter${isMaxed ? ' is-max' : isNear ? ' is-near' : ''}`}>
+              {msgLen} / {MAX_MSG}
+            </span>
+          </div>
+        </div>
       </div>
 
       <div className="ct-form__footer">
         <button type="submit" className="ct-btn ct-btn--primary" disabled={status === 'sending'}>
-          {status === 'sending' ? 'Sending…' : 'Send message →'}
+          {status === 'sending' ? (
+            <>
+              Sending
+              <span className="ct-btn__dots" aria-hidden="true">
+                <span /><span /><span />
+              </span>
+            </>
+          ) : 'Send message →'}
         </button>
         {status === 'error' && (
           <p className="ct-form__error" role="alert">

@@ -1,8 +1,6 @@
 import SideActions from '@/components/common/SideActions';
 import usePageMeta from '@/hooks/usePageMeta';
 import stylesheet from '@/styles/webflow/super-auto.css?url';
-import Faq from '@/components/sections/Faq';
-import { faqs } from '@/data/faqs';
 import Hero from './sections/Hero';
 import Highlights from './sections/Highlights';
 import Interiors from './sections/Interiors';
@@ -32,7 +30,6 @@ export default function SuperAutoPage() {
       <Colors />
       <BuiltFor />
       <Advantage />
-      <Faq title="Montra Electric Super Auto FAQs" items={faqs.superAuto} />
       <SideActions
         brochure={{
           pdf: 'https://cdn.prod.website-files.com/6938169ca88035d1476d6905/69fc67f1d5925e2f966fb988_Super_Auto_Brochure.pdf',

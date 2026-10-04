@@ -1,4 +1,32 @@
 export const faqs = {
+  superAuto: [
+    {
+      question: 'What is the real-world range and mileage of Montra Electric Super Auto in daily operations?',
+      answer:
+        'The Montra Electric Super Auto electric three wheeler delivers 150+ km real-world range under normal driving conditions with passengers and city traffic. While the certified range is 239 km under ideal conditions, actual daily operations typically achieve 160 km per full charge. This electric passenger 3-wheeler range varies based on passenger load, traffic conditions, and driving patterns.',
+    },
+    {
+      question:
+        'How long does Montra Electric Super Auto electric three wheeler take to charge and can I charge it overnight at home?',
+      answer:
+        'The Montra Electric Super Auto takes 4 hours for complete charging using the standard off-board charger. Yes, you can easily charge it overnight at home with a regular electrical connection. This electric passenger 3-wheeler is designed for convenient home charging, allowing you to start each day with a full battery for your electric three wheeler operations.',
+    },
+    {
+      question: 'What service and maintenance is required for Montra Electric Super Auto and how often?',
+      answer:
+        'The Montra Electric Super Auto requires minimal maintenance. Unlike petrol or CNG vehicles, it has no engine oil, no spark plugs, and no complex engine servicing. Regular checks mainly include tire pressure, brake wear, and general electrical system inspection. This greatly reduces maintenance costs and vehicle downtime.',
+    },
+    {
+      question: 'Are finance options available for purchasing Super Auto?',
+      answer:
+        'Yes, various financing options are available for the Montra Electric Super Auto electric. Banks, NBFCs, and government schemes offer loans with attractive interest rates for electric three wheeler purchases. Many dealers provide easy EMI options and some states offer additional subsidies. Please check with your nearest Montra Electric dealership for current finance schemes and eligibility.',
+    },
+    {
+      question: 'How many passengers can Montra Electric Super Auto carry and what is the seating arrangement?',
+      answer:
+        'The Montra Electric Super Auto seats the driver plus 3 passengers comfortably. The seating arrangement includes an ergonomic driver seat with high backrest and dual-tone passenger seats with backrest that can tumble forward. This electric 3-wheeler also provides rear luggage space with a tailgate for passenger belongings, making it ideal for both short trips and longer journeys.',
+    },
+  ],
   superCargo: [
     {
       question: 'What delivery range can I expect from Montra Electric Super Cargo when fully loaded?',

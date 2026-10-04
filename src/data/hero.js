@@ -5,7 +5,7 @@ export const heroSlides = [
   {
     id: 'super-auto',
     label: 'Super Auto',
-    category: 'Last Mile',
+    category: 'Passenger Vehicle',
     title: 'Leading the Charge in Last-Mile Mobility',
     text: 'Driving smarter deliveries with powerful, efficient, and sustainable electric solutions.',
     image: '/images/hero/super-auto.jpg',
@@ -15,7 +15,7 @@ export const heroSlides = [
   {
     id: 'super-cargo',
     label: 'Super Cargo',
-    category: 'Last Mile',
+    category: 'Delivery Vehicle',
     title: 'Leading the Shift in Automotive',
     text: 'Meet the Montra Electric Super Cargo range, built to carry more and cost less to run.',
     image: '/images/hero/super-cargo-range.jpg',

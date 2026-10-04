@@ -143,7 +143,7 @@ export default function AboutPage() {
         <div className="ab-shell">
           <div className="ab-hero__grid">
             <div data-reveal>
-              <p className="ab-label ab-label--light">Electric mobility in Nepal</p>
+              <p className="ab-label">Electric mobility in Nepal</p>
               <h1 className="ab-hero__title">
                 Electric mobility,
                 <br />

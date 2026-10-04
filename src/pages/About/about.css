@@ -49,10 +49,6 @@
   text-transform: uppercase;
 }
 
-.ab-label--light {
-  color: var(--ab-gray-400);
-}
-
 .ab-title {
   margin: 16px 0 0;
   color: var(--ab-black);
@@ -73,8 +69,8 @@
 /* ─── Hero ─── */
 .ab-hero {
   padding: 100px 0 88px;
-  background: var(--ab-black);
-  color: var(--ab-white);
+  background: var(--ab-gray-100);
+  color: var(--ab-ink);
 }
 
 .ab-hero__grid {
@@ -93,7 +89,7 @@
 }
 
 .ab-hero__title span {
-  color: var(--ab-gray-400);
+  color: var(--ab-gray-500);
 }
 
 .ab-hero__right {
@@ -105,8 +101,8 @@
 .ab-hero__lead {
   margin: 0;
   padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
-  color: var(--ab-gray-400);
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  color: var(--ab-gray-700);
   font-size: 17px;
   line-height: 1.65;
 }
@@ -114,9 +110,10 @@
 .ab-hero__stats {
   display: flex;
   gap: 0;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: var(--ab-radius);
   overflow: hidden;
+  background: var(--ab-white);
 }
 
 .ab-hero__stat {
@@ -125,7 +122,7 @@
   flex-direction: column;
   gap: 4px;
   padding: 18px 20px;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .ab-hero__stat:last-child {
@@ -133,7 +130,7 @@
 }
 
 .ab-hero__stat-value {
-  color: var(--ab-white);
+  color: var(--ab-black);
   font-size: 28px;
   font-weight: 600;
   letter-spacing: -0.04em;

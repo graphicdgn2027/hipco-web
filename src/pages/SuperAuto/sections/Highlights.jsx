@@ -118,7 +118,7 @@ export default function Highlights() {
               <div className="div-block-415">
                 <h3 className="text-block-67">Earnings</h3>
                 <div className="text-block-68">
-                  At only 53 paise* per km running cost and very low maintenance, Super Auto is an unbeatable choice to
+                  At only 65 paisa* per km running cost and very low maintenance, Super Auto is an unbeatable choice to
                   grow your earnings.
                 </div>
               </div>

@@ -195,7 +195,7 @@ export default function AboutPage() {
             <figure className="ab-editorial__fig" data-reveal style={{ '--ab-delay': '80ms' }}>
               <div className="ab-editorial__img-wrap">
                 <img
-                  src="/images/about/montra-range.webp"
+                  src="/images/about/montra-range.png"
                   alt="The Montra Electric range: Super Auto, Super Cargo and EVIATOR"
                   width="1920"
                   height="1080"

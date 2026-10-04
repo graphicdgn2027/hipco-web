@@ -89,7 +89,7 @@ export default function Highlights() {
               <div className="div-block-415">
                 <h3 className="text-block-67">Performance</h3>
                 <div className="text-block-68">
-                  With reliable <strong>True Range of 160* km</strong> and <strong>60 Nm Peak Torque</strong>, no more
+                  With reliable <strong>True Range of 150* km</strong> and <strong>60 Nm Peak Torque</strong>, no more
                   compromise on where you go and how far you go.
                 </div>
               </div>

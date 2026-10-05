@@ -41,7 +41,7 @@ export default function Advantage() {
               <div className="div-block-11">
                 <h3 className="heading-7">SUPER आमदानी</h3>
                 <p className="paragraph-7">
-                  We Respect your Earnings. Through 160 km True Range and Spacious Passenger Seating, we enable you to
+                  We Respect your Earnings. Through 150+ km True Range and Spacious Passenger Seating, we enable you to
                   pick more passengers, do more trips and earn more income.
                 </p>
               </div>
@@ -92,7 +92,7 @@ export default function Advantage() {
                 <div className="div-block-11">
                   <h3 className="heading-7">SUPER आमदानी</h3>
                   <p className="paragraph-7">
-                    We Respect your Earnings. Through 160 km True Range and Spacious Passenger Seating, we enable you to
+                    We Respect your Earnings. Through 150+km True Range and Spacious Passenger Seating, we enable you to
                     pick more passengers, do more trips and earn more income.
                   </p>
                 </div>

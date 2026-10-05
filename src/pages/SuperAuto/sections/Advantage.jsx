@@ -53,7 +53,7 @@ export default function Advantage() {
                 <img src="/images/e90470165291.png" loading="lazy" alt="" />
               </div>
               <div className="div-block-14">
-                <h3 className="heading-8">SAPNON Ke Liye IZZAT</h3>
+                <h3 className="heading-8">SUPER टिकाउ र बलियो</h3>
                 <p className="paragraph-7">
                   We Respect Your Dreams. Choosing Super Auto allows you to save almost a Lac of Rupees yearly and
                   realise your dreams. Industry best Warranty and Superior Service support ensures there is never a
@@ -106,7 +106,7 @@ export default function Advantage() {
                   <img src="/images/e90470165291.png" loading="lazy" alt="" />
                 </div>
                 <div className="div-block-14">
-                  <h3 className="heading-8">SAPNON Ke Liye IZZAT</h3>
+                  <h3 className="heading-8">SUPER टिकाउ र बलियो</h3>
                   <p className="paragraph-7">
                     We Respect Your Dreams. Choosing Super Auto allows you to save almost a Lac of Rupees yearly and
                     realise your dreams. Industry best Warranty and Superior Service support ensures there is never a

@@ -23,7 +23,7 @@ export default function Advantage() {
                 <img src="/images/6cbb3bb75892.png" loading="lazy" alt="" />
               </div>
               <div className="info-card-content">
-                <h3 className="heading-6">MEHNAT Ke Liye IZZAT</h3>
+                <h3 className="heading-6">SUPER सवारी</h3>
                 <p className="paragraph-7">
                   Through Spacious Car like Comfort Driver Seat and Car like design, we respect your hard work. Because
                   this is your Office.
@@ -39,7 +39,7 @@ export default function Advantage() {
                 <img src="/images/b71546fa5ecb.png" loading="lazy" alt="" />
               </div>
               <div className="div-block-11">
-                <h3 className="heading-7">KAMAAI Ke Liye IZZAT</h3>
+                <h3 className="heading-7">SUPER आमदानी</h3>
                 <p className="paragraph-7">
                   We Respect your Earnings. Through 160 km True Range and Spacious Passenger Seating, we enable you to
                   pick more passengers, do more trips and earn more income.
@@ -72,7 +72,7 @@ export default function Advantage() {
                   <img src="/images/6cbb3bb75892.png" loading="lazy" alt="" />
                 </div>
                 <div className="info-card-content">
-                  <h3 className="heading-6">MEHNAT Ke Liye IZZAT</h3>
+                  <h3 className="heading-6">SUPER सवारी</h3>
                   <p className="paragraph-7">
                     Through Spacious Car like Comfort Driver Seat and Car like design, we respect your hard work.
                     Because this is your Office.
@@ -90,7 +90,7 @@ export default function Advantage() {
                   <img src="/images/b71546fa5ecb.png" loading="lazy" alt="" />
                 </div>
                 <div className="div-block-11">
-                  <h3 className="heading-7">KAMAAI Ke Liye IZZAT</h3>
+                  <h3 className="heading-7">SUPER आमदानी</h3>
                   <p className="paragraph-7">
                     We Respect your Earnings. Through 160 km True Range and Spacious Passenger Seating, we enable you to
                     pick more passengers, do more trips and earn more income.

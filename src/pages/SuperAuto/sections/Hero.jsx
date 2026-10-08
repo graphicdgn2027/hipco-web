@@ -3,7 +3,7 @@ import { AppLink } from '@/components/ui/AppLink';
 import { heroSlides } from './hero-slides';
 import './hero.css';
 
-const AUTOPLAY_MS = 5500;
+const AUTOPLAY_MS = 6500;
 const SWIPE_THRESHOLD = 50;
 const join = (...parts) => parts.filter(Boolean).join(' ');
 
@@ -47,7 +47,6 @@ function Arrow({ direction, onClick }) {
   );
 }
 
-// Colour-variant hero slider: same headline/copy throughout, the vehicle cut-out and colour name change per slide.
 export default function Hero() {
   const count = heroSlides.length;
   const [index, setIndex] = useState(0);
@@ -152,33 +151,42 @@ export default function Hero() {
             aria-label={`${i + 1} of ${count}: ${slide.color}`}
             inert={i !== index}
           >
-            <div className="sah-text">
-              <span className="sah-chip">Super Auto</span>
-              <h2 className="sah-title">Leading the Charge in Last-Mile Mobility</h2>
-              <p className="sah-text-copy">
-                Driving smarter deliveries with powerful, efficient, and sustainable electric solutions.
-              </p>
-              <div className="sah-actions">
-                <AppLink href="#" className="sah-btn sah-btn--solid">
-                  Order Now
-                  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                    <path
-                      d="M5 12h14M13 6l6 6-6 6"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </AppLink>
-                <a href="#colors" className="sah-btn sah-btn--ghost" onClick={scrollToColors}>
-                  View Colors
-                </a>
-              </div>
+            <div className="sah-media">
+              <img
+                src={slide.image}
+                alt={slide.label || `Super Auto in ${slide.color}`}
+                style={{ objectPosition: slide.position || 'center' }}
+                loading={i === 0 ? 'eager' : 'lazy'}
+                fetchPriority={i === 0 ? 'high' : 'auto'}
+                draggable="false"
+              />
             </div>
-            <div className="sah-visual">
-              <img src={slide.image} alt={`Super Auto in ${slide.color}`} loading={i === 0 ? 'eager' : 'lazy'} draggable="false" />
+            <div className="sah-content">
+              <div className="sah-card">
+                <span className="sah-chip">{slide.category || 'Super Auto'}</span>
+                <h2 className="sah-title">{slide.title || 'Leading the Charge in Last-Mile Mobility'}</h2>
+                <p className="sah-text">
+                  {slide.text || 'Driving smarter deliveries with powerful, efficient, and sustainable electric solutions.'}
+                </p>
+                <div className="sah-actions">
+                  <AppLink href={slide.href || '#'} className="sah-btn sah-btn--solid">
+                    Order Now
+                    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                      <path
+                        d="M5 12h14M13 6l6 6-6 6"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </AppLink>
+                  <a href="#colors" className="sah-btn sah-btn--ghost" onClick={scrollToColors}>
+                    View Colors
+                  </a>
+                </div>
+              </div>
             </div>
           </article>
         ))}
@@ -199,7 +207,7 @@ export default function Hero() {
                 <span className="sah-dot__fill" />
               </span>
               <span className="sah-dot__num">{String(i + 1).padStart(2, '0')}</span>
-              <span className="sah-dot__label">{slide.color}</span>
+              <span className="sah-dot__label">{slide.label || slide.color}</span>
             </button>
           ))}
         </div>

@@ -30,7 +30,7 @@ export default function Advantage() {
                 </p>
               </div>
             </div>
-            <img className="image-202" src="/images/aa930a2ae302.png" loading="lazy" alt="" />
+            <img className="image-202" src="/super-auto/SUPER सवारी.png" loading="lazy" alt="" />
           </div>
           <div className="card2">
             <img className="image-203" src="/images/981e7106b349.png" loading="lazy" alt="" />
@@ -73,13 +73,15 @@ export default function Advantage() {
                 </div>
                 <div className="info-card-content">
                   <h3 className="heading-6">SUPER सवारी</h3>
+                  <h3 className="heading-6">SUPER आमदानी</h3>
+
                   <p className="paragraph-7">
                     Through Spacious Car like Comfort Driver Seat and Car like design, we respect your hard work.
                     Because this is your Office.
                   </p>
                 </div>
               </div>
-              <img src="/images/aa930a2ae302.png" loading="lazy" alt="" />
+              <img src="/super-auto/SUPER सवारी.png" loading="lazy" alt="" />
             </div>
           </CarouselItem>
           <CarouselItem>

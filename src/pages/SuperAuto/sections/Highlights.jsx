@@ -19,13 +19,11 @@ export default function Highlights() {
             <div className="card">
               <img
                 className="image-32"
-                src="/images/7ce13781a7ab.png"
+                src="/super-auto/space and comfort.png"
                 loading="lazy"
                 width="Auto"
                 height="Auto"
                 alt=""
-                sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 940px"
-                srcSet="https://cdn.prod.website-files.com/6938169ca88035d1476d6905/69ddd4f3209c8df5e166e135_Frame%20265%20(4)-p-500.png 500w, https://cdn.prod.website-files.com/6938169ca88035d1476d6905/69ddd4f3209c8df5e166e135_Frame%20265%20(4).png 628w"
               />
               <div className="div-block-415">
                 <h3 className="text-block-67">Space &amp; Comfort</h3>

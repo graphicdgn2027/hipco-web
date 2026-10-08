@@ -40,11 +40,9 @@ export default function Efficiency() {
               </div>
               <img
                 className="image-34"
-                sizes="100vw"
-                srcSet="https://cdn.prod.website-files.com/6938169ca88035d1476d6905/69ae8895dd78c4825786ac4d_Screenshot%25202026-03-09%2520124636-p-500.png 500w, https://cdn.prod.website-files.com/6938169ca88035d1476d6905/69ae8895dd78c4825786ac4d_Screenshot%25202026-03-09%2520124636-p-800.png 800w, https://cdn.prod.website-files.com/6938169ca88035d1476d6905/69ae8895dd78c4825786ac4d_Screenshot%202026-03-09%20124636.png 915w"
                 alt=""
                 loading="lazy"
-                src="/images/71dbeb3abb54.png"
+                src="/super-auto/On a single full charge.png"
               />
             </div>
           </TabPane>

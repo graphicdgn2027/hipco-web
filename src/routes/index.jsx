@@ -7,7 +7,7 @@ const HomePage = lazy(() => import('@/pages/Home'));
 const SuperAutoPage = lazy(() => import('@/pages/SuperAuto'));
 const SuperCargoPage = lazy(() => import('@/pages/SuperCargo'));
 const EviatorPage = lazy(() => import('@/pages/Eviator'));
-const AboutPage = lazy(() => import('@/pages/About'));
+const AboutPage = lazy(() => import('@/pages/about'));
 const ContactPage = lazy(() => import('@/pages/Contact'));
 const FindDealerPage = lazy(() => import('@/pages/FindDealer'));
 const BookTestDrivePage = lazy(() => import('@/pages/BookTestDrive'));

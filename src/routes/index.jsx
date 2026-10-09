@@ -12,6 +12,14 @@ const ContactPage = lazy(() => import('@/pages/Contact'));
 const FindDealerPage = lazy(() => import('@/pages/FindDealer'));
 const BookTestDrivePage = lazy(() => import('@/pages/BookTestDrive'));
 
+// New pages
+const BecomeDealerPage = lazy(() => import('@/pages/BecomeDealer'));
+const SitemapPage = lazy(() => import('@/pages/Sitemap'));
+const MediaAccoladesPage = lazy(() => import('@/pages/MediaAccolades'));
+const PrivacyPage = lazy(() => import('@/pages/Privacy'));
+const PrivacyPowerDockPage = lazy(() => import('@/pages/PrivacyPowerDock'));
+const NotFoundPage = lazy(() => import('@/pages/NotFound'));
+
 export default function AppRoutes() {
   return (
     <Suspense fallback={null}>
@@ -25,7 +33,12 @@ export default function AppRoutes() {
           <Route path={ROUTES.contact} element={<ContactPage />} />
           <Route path={ROUTES.findDealer} element={<FindDealerPage />} />
           <Route path={ROUTES.bookTestDrive} element={<BookTestDrivePage />} />
-          <Route path="*" element={<Navigate to={ROUTES.home} replace />} />
+          <Route path={ROUTES.becomeDealer} element={<BecomeDealerPage />} />
+          <Route path={ROUTES.sitemap} element={<SitemapPage />} />
+          <Route path={ROUTES.mediaAccolades} element={<MediaAccoladesPage />} />
+          <Route path={ROUTES.privacy} element={<PrivacyPage />} />
+          <Route path={ROUTES.privacyPowerDock} element={<PrivacyPowerDockPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </Suspense>

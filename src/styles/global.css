@@ -11,3 +11,57 @@ html body .nav-bar-container {
   -webkit-backdrop-filter: blur(20px) saturate(140%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
+
+/* Mobile UX Fixes */
+
+/* Prevent horizontal scrolling and improve layout */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Ensure images don't overflow and awkward crops are prevented */
+img, picture, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Improve tap targets on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  button, 
+  a, 
+  input[type="button"], 
+  input[type="submit"], 
+  .tap-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Fix overflowing forms */
+input, 
+textarea, 
+select, 
+button {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Keyboard accessibility - visible focus states */
+*:focus-visible {
+  outline: 2px solid #0a84ff; /* Fallback high-contrast outline */
+  outline-offset: 2px;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

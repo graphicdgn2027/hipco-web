@@ -7,6 +7,11 @@ export const ROUTES = {
   contact: '/contact-us',
   findDealer: '/find-a-dealer',
   bookTestDrive: '/book-test-drive',
+  becomeDealer: '/become-a-dealer',
+  sitemap: '/sitemap',
+  mediaAccolades: '/media-accolades',
+  privacy: '/privacy',
+  privacyPowerDock: '/privacy-policy-powerdock',
 };
 
 const appPaths = Object.values(ROUTES);

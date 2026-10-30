@@ -1,5 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "vite",
-  "rewrites": [{ "source": "/((?!assets/|images/|logo/).*)", "destination": "/index.html" }]
+  "rewrites": [
+    {
+      "source": "/((?!assets/|images/|logo/|hero-image/|super-auto/|super-auto-slider/|Brochure/|.*\\..*).*)",
+      "destination": "/index.html"
+    }
+  ]
 }

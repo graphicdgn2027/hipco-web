@@ -73,7 +73,6 @@ export default function Advantage() {
                 </div>
                 <div className="info-card-content">
                   <h3 className="heading-6">SUPER सवारी</h3>
-                  <h3 className="heading-6">SUPER आमदानी</h3>
 
                   <p className="paragraph-7">
                     Through Spacious Car like Comfort Driver Seat and Car like design, we respect your hard work.

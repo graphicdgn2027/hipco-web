@@ -6,6 +6,21 @@ import useBodyScrollLock from '@/hooks/useBodyScrollLock';
 
 const MOBILE_BREAKPOINT = 768;
 
+function isItemActive(item, currentPath, isProductsOpen) {
+  if (item.opensProducts) {
+    return (
+      isProductsOpen ||
+      currentPath.startsWith('/lastmile') ||
+      currentPath.startsWith('/e-scv')
+    );
+  }
+  if (!item.href) return false;
+  if (item.href === '/') {
+    return currentPath === '/';
+  }
+  return currentPath === item.href || currentPath.startsWith(item.href);
+}
+
 // view: null = CSS default layout (desktop product grid), 'menu' = mobile menu list, 'products' = mobile product grid.
 // The dialog is tied to the path it was opened on, so navigating closes it.
 export default function Header() {
@@ -32,18 +47,23 @@ export default function Header() {
           <img className="left_logo-1" src="/images/e74656ae5af9.svg" width="110" height="24" alt="Montra Electric" />
         </AppLink>
         <div className="div-block-270">
-          {primaryNav.map((item) => (
-            <AppLink
-              key={item.label}
-              href={item.href ?? '#'}
-              className={`${item.className} w-inline-block`}
-              onClick={item.opensProducts ? openProducts : undefined}
-            >
-              <div className="link---navbar-link-6">
-                <div className="text-23">{item.label}</div>
-              </div>
-            </AppLink>
-          ))}
+          {primaryNav.map((item) => {
+            const active = isItemActive(item, pathname, open);
+            return (
+              <AppLink
+                key={item.label}
+                href={item.href ?? '#'}
+                className={`${item.className} w-inline-block nav-link-item ${active ? 'is-active' : ''}`}
+                onClick={item.opensProducts ? openProducts : undefined}
+                aria-current={active ? 'page' : undefined}
+              >
+                <div className={`link---navbar-link-6 ${active ? 'is-active' : ''}`}>
+                  <div className="text-23">{item.label}</div>
+                  {active && <span className="nav-tab-indicator" />}
+                </div>
+              </AppLink>
+            );
+          })}
         </div>
         <div className="divframer-5odmon-container-2">
           <img
@@ -74,16 +94,21 @@ export default function Header() {
         </div>
 
         <div id="menu-dialog-items" className="div-block-209" style={menuStyle}>
-          {mobileMenu.map((item) => (
-            <AppLink
-              key={item.label}
-              href={item.href ?? '#'}
-              className="div-block-204 w-inline-block"
-              onClick={item.opensProducts ? showMobileProducts : undefined}
-            >
-              <div className="text-block-120">{item.label}</div>
-            </AppLink>
-          ))}
+          {mobileMenu.map((item) => {
+            const active = isItemActive(item, pathname, view === 'products');
+            return (
+              <AppLink
+                key={item.label}
+                href={item.href ?? '#'}
+                className={`div-block-204 w-inline-block mobile-nav-item ${active ? 'is-active' : ''}`}
+                onClick={item.opensProducts ? showMobileProducts : undefined}
+                aria-current={active ? 'page' : undefined}
+              >
+                <div className="text-block-120">{item.label}</div>
+                {active && <span className="mobile-nav-indicator" />}
+              </AppLink>
+            );
+          })}
         </div>
 
         <div id="products-dialog-content" className="products-dialog-content" style={productsStyle}>

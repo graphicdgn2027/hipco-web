@@ -21,7 +21,38 @@ export default function Hero() {
       />
       <div className="hero-container">
         <div className="hero-text-block-super-cargo" text-split="">
-          <h1 className="heading-super-cargo">Leading the Shift in Automotive</h1>
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '6px 16px',
+              borderRadius: '999px',
+              background: 'rgba(37, 219, 37, 0.15)',
+              border: '1px solid rgba(37, 219, 37, 0.45)',
+              color: '#25db25',
+              fontSize: '14px',
+              fontWeight: 600,
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              marginBottom: '10px',
+              backdropFilter: 'blur(10px)',
+              WebkitBackdropFilter: 'blur(10px)',
+            }}
+          >
+            <span
+              style={{
+                width: '8px',
+                height: '8px',
+                borderRadius: '50%',
+                background: '#25db25',
+                display: 'inline-block',
+                boxShadow: '0 0 10px #25db25',
+              }}
+            />
+            Coming Soon
+          </div>
+          <h1 className="heading-super-cargo">Coming Soon</h1>
           <p className="sub-heading-super-cargo">with Montra Electric Super Cargo Range</p>
         </div>
       </div>

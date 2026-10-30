@@ -26,6 +26,8 @@ export default function SuperCargoPage() {
   return (
     <>
       <Hero />
+      {/* Other sections disabled - Coming Soon */}
+      {/*
       <WhatSetsItApart />
       <Interior />
       <Features />
@@ -41,6 +43,7 @@ export default function SuperCargoPage() {
           requireForm: true,
         }}
       />
+      */}
     </>
   );
 }

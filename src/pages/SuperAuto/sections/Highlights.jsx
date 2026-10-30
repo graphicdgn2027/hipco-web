@@ -19,11 +19,12 @@ export default function Highlights() {
             <div className="card">
               <img
                 className="image-32"
-                src="/super-auto/space and comfort.png"
+                src="/super-auto/SUPER Powers your day/space & comfort.png"
                 loading="lazy"
                 width="Auto"
                 height="Auto"
-                alt=""
+                alt="Space & Comfort"
+                style={{ borderRadius: '10px' }}
               />
               <div className="div-block-415">
                 <h3 className="text-block-67">Space &amp; Comfort</h3>
@@ -47,13 +48,12 @@ export default function Highlights() {
             <div className="card">
               <img
                 className="image-32"
-                src="/images/fc7217a17b5a.png"
+                src="/super-auto/SUPER Powers your day/unique design.png"
                 loading="lazy"
                 width="Auto"
                 height="Auto"
-                alt=""
-                sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 940px"
-                srcSet="https://cdn.prod.website-files.com/6938169ca88035d1476d6905/69ddd4f35d3ee52bd9faf4fc_Frame%20265%20(5)-p-500.png 500w, https://cdn.prod.website-files.com/6938169ca88035d1476d6905/69ddd4f35d3ee52bd9faf4fc_Frame%20265%20(5).png 628w"
+                alt="Unique Design"
+                style={{ borderRadius: '10px' }}
               />
               <div className="div-block-415">
                 <h3 className="text-block-67">Unique Design</h3>
@@ -76,13 +76,12 @@ export default function Highlights() {
             <div className="card">
               <img
                 className="image-32"
-                src="/images/963e7b93e2df.png"
+                src="/super-auto/SUPER Powers your day/performance.png"
                 loading="lazy"
                 width="Auto"
                 height="Auto"
-                alt=""
-                sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 940px"
-                srcSet="https://cdn.prod.website-files.com/6938169ca88035d1476d6905/69ddd4f336c0d1006ec9ed23_Frame%20265%20(2)-p-500.png 500w, https://cdn.prod.website-files.com/6938169ca88035d1476d6905/69ddd4f336c0d1006ec9ed23_Frame%20265%20(2).png 628w"
+                alt="Performance"
+                style={{ borderRadius: '10px' }}
               />
               <div className="div-block-415">
                 <h3 className="text-block-67">Performance</h3>
@@ -105,13 +104,12 @@ export default function Highlights() {
             <div className="card">
               <img
                 className="image-32"
-                src="/images/addcbcddbb7f.png"
+                src="/super-auto/SUPER Powers your day/earnings.png"
                 loading="lazy"
                 width="Auto"
                 height="Auto"
-                alt=""
-                sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 940px"
-                srcSet="https://cdn.prod.website-files.com/6938169ca88035d1476d6905/69ddd4f3a7289c97471e9bd6_Frame%20265%20(3)-p-500.png 500w, https://cdn.prod.website-files.com/6938169ca88035d1476d6905/69ddd4f3a7289c97471e9bd6_Frame%20265%20(3).png 628w"
+                alt="Earnings"
+                style={{ borderRadius: '10px' }}
               />
               <div className="div-block-415">
                 <h3 className="text-block-67">Earnings</h3>

@@ -30,10 +30,10 @@ export default function Advantage() {
                 </p>
               </div>
             </div>
-            <img className="image-202" src="/super-auto/SUPER सवारी.png" loading="lazy" alt="" />
+            <img className="image-202" src="/super-auto/The Montra Electric Advantage/SUPER सवारी.png" loading="lazy" alt="SUPER सवारी" />
           </div>
           <div className="card2">
-            <img className="image-203" src="/images/981e7106b349.png" loading="lazy" alt="" />
+            <img className="image-203" src="/super-auto/The Montra Electric Advantage/150km range.png" loading="lazy" alt="150km Range" />
             <div className="div-block-9">
               <div className="div-block-10">
                 <img src="/images/b71546fa5ecb.png" loading="lazy" alt="" />
@@ -61,7 +61,7 @@ export default function Advantage() {
                 </p>
               </div>
             </div>
-            <img className="image-204" src="/images/5bf557bfdd04.png" loading="lazy" alt="" />
+            <img className="image-204" src="/super-auto/The Montra Electric Advantage/SUPER टिकाउ.png" loading="lazy" alt="SUPER टिकाउ" />
           </div>
         </div>
         <Carousel variant="slider" className="hide-no-desktop">
@@ -81,12 +81,12 @@ export default function Advantage() {
                   </p>
                 </div>
               </div>
-              <img src="/super-auto/SUPER सवारी.png" loading="lazy" alt="" />
+              <img src="/super-auto/The Montra Electric Advantage/SUPER सवारी.png" loading="lazy" alt="SUPER सवारी" />
             </div>
           </CarouselItem>
           <CarouselItem>
             <div className="card2">
-              <img src="/images/981e7106b349.png" loading="lazy" alt="" />
+              <img src="/super-auto/The Montra Electric Advantage/150km range.png" loading="lazy" alt="150km Range" />
               <div className="div-block-9">
                 <div className="div-block-10">
                   <img src="/images/b71546fa5ecb.png" loading="lazy" alt="" />
@@ -117,7 +117,7 @@ export default function Advantage() {
                 </div>
               </div>
               <div className="div-block-15">
-                <img src="/images/5bf557bfdd04.png" loading="lazy" alt="" />
+                <img src="/super-auto/The Montra Electric Advantage/SUPER टिकाउ.png" loading="lazy" alt="SUPER टिकाउ" />
               </div>
             </div>
           </CarouselItem>

@@ -4,6 +4,5 @@ export const heroSlides = [
   { id: 'slide2', color: 'White', image: '/super-auto-slider/montra (2).png' },
   { id: 'slide3', color: 'Yellow and Black', image: '/super-auto-slider/montra (3).png' },
   { id: 'slide4', color: 'Blue and Black', image: '/super-auto-slider/montra (4).png' },
-  { id: 'slide5', color: 'Green and Black', image: '/super-auto-slider/montra (5).png' },
   { id: 'slide6', color: 'Pink', image: '/super-auto-slider/montra (6).png' },
 ];

@@ -8,8 +8,8 @@ export const heroSlides = [
     category: 'Passenger Vehicle',
     title: 'Leading the Charge in Last-Mile Mobility',
     text: 'Driving smarter deliveries with powerful, efficient, and sustainable electric solutions.',
-    image: '/images/hero/super-auto.jpg',
-    position: 'center 60%',
+    image: '/hero-image/hero-image.png',
+    position: 'center',
     href: ROUTES.superAuto,
   },
   {

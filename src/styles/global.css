@@ -20,11 +20,38 @@ html, body {
   width: 100%;
 }
 
-/* Ensure images don't overflow and awkward crops are prevented */
-img, picture, video, canvas, svg {
+/* Ensure media elements don't overflow and awkward crops are prevented */
+img, picture, video, canvas {
   max-width: 100%;
   height: auto;
-  object-fit: cover;
+}
+
+/* Logos, SVGs and icons must maintain natural proportions and never be cropped */
+svg,
+img[src$=".svg"],
+.image-277,
+.left_logo-1 {
+  object-fit: contain !important;
+}
+
+/* Footer logo sizing & layout stability */
+.footer-main-copy-copy .div-block-387 {
+  height: auto;
+  min-height: 140px;
+}
+
+.footer-main-copy-copy .div-block-388 {
+  height: auto;
+  line-height: normal;
+}
+
+.footer-main-copy-copy .image-277 {
+  width: 180px;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 110 / 24;
+  object-fit: contain !important;
+  display: block;
 }
 
 /* Improve tap targets on touch devices */

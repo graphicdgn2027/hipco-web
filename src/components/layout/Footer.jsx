@@ -57,10 +57,26 @@ export default function Footer() {
       <div className="base-container-padding-flex-gap-c">
         <div className="footer-grid-copy-copy">
           <div id="w-node-ad4fc399-69b2-4256-755a-c0ca2328856c-23288569" className="div-block-387">
-            <div className="div-block-388">
-              <img className="image-277" src="/images/88cdd2435b80.svg" alt="Montra Electric" />
+            <div className="div-block-388" style={{ height: 'auto', lineHeight: 'normal' }}>
+              <AppLink href="/" aria-label="Montra Electric" className="w-inline-block">
+                <img
+                  className="image-277"
+                  src="/images/88cdd2435b80.svg"
+                  alt="Montra Electric"
+                  width="180"
+                  height="39"
+                  style={{
+                    width: '180px',
+                    maxWidth: '100%',
+                    height: 'auto',
+                    aspectRatio: '110 / 24',
+                    objectFit: 'contain',
+                    display: 'block',
+                  }}
+                />
+              </AppLink>
             </div>
-            <div className="div-block-380 div-block-388">
+            <div className="div-block-380 div-block-388" style={{ height: 'auto' }}>
               <Copyright />
             </div>
           </div>

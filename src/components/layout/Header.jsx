@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { AppLink } from '@/components/ui/AppLink';
 import { mobileMenu, primaryNav, productCategories } from '@/data/navigation';
@@ -6,10 +6,9 @@ import useBodyScrollLock from '@/hooks/useBodyScrollLock';
 
 const MOBILE_BREAKPOINT = 768;
 
-function isItemActive(item, currentPath, isProductsOpen) {
+function isItemActive(item, currentPath) {
   if (item.opensProducts) {
     return (
-      isProductsOpen ||
       currentPath.startsWith('/lastmile') ||
       currentPath.startsWith('/e-scv')
     );
@@ -22,39 +21,91 @@ function isItemActive(item, currentPath, isProductsOpen) {
 }
 
 // view: null = CSS default layout (desktop product grid), 'menu' = mobile menu list, 'products' = mobile product grid.
-// The dialog is tied to the path it was opened on, so navigating closes it.
 export default function Header() {
   const { pathname } = useLocation();
-  const [dialog, setDialog] = useState({ path: null, view: null });
-  const open = dialog.path === pathname;
-  const view = open ? dialog.view : null;
+  const [open, setOpen] = useState(false);
+  const [view, setView] = useState(null);
+  const headerRef = useRef(null);
 
   useBodyScrollLock(open);
 
-  const openProducts = () =>
-    setDialog({ path: pathname, view: window.innerWidth < MOBILE_BREAKPOINT ? 'menu' : null });
-  const openMobileMenu = () => setDialog({ path: pathname, view: 'menu' });
-  const showMobileProducts = () => setDialog({ path: pathname, view: 'products' });
-  const close = () => setDialog({ path: null, view: null });
+  const close = () => {
+    setOpen(false);
+    setView(null);
+  };
+
+  const openProducts = () => {
+    setOpen(true);
+    setView(window.innerWidth < MOBILE_BREAKPOINT ? 'menu' : null);
+  };
+
+  const toggleProducts = () => {
+    if (open) {
+      close();
+    } else {
+      openProducts();
+    }
+  };
+
+  const openMobileMenu = () => {
+    setOpen(true);
+    setView('menu');
+  };
+
+  const showMobileProducts = () => {
+    setOpen(true);
+    setView('products');
+  };
+
+  // Close when pathname changes
+  useEffect(() => {
+    close();
+  }, [pathname]);
+
+  // Click outside and escape key handling
+  useEffect(() => {
+    if (!open) return;
+    const handleClickOutside = (e) => {
+      if (headerRef.current && !headerRef.current.contains(e.target)) {
+        close();
+      }
+    };
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') close();
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [open]);
 
   const menuStyle = view ? { display: view === 'menu' ? 'flex' : 'none' } : undefined;
   const productsStyle = view ? { display: view === 'products' ? 'flex' : 'none' } : undefined;
 
   return (
-    <div className="nav-bar-container">
+    <div ref={headerRef} className="nav-bar-container">
       <div className="div-block-99">
-        <AppLink href="/" className="w-inline-block">
+        <AppLink href="/" className="w-inline-block" onClick={close}>
           <img className="left_logo-1" src="/images/e74656ae5af9.svg" width="110" height="24" alt="Montra Electric" />
         </AppLink>
         <div className="div-block-270">
           {primaryNav.map((item) => {
-            const active = isItemActive(item, pathname, open);
+            const active = isItemActive(item, pathname);
             return (
               <AppLink
                 key={item.label}
                 href={item.href ?? '#'}
                 className={`${item.className} w-inline-block nav-link-item ${active ? 'is-active' : ''}`}
-                onClick={item.opensProducts ? openProducts : undefined}
+                onClick={(e) => {
+                  if (item.opensProducts) {
+                    e.preventDefault();
+                    toggleProducts();
+                  } else {
+                    close();
+                  }
+                }}
                 aria-current={active ? 'page' : undefined}
               >
                 <div className={`link---navbar-link-6 ${active ? 'is-active' : ''}`}>
@@ -95,13 +146,20 @@ export default function Header() {
 
         <div id="menu-dialog-items" className="div-block-209" style={menuStyle}>
           {mobileMenu.map((item) => {
-            const active = isItemActive(item, pathname, view === 'products');
+            const active = isItemActive(item, pathname);
             return (
               <AppLink
                 key={item.label}
                 href={item.href ?? '#'}
                 className={`div-block-204 w-inline-block mobile-nav-item ${active ? 'is-active' : ''}`}
-                onClick={item.opensProducts ? showMobileProducts : undefined}
+                onClick={(e) => {
+                  if (item.opensProducts) {
+                    e.preventDefault();
+                    showMobileProducts();
+                  } else {
+                    close();
+                  }
+                }}
                 aria-current={active ? 'page' : undefined}
               >
                 <div className="text-block-120">{item.label}</div>
@@ -114,13 +172,13 @@ export default function Header() {
         <div id="products-dialog-content" className="products-dialog-content" style={productsStyle}>
           {productCategories.map((category) => (
             <div key={category.title} id={category.gridId} className="div-block-204">
-              <AppLink href={category.href} className={`${category.linkClassName} w-inline-block`}>
+              <AppLink href={category.href} className={`${category.linkClassName} w-inline-block`} onClick={close}>
                 <div className="products-category">{category.title}</div>
                 <img className="product-menu-chevron" src="/images/c57a213f3828.svg" alt="" />
               </AppLink>
               <div className="products-row">
                 {category.products.map((product) => (
-                  <AppLink key={product.name} href={product.href} className="product-card w-inline-block">
+                  <AppLink key={product.name} href={product.href} className="product-card w-inline-block" onClick={close}>
                     <img className="our-product-image" src={product.image} width={product.width} alt={product.name} />
                     <div className="product-name">{product.name}</div>
                   </AppLink>

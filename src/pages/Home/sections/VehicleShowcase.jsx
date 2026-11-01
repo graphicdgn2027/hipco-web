@@ -21,7 +21,11 @@ export default function VehicleShowcase() {
       </div>
       <div className="div-block-179">
         <div className="div-block-57">
-          <AppLink className="vehicle-grid-item w-inline-block" href="/lastmile/superauto">
+          <AppLink
+            className="vehicle-grid-item w-inline-block"
+            href="/lastmile/superauto"
+            style={{ backgroundImage: 'url(/homepage/catogories.png)' }}
+          >
             <img
               className="image-137"
               sizes="100vw"
@@ -99,7 +103,11 @@ export default function VehicleShowcase() {
         navClassName="slide-nav-3 w-round w-num"
       >
         <Slide className="slide-5">
-          <AppLink className="vehicle-grid-item w-inline-block" href="/lastmile/superauto">
+          <AppLink
+            className="vehicle-grid-item w-inline-block"
+            href="/lastmile/superauto"
+            style={{ backgroundImage: 'url(/homepage/catogories.png)' }}
+          >
             <img
               className="image-137"
               sizes="100vw"

@@ -175,6 +175,11 @@ button {
   overflow: visible !important;
 }
 
+.nav-bar-container .div-block-99 {
+  position: relative !important;
+  z-index: 2300 !important;
+}
+
 .nav-bar-container .nav-link-item,
 .nav-bar-container .link---navbar-link-6,
 .nav-bar-container .nav1-our-products,

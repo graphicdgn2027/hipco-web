@@ -92,7 +92,8 @@ export default function Header() {
         </AppLink>
         <div className="div-block-270">
           {primaryNav.map((item) => {
-            const active = isItemActive(item, pathname) || (Boolean(item.opensProducts) && open);
+            const isCurrent = isItemActive(item, pathname);
+            const active = open ? Boolean(item.opensProducts) : isCurrent;
             return (
               <AppLink
                 key={item.label}

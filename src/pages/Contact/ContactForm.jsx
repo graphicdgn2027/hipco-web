@@ -15,6 +15,11 @@ export default function ContactForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (e.target._honey && e.target._honey.value) {
+      // Honeypot triggered by bot - fake success and discard
+      setStatus('success');
+      return;
+    }
     setStatus('sending');
     try {
       const res = await fetch('https://formsubmit.co/ajax/info@hipco.com.np', {
@@ -23,6 +28,7 @@ export default function ContactForm() {
         body: JSON.stringify({
           _subject:  `${values.topic} – ${values.name}`,
           _template: 'table',
+          _honey:    '',
           Name:    values.name,
           Phone:   values.phone,
           Email:   values.email,
@@ -64,6 +70,8 @@ export default function ContactForm() {
 
   return (
     <form className="ct-form-card" onSubmit={handleSubmit} noValidate>
+      {/* Honeypot field for bot spam prevention */}
+      <input type="text" name="_honey" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
       <h2 className="ct-form-card__heading">Send us a message</h2>
       <p className="ct-form-card__sub">Tell us how we can help — we&rsquo;ll get back to you within one business day.</p>
 

@@ -4,7 +4,7 @@ export const site = {
   legacyOrigin: 'https://www.montraelectric.com',
   brochure: {
     endpoint: 'https://www.montraelectric.com/mdataapi/post/download-brouchure',
-    phoneCountryCode: '+91',
+    phoneCountryCode: '+977',
   },
   address: {
     lines: ['BNJ Tower, Tripureshwor', 'Kathmandu, Nepal'],
@@ -55,7 +55,10 @@ export const site = {
       userDetails: { name: '', phone_number: '', id: '', email: '' },
       additionalData: {},
       disableAttachment: false,
-      clientInfo: { API_KEY: 'KK1574b1b4d2592426c231f4ccd374e83e', DID: '919240217138' },
+      clientInfo: {
+        API_KEY: import.meta.env.VITE_OZONETEL_API_KEY || '',
+        DID: import.meta.env.VITE_OZONETEL_DID || '',
+      },
     },
   },
   analytics: {

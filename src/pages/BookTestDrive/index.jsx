@@ -38,6 +38,11 @@ export default function BookTestDrivePage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (e.target._honey && e.target._honey.value) {
+      // Honeypot triggered by bot - fake success and discard
+      setStatus('success');
+      return;
+    }
     setStatus('sending');
 
     const dateBS = bsDate
@@ -51,6 +56,7 @@ export default function BookTestDrivePage() {
         body: JSON.stringify({
           _subject: `Test Drive Request – ${values.vehicle} – ${values.name}`,
           _template: 'table',
+          _honey: '',
           Name: values.name,
           Phone: values.phone,
           Email: values.email,
@@ -151,6 +157,8 @@ export default function BookTestDrivePage() {
             </div>
           ) : (
             <form className="btd-card" onSubmit={handleSubmit} noValidate>
+              {/* Honeypot field for bot spam prevention */}
+              <input type="text" name="_honey" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
               <h2 className="btd-card__heading">Your details</h2>
 
               <div className="btd-form__grid">

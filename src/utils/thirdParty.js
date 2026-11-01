@@ -45,14 +45,19 @@ function initChatWidget({ scriptSrc, config }) {
 
 // Persists UTM parameters so lead forms can attribute campaigns.
 function captureUtm() {
-  const params = new URLSearchParams(window.location.search);
-  const utm = {
-    utm_source: params.get('utm_source') || '',
-    utm_medium: params.get('utm_medium') || '',
-    utm_campaign: params.get('utm_campaign') || '',
-  };
-  if (utm.utm_source || utm.utm_medium || utm.utm_campaign) {
-    localStorage.setItem('utm_data', JSON.stringify(utm));
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const clean = (val) => (val ? String(val).slice(0, 100).replace(/[^\w\s\-._~]/gi, '') : '');
+    const utm = {
+      utm_source: clean(params.get('utm_source')),
+      utm_medium: clean(params.get('utm_medium')),
+      utm_campaign: clean(params.get('utm_campaign')),
+    };
+    if (utm.utm_source || utm.utm_medium || utm.utm_campaign) {
+      localStorage.setItem('utm_data', JSON.stringify(utm));
+    }
+  } catch {
+    // Gracefully ignore storage quota errors or restricted iframe access
   }
 }
 

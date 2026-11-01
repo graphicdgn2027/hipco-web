@@ -36,7 +36,7 @@ export default function Header() {
 
   const openProducts = () => {
     setOpen(true);
-    setView(window.innerWidth < MOBILE_BREAKPOINT ? 'menu' : null);
+    setView(window.innerWidth < MOBILE_BREAKPOINT ? 'products' : null);
   };
 
   const toggleProducts = () => {
@@ -92,7 +92,7 @@ export default function Header() {
         </AppLink>
         <div className="div-block-270">
           {primaryNav.map((item) => {
-            const active = isItemActive(item, pathname);
+            const active = isItemActive(item, pathname) || (Boolean(item.opensProducts) && open);
             return (
               <AppLink
                 key={item.label}
@@ -107,6 +107,8 @@ export default function Header() {
                   }
                 }}
                 aria-current={active ? 'page' : undefined}
+                aria-expanded={item.opensProducts ? open : undefined}
+                aria-haspopup={item.opensProducts ? 'dialog' : undefined}
               >
                 <div className={`link---navbar-link-6 ${active ? 'is-active' : ''}`}>
                   <div className="text-23">{item.label}</div>

@@ -1,40 +1,27 @@
 import { AppLink } from '@/components/ui/AppLink';
 import MediaTabs from '@/components/sections/MediaTabs';
 import { sharedMedia } from '@/data/media';
-import './media-card.css';
 
-export default function MediaAccolades() {
+export default function MediaAccolades({ learnMoreClassName = 'link-block-56' }) {
   return (
-    <section className="media-accolades-section">
-      <div className="media-accolades-container">
-        <div className="media-section-header">
-          <div className="media-section-header__left">
-            <h2 className="media-section-title">
-              Media &amp; <span className="media-section-title--green">Accolades</span>
-            </h2>
-            <p className="media-section-subtitle">Celebrating Achievements, Sharing Stories</p>
-          </div>
-          <div className="media-section-header__right">
-            <AppLink href="/media-accolades" className="media-learn-more-btn">
-              <span>Learn More</span>
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
-            </AppLink>
-          </div>
+    <div className="base-container-padding-flex-gap">
+      <div className="w-layout-blockcontainer frame-5-2 w-container">
+        <div className="carousel-header">
+          <h2 className="heading-2">
+            Media &amp;<span className="text-span-green"> Accolades</span>
+            <br />
+          </h2>
+          <p className="paragraph-2">Celebrating Achievements, Sharing Stories</p>
         </div>
+        <div className="div-block-60">
+          <AppLink href="/media-accolades" className={`${learnMoreClassName} w-inline-block`}>
+            <div className="text-block-31">Learn More &nbsp;&nbsp;&gt;</div>
+          </AppLink>
+        </div>
+      </div>
+      <div className="div-block-189">
         <MediaTabs tabs={sharedMedia} />
       </div>
-    </section>
+    </div>
   );
 }

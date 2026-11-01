@@ -30,7 +30,17 @@ export function CarouselItem() {
   return null;
 }
 
-export function Carousel({ variant = 'slider', className = '', wrapClassName = '', listClassName = '', children }) {
+export function Carousel({
+  variant = 'slider',
+  className = '',
+  wrapClassName = '',
+  listClassName = '',
+  children,
+  slidesPerView = 'auto',
+  breakpoints,
+  spaceBetween,
+  ...restSwiperProps
+}) {
   const v = VARIANTS[variant];
   const [prevEl, setPrevEl] = useState(null);
   const [nextEl, setNextEl] = useState(null);
@@ -42,13 +52,16 @@ export function Carousel({ variant = 'slider', className = '', wrapClassName = '
         modules={[Navigation, Keyboard, Mousewheel]}
         className={join(v.wrap, wrapClassName)}
         wrapperClass={join(v.list, 'swiper-wrapper', listClassName)}
-        slidesPerView="auto"
+        slidesPerView={slidesPerView}
+        breakpoints={breakpoints}
+        spaceBetween={spaceBetween}
         followFinger
         speed={300}
         slideActiveClass="is-active"
         mousewheel={{ forceToAxis: true }}
         keyboard={{ enabled: true, onlyInViewport: true }}
         navigation={{ prevEl, nextEl }}
+        {...restSwiperProps}
       >
         {items.map((item, i) => (
           <SwiperSlide key={item.key ?? i} className={join(v.item, item.props.className)}>

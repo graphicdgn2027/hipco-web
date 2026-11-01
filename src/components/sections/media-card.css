@@ -1,30 +1,69 @@
-.tabs-2 .team-slider_cms_item {
-  display: flex;
-  padding: 8px 8px 16px;
-  box-sizing: border-box;
+/* ==========================================================================
+   Media & Accolades Carousel & Cards - Modern Responsive UI
+   ========================================================================== */
+
+.media-carousel-container {
+  position: relative;
+  width: 100%;
 }
 
+/* Ensure Swiper container allows clean hover elevation without clipping */
+.media-carousel-container .team-slider_component {
+  position: relative;
+  overflow: visible !important;
+  padding-bottom: 0 !important;
+}
+
+.media-carousel-container .team-slider_cms_wrap.swiper {
+  overflow: hidden !important;
+  border-radius: 18px;
+  padding: 10px 4px 18px !important;
+  margin: -10px -4px -18px !important;
+}
+
+/* Flex stretch ensures all slides in the row have equal height */
+.media-carousel-container .team-slider_cms_list.swiper-wrapper,
+.tabs-2 .team-slider_cms_list {
+  display: flex !important;
+  align-items: stretch !important;
+}
+
+.media-carousel-container .team-slider_cms_item.swiper-slide,
+.tabs-2 .team-slider_cms_item {
+  height: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  box-sizing: border-box !important;
+  padding: 0 !important;
+}
+
+/* --------------------------------------------------------------------------
+   Media Card Modern Styling
+   -------------------------------------------------------------------------- */
 .media-card {
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: column !important;
   width: 100%;
+  height: 100% !important;
+  box-sizing: border-box;
   overflow: hidden;
-  border: 1px solid #e4e9ee;
+  border: 1px solid #e2e8f0;
   border-radius: 16px;
-  background: #fff;
+  background: #ffffff;
   color: #0f172a;
-  font-family: Poppins, sans-serif;
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   text-decoration: none;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02);
   transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    border-color 0.25s ease;
+    transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.28s ease;
 }
 
 .media-card:hover {
-  transform: translateY(-4px);
-  border-color: #d3dae1;
-  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.1);
+  transform: translateY(-5px);
+  border-color: #cbd5e1;
+  box-shadow: 0 16px 32px -4px rgba(15, 23, 42, 0.1), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
 }
 
 .media-card:focus-visible {
@@ -32,10 +71,16 @@
   outline-offset: 2px;
 }
 
+/* Image container with fixed aspect ratio */
 .media-card__image {
+  position: relative;
+  width: 100%;
   aspect-ratio: 16 / 10;
   overflow: hidden;
-  background: #e9eef2;
+  background-color: #f1f5f9;
+  flex-shrink: 0;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
 .media-card__image img {
@@ -43,64 +88,192 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  object-position: center;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .media-card:hover .media-card__image img {
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
+/* Card Body - Stretches and aligns content */
 .media-card__body {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
+  display: flex !important;
+  flex: 1 1 auto !important;
+  flex-direction: column !important;
   align-items: flex-start;
-  gap: 8px;
   padding: 18px 20px 20px;
+  box-sizing: border-box;
 }
 
 .media-card__date {
-  font-size: 13px;
-  color: #6b7885;
+  font-size: 12px;
+  font-weight: 500;
+  color: #64748b;
+  letter-spacing: 0.02em;
+  margin-bottom: 8px;
+  text-transform: capitalize;
 }
 
 .media-card__title {
   display: -webkit-box;
-  margin: 0;
+  margin: 0 0 14px 0;
   overflow: hidden;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.45;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.48;
   color: #0f172a;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  min-height: 66px;
+  transition: color 0.2s ease;
 }
 
+.media-card:hover .media-card__title {
+  color: #0284c7;
+}
+
+/* Source badge - always pinned to the bottom baseline */
 .media-card__source {
   margin-top: auto;
-  padding: 4px 10px;
-  border-radius: 8px;
-  background: #eef2f5;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
   font-size: 12px;
-  color: #3d4a57;
+  font-weight: 500;
+  color: #475569;
+  letter-spacing: 0.01em;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.media-card:hover .media-card__source {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+/* --------------------------------------------------------------------------
+   Carousel Navigation Buttons (Modern Circular Controls)
+   -------------------------------------------------------------------------- */
+.media-carousel-container .team-slider_btn_element_left,
+.media-carousel-container .team-slider_btn_element_right {
+  position: absolute !important;
+  top: 45% !important;
+  transform: translateY(-50%) !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12), 0 1px 3px rgba(15, 23, 42, 0.06) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  z-index: 25 !important;
+  color: #0f172a !important;
+  padding: 0 !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.media-carousel-container .team-slider_btn_element_left {
+  left: -20px !important;
+  right: auto !important;
+}
+
+.media-carousel-container .team-slider_btn_element_right {
+  right: -20px !important;
+  left: auto !important;
+}
+
+.media-carousel-container .team-slider_btn_element_left:hover,
+.media-carousel-container .team-slider_btn_element_right:hover {
+  background: #0f172a !important;
+  border-color: #0f172a !important;
+  color: #ffffff !important;
+  transform: translateY(-50%) scale(1.08) !important;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.2) !important;
+}
+
+.media-carousel-container .left-chevron-white,
+.media-carousel-container .right-chevron-white {
+  color: #0f172a !important;
+  font-size: 18px !important;
+  line-height: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: color 0.2s ease !important;
+}
+
+.media-carousel-container .team-slider_btn_element_left:hover .left-chevron-white,
+.media-carousel-container .team-slider_btn_element_right:hover .right-chevron-white {
+  color: #ffffff !important;
+}
+
+.media-carousel-container .team-slider_btn_element_left.swiper-button-disabled,
+.media-carousel-container .team-slider_btn_element_right.swiper-button-disabled {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  box-shadow: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Adjustments
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 1023px) {
+  .media-carousel-container .team-slider_btn_element_left {
+    left: -12px !important;
+  }
+  .media-carousel-container .team-slider_btn_element_right {
+    right: -12px !important;
+  }
+}
+
+@media screen and (max-width: 639px) {
+  .media-card__body {
+    padding: 16px 16px 18px;
+  }
+  
+  .media-card__title {
+    font-size: 14px;
+    min-height: auto;
+    -webkit-line-clamp: 2;
+  }
+
+  .media-carousel-container .team-slider_btn_element_left {
+    left: 4px !important;
+    width: 38px !important;
+    height: 38px !important;
+  }
+  
+  .media-carousel-container .team-slider_btn_element_right {
+    right: 4px !important;
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .media-carousel-container .left-chevron-white,
+  .media-carousel-container .right-chevron-white {
+    font-size: 15px !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .media-card,
-  .media-card__image img {
-    transition: none;
+  .media-card__image img,
+  .media-carousel-container .team-slider_btn_element_left,
+  .media-carousel-container .team-slider_btn_element_right {
+    transition: none !important;
   }
 
   .media-card:hover,
   .media-card:hover .media-card__image img {
-    transform: none;
+    transform: none !important;
   }
-}
-
-.tabs-2 .team-slider_cms_list {
-  align-items: stretch;
-}
-
-.tabs-2 .team-slider_cms_item {
-  height: auto;
 }

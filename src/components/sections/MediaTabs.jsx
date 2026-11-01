@@ -72,7 +72,32 @@ export default function MediaTabs({ tabs }) {
 
   return (
     <div className="media-carousel-container">
-      <Carousel variant="team" wrapClassName="w-dyn-list" listClassName="w-dyn-items">
+      <Carousel
+        variant="team"
+        className="media-team-carousel"
+        wrapClassName="w-dyn-list"
+        listClassName="w-dyn-items"
+        slidesPerView={1}
+        spaceBetween={16}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 16,
+          },
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 18,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+          },
+          1280: {
+            slidesPerView: 4,
+            spaceBetween: 24,
+          },
+        }}
+      >
         {allItems.map((item, itemIndex) => (
           <CarouselItem key={`${itemIndex}-${item.href}`} className="w-dyn-item">
             <MediaCard {...item} />

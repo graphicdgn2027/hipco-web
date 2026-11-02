@@ -1,6 +1,6 @@
 export default function TrueEv() {
   return (
-    <div className="w-layout-blockcontainer base-container-padding-flex-gap w-container">
+    <div className="w-layout-blockcontainer base-container-padding-flex-gap w-container page-grid page-section">
       <div className="carousel-header">
         <h2 className="heading-2">
           True<span className="text-span"> EV</span> <br />

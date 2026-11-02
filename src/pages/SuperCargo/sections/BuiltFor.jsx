@@ -1,6 +1,6 @@
 export default function BuiltFor() {
   return (
-    <div className="base-padding-flex">
+    <div className="base-padding-flex page-grid page-section">
       <div className="w-layout-blockcontainer base-container w-container">
         <div className="carousel-header">
           <h2 className="heading-2">

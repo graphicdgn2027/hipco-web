@@ -1,6 +1,6 @@
 export default function ReeferOption() {
   return (
-    <div className="w-layout-blockcontainer base-container-padding-flex-gap-copy spacing w-container">
+    <div className="w-layout-blockcontainer base-container-padding-flex-gap-copy spacing w-container page-grid page-section">
       <div className="div-block-389">
         <div className="carousel-header">
           <h2 className="heading-2">Reefer Option</h2>

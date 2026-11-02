@@ -1,0 +1,345 @@
+/* Shared page geometry. Desktop whitespace belongs to tracks 1 and 16;
+   only tablet/mobile use horizontal page padding. */
+:root {
+  --grid-columns: 16;
+  --grid-gap: clamp(16px, 1.5vw, 24px);
+  --page-padding: 0px;
+  --mobile-padding: clamp(16px, 2.6vw, 20px);
+  --content-column: 2 / 16;
+  --hero-columns: 14;
+  --hero-text-span: 6;
+  --hero-image-span: 8;
+  --section-space: clamp(32px, 4vw, 64px);
+  --section-gap: clamp(24px, 2.5vw, 40px);
+}
+
+/* The extra class specificity intentionally supersedes the imported Webflow
+   containers without editing generated CSS or changing their visual styling. */
+html .page-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  column-gap: var(--grid-gap);
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: var(--page-padding);
+  box-sizing: border-box;
+}
+
+html .page-content,
+html .page-section > * {
+  grid-column: var(--content-column);
+  min-width: 0;
+}
+
+html .page-grid > .page-content {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: 0;
+}
+
+html .page-grid.page-section {
+  column-gap: var(--grid-gap);
+  row-gap: var(--section-gap);
+  padding-block: var(--section-space);
+}
+
+/* Remove the old inner page gutters, but retain padding within cards/buttons. */
+html .page-section > :where(div, section),
+html .page-section > .w-container {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: 0;
+}
+
+.page-grid.w-container::before,
+.page-grid.w-container::after {
+  content: none;
+}
+
+.page-section :is(.interiors-grid-top, .interiors-grid-bottom, .exteriors-grid, .feature-strip, .div-block-57) {
+  gap: var(--grid-gap);
+}
+
+.page-section .slider_wrap.swiper {
+  margin-inline: 0;
+}
+
+.page-section .heading-card {
+  max-width: 100%;
+}
+
+.page-section .interior-card-title {
+  min-width: 0;
+  white-space: normal;
+}
+
+html .page-section > .explore-in-3d-button {
+  position: static;
+  justify-self: center;
+  margin: 0;
+}
+
+/* Header and footer share exactly the same content boundaries as the hero. */
+html body .nav-bar-container.page-grid {
+  border-inline: 0;
+  border-radius: 0;
+}
+
+.nav-bar-container.page-grid .div-block-99 {
+  gap: var(--grid-gap);
+}
+
+.nav-bar-container.page-grid .div-block-270 {
+  min-width: 0;
+}
+
+.nav-bar-container.page-grid .link---navbar-link-6 {
+  padding-inline: clamp(6px, 0.7vw, 14px);
+  white-space: nowrap;
+}
+
+.footer-main-copy-copy.page-grid .footer-grid-copy-copy {
+  min-width: 0;
+  padding-inline: 0;
+  gap: var(--grid-gap);
+}
+
+.footer-main-copy-copy.page-grid :is(.div-block-387, .div-block-388, .contact-copy, .frame-18-copy, .frame-17-copy) {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* All slides occupy one grid cell. Their content determines the stage height,
+   including on small screens and when users enlarge text. */
+html .responsive-hero {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  height: auto;
+  min-height: min(100svh, 860px);
+}
+
+.responsive-hero .sah-stage {
+  position: relative;
+  inset: auto;
+  display: grid;
+  min-width: 0;
+}
+
+.responsive-hero .sah-slide {
+  position: relative;
+  inset: auto;
+  grid-area: 1 / 1;
+  min-width: 0;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--hero-columns), minmax(0, 1fr));
+  gap: var(--grid-gap);
+  align-items: center;
+}
+
+.responsive-hero .hero-grid {
+  padding-block: 100px 32px;
+}
+
+.hero-content,
+.hero-text {
+  grid-column: span var(--hero-text-span);
+  min-width: 0;
+}
+
+.hero-image {
+  grid-column: span var(--hero-image-span);
+  min-width: 0;
+  width: 100%;
+}
+
+.responsive-hero .hero-content {
+  height: auto;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.responsive-hero .sah-card {
+  width: 100%;
+  min-width: 0;
+}
+
+.responsive-hero .hero-image {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  max-height: none;
+  transform: none;
+}
+
+.responsive-hero .hero-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  transform: none;
+}
+
+.responsive-hero .hero-controls-grid {
+  position: relative;
+  z-index: 3;
+  padding-bottom: 28px;
+}
+
+.responsive-hero .responsive-hero-controls {
+  position: relative;
+  inset: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+  padding-block: 0;
+}
+
+.responsive-hero .sah-dots {
+  flex: 1 1 480px;
+  min-width: 0;
+  gap: var(--grid-gap);
+}
+
+.responsive-hero .sah-dot {
+  flex: 1 1 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.responsive-hero .sah-nav {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* The colour vehicle and its selector stay inside the same content tracks. */
+.page-section .base-container-style-with-fix-hight {
+  max-width: none;
+  padding-inline: 0;
+}
+
+.page-section .color-picker {
+  width: max-content;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.page-section .vechile-warpper > .code-embed-2 {
+  width: 100%;
+  left: 0;
+}
+
+/* Keep colour navigation inside its own viewport, including after resizing. */
+.page-section .vechile-warpper .w-slider-mask {
+  overflow: hidden;
+  scroll-snap-type: x mandatory;
+}
+
+.page-section .vechile-warpper .w-slide {
+  scroll-snap-align: start;
+}
+
+/* Banner photography/video remains full bleed; its overlay follows the grid. */
+html .hero-container.page-grid,
+html .hero-container-video-eviator.page-grid {
+  left: 0;
+  right: 0;
+}
+
+html .hero-container-video-eviator.page-grid > .page-content {
+  padding-block: 0;
+}
+
+@media (max-width: 1279px) {
+  :root {
+    --grid-columns: 12;
+    --page-padding: clamp(24px, 2.5vw, 32px);
+    --content-column: 1 / -1;
+    --hero-columns: 12;
+    --hero-text-span: 5;
+    --hero-image-span: 7;
+  }
+}
+
+/* Use the existing drawer where the full navigation no longer fits. */
+@media (max-width: 991px) {
+  .nav-bar-container.page-grid .div-block-270 {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --grid-columns: 4;
+    --grid-gap: 12px;
+    --page-padding: var(--mobile-padding);
+    --section-space: 32px;
+    --section-gap: 24px;
+  }
+
+  html .responsive-hero {
+    min-height: 0;
+  }
+
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .hero-content,
+  .hero-text,
+  .hero-image {
+    grid-column: 1 / -1;
+  }
+
+  .responsive-hero .hero-grid {
+    padding-block: 88px 24px;
+  }
+
+  .responsive-hero :is(.sah-title, .sah-text) {
+    padding-inline: 0;
+  }
+
+  .responsive-hero .sah-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .responsive-hero .sah-btn {
+    justify-content: center;
+    min-height: 44px;
+  }
+
+  .responsive-hero .responsive-hero-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .responsive-hero .sah-dots {
+    flex-basis: auto;
+    width: 100%;
+  }
+
+  .responsive-hero .sah-dot {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+  }
+
+  .responsive-hero .sah-dot__label {
+    font-size: 11px;
+  }
+
+  .responsive-hero .sah-nav {
+    display: flex;
+  }
+}

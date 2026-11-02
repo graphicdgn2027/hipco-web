@@ -2,7 +2,7 @@ import { Carousel, CarouselItem } from '@/components/ui/Carousel';
 
 export default function WhatSetsItApart() {
   return (
-    <div className="div-block-131">
+    <div className="div-block-131 page-grid page-section">
       <div className="w-layout-blockcontainer base-container-padding-flex-gap-copy w-container">
         <div className="div-block-389">
           <div className="carousel-header">

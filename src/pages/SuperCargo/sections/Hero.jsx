@@ -19,8 +19,8 @@ export default function Hero() {
         alt=""
         srcSet="https://cdn.prod.website-files.com/6938169ca88035d1476d6905/69df95b3388b131e66e3d6ba_cargo-wap-banner-p-500.jpg 500w, https://cdn.prod.website-files.com/6938169ca88035d1476d6905/69df95b3388b131e66e3d6ba_cargo-wap-banner-p-800.jpg 800w, https://cdn.prod.website-files.com/6938169ca88035d1476d6905/69df95b3388b131e66e3d6ba_cargo-wap-banner.jpg 814w"
       />
-      <div className="hero-container">
-        <div className="hero-text-block-super-cargo" text-split="">
+      <div className="hero-container page-grid">
+        <div className="hero-text-block-super-cargo page-content" text-split="">
           <div
             style={{
               display: 'inline-flex',

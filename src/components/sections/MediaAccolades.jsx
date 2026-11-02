@@ -4,7 +4,7 @@ import { sharedMedia } from '@/data/media';
 
 export default function MediaAccolades({ learnMoreClassName = 'link-block-56' }) {
   return (
-    <div className="base-container-padding-flex-gap">
+    <div className="base-container-padding-flex-gap page-grid page-section">
       <div className="w-layout-blockcontainer frame-5-2 w-container">
         <div className="carousel-header">
           <h2 className="heading-2">

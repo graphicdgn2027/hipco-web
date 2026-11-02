@@ -2,7 +2,7 @@ import { Carousel, CarouselItem } from '@/components/ui/Carousel';
 
 export default function UseCases() {
   return (
-    <div className="base-container-padding-flex-gap-copy-5">
+    <div className="base-container-padding-flex-gap-copy-5 page-grid page-section">
       <div className="div-block-419">
         <div className="carousel-header-7">
           <h2 className="heading-169">Tailored for every use</h2>

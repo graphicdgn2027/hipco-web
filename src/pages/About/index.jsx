@@ -139,8 +139,8 @@ export default function AboutPage() {
   return (
     <main className="about-page" ref={pageRef}>
       {/* Hero */}
-      <section className="ab-hero">
-        <div className="ab-shell">
+      <section className="ab-hero page-grid">
+        <div className="ab-shell page-content">
           <div className="ab-hero__grid">
             <div data-reveal>
               <p className="ab-label">Electric mobility in Nepal</p>
@@ -174,8 +174,8 @@ export default function AboutPage() {
       </section>
 
       {/* Who we are — clean modern */}
-      <section className="ab-editorial">
-        <div className="ab-shell">
+      <section className="ab-editorial page-grid">
+        <div className="ab-shell page-content">
 
           {/* Feature row: headline left, image right */}
           <div className="ab-editorial__feature">
@@ -242,8 +242,8 @@ export default function AboutPage() {
       </section>
 
       {/* The range we bring */}
-      <section className="ab-section ab-section--muted">
-        <div className="ab-shell">
+      <section className="ab-section ab-section--muted page-grid">
+        <div className="ab-shell page-content">
           <div className="ab-heading-row" data-reveal>
             <div>
               <p className="ab-label">The range we bring</p>
@@ -274,8 +274,8 @@ export default function AboutPage() {
       </section>
 
       {/* Our journey */}
-      <section className="ab-section">
-        <div className="ab-shell ab-split">
+      <section className="ab-section page-grid">
+        <div className="ab-shell ab-split page-content">
           <div data-reveal>
             <p className="ab-label">Our journey</p>
             <h2 className="ab-title">Our road to success, innovation &amp; redefining mobility.</h2>
@@ -297,8 +297,8 @@ export default function AboutPage() {
       </section>
 
       {/* Vision & Mission */}
-      <section className="ab-section ab-section--muted">
-        <div className="ab-shell">
+      <section className="ab-section ab-section--muted page-grid">
+        <div className="ab-shell page-content">
           <div className="ab-heading-row" data-reveal>
             <p className="ab-label">What drives us</p>
             <h2 className="ab-title">Our core principles, designed to perform.</h2>
@@ -330,8 +330,8 @@ export default function AboutPage() {
       </section>
 
       {/* Current focus */}
-      <section className="ab-section">
-        <div className="ab-shell">
+      <section className="ab-section page-grid">
+        <div className="ab-shell page-content">
           <div data-reveal>
             <p className="ab-label">Current focus</p>
             <h2 className="ab-title ab-title--narrow">Creating confidence in every journey.</h2>
@@ -348,8 +348,8 @@ export default function AboutPage() {
       </section>
 
       {/* Sustainability — redesigned interactive section */}
-      <section className="ab-sustain">
-        <div className="ab-shell">
+      <section className="ab-sustain page-grid">
+        <div className="ab-shell page-content">
           <div className="ab-sustain__head">
             <div data-reveal>
               <p className="ab-label ab-label--light">Sustainability</p>
@@ -379,8 +379,8 @@ export default function AboutPage() {
       </section>
 
       {/* Future direction — redesigned */}
-      <section className="ab-future">
-        <div className="ab-shell">
+      <section className="ab-future page-grid">
+        <div className="ab-shell page-content">
           <div className="ab-future__head" data-reveal>
             <p className="ab-label">Future direction</p>
             <h2 className="ab-title">Moving Nepal forward, electrically.</h2>

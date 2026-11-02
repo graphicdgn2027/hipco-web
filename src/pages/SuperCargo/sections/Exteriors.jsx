@@ -2,7 +2,7 @@ import { Carousel, CarouselItem } from '@/components/ui/Carousel';
 
 export default function Exteriors() {
   return (
-    <section className="base-padding-flex white-background">
+    <section className="base-padding-flex white-background page-grid page-section">
       <div className="w-layout-blockcontainer base-container w-container">
         <div className="carousel-header">
           <h2 className="heading-2">Exteriors</h2>

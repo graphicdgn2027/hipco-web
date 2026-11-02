@@ -2,7 +2,7 @@ import { Carousel, CarouselItem } from '@/components/ui/Carousel';
 
 export default function Advantage() {
   return (
-    <div className="w-layout-blockcontainer base-container-padding-flex-gap w-container">
+    <div className="w-layout-blockcontainer base-container-padding-flex-gap w-container page-grid page-section">
       <div className="carousel-header">
         <h2 className="heading-2">
           The Montra Electric<span className="text-span"> Advantage</span>

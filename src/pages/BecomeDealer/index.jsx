@@ -57,8 +57,8 @@ export default function BecomeDealerPage() {
   return (
     <main className="ct-page">
       <SideActions variant="home" />
-      <section className="ct-hero ct-hero--solo">
-        <div className="ct-shell">
+      <section className="ct-hero ct-hero--solo page-grid">
+        <div className="ct-shell page-content">
           <p className="ct-eyebrow">Partner with us</p>
           <h1 className="ct-hero__title">Become a <span>Dealer.</span></h1>
           <p className="ct-hero__lead">
@@ -66,8 +66,8 @@ export default function BecomeDealerPage() {
           </p>
         </div>
       </section>
-      <section className="ct-body">
-        <div className="ct-shell">
+      <section className="ct-body page-grid">
+        <div className="ct-shell page-content">
           <div className="btd-card" style={{ maxWidth: '800px', margin: '0 auto' }}>
             {status === 'success' ? (
               <div className="btd-success">

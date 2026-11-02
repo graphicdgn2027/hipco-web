@@ -53,8 +53,8 @@ export default function Footer() {
   const social = socialLinksFor(pathname);
 
   return (
-    <section className="footer-main-copy-copy">
-      <div className="base-container-padding-flex-gap-c">
+    <section className="footer-main-copy-copy page-grid">
+      <div className="base-container-padding-flex-gap-c page-content">
         <div className="footer-grid-copy-copy">
           <div id="w-node-ad4fc399-69b2-4256-755a-c0ca2328856c-23288569" className="div-block-387">
             <div className="div-block-388" style={{ height: 'auto', lineHeight: 'normal' }}>

@@ -3,7 +3,7 @@ import { Carousel, CarouselItem } from '@/components/ui/Carousel';
 
 export default function Features() {
   return (
-    <section className="base-container-padding-flex-gap-copy spacing">
+    <section className="base-container-padding-flex-gap-copy spacing page-grid page-section">
       <div className="div-block-389">
         <div className="carousel-header">
           <h2 className="heading-2">Features</h2>

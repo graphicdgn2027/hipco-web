@@ -79,8 +79,8 @@ export default function BookTestDrivePage() {
       <SideActions />
 
       {/* Hero */}
-      <section className="btd-hero">
-        <div className="btd-shell">
+      <section className="btd-hero page-grid">
+        <div className="btd-shell page-content">
           <p className="btd-eyebrow">Experience electric</p>
           <h1 className="btd-hero__title">Book a<br /><span>Test Drive</span></h1>
           <p className="btd-hero__lead">
@@ -91,8 +91,8 @@ export default function BookTestDrivePage() {
       </section>
 
       {/* Form section */}
-      <section className="btd-body">
-        <div className="btd-shell btd-layout">
+      <section className="btd-body page-grid">
+        <div className="btd-shell btd-layout page-content">
 
           {/* Side info */}
           <aside className="btd-info">

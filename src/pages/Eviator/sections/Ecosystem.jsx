@@ -3,7 +3,7 @@ import { Carousel, CarouselItem } from '@/components/ui/Carousel';
 
 export default function Ecosystem() {
   return (
-    <section className="base-container-padding-flex-gap-copy spacing">
+    <section className="base-container-padding-flex-gap-copy spacing page-grid page-section">
       <div className="div-block-389">
         <div className="carousel-header">
           <h2 className="heading-2">The EViator Ecosystem</h2>

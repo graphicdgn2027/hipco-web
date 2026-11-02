@@ -2,7 +2,7 @@ import { Dropdown, DropdownList, DropdownToggle } from '@/components/ui/Dropdown
 
 export default function Faq({ title, items }) {
   return (
-    <div className="base-container-padding-flex-gap">
+    <div className="base-container-padding-flex-gap page-grid page-section">
       <div className="carousel-header">
         <h2 className="heading-2">
           {title}

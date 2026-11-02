@@ -15,13 +15,13 @@ export default function PrivacyPowerDockPage() {
   return (
     <main className="ct-page">
       <SideActions variant="home" />
-      <section className="ct-hero ct-hero--solo">
-        <div className="ct-shell">
+      <section className="ct-hero ct-hero--solo page-grid">
+        <div className="ct-shell page-content">
           <h1 className="ct-hero__title">Privacy Policy - <span>Power Dock.</span></h1>
         </div>
       </section>
-      <section className="ct-body" style={{ padding: '40px 0', minHeight: '40vh' }}>
-        <div className="ct-shell">
+      <section className="ct-body page-grid" style={{ paddingBlock: '40px', minHeight: '40vh' }}>
+        <div className="ct-shell page-content">
           <div className="ab-copy" style={{ maxWidth: '800px' }}>
             <p>This Privacy Policy specifically addresses the collection and use of information related to the Montra Electric Power Dock system and associated mobile applications.</p>
             <h3>Information Collection</h3>

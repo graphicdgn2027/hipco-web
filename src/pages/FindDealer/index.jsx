@@ -24,8 +24,8 @@ export default function FindDealerPage() {
     <main className="ct-page">
       <SideActions variant="home" />
 
-      <section className="ct-hero ct-hero--solo">
-        <div className="ct-shell">
+      <section className="ct-hero ct-hero--solo page-grid">
+        <div className="ct-shell page-content">
           <p className="ct-eyebrow">Hipco &middot; Montra Electric</p>
           <h1 className="ct-hero__title">Find a <span>dealer.</span></h1>
           <p className="ct-hero__lead">
@@ -48,8 +48,8 @@ export default function FindDealerPage() {
         </div>
       </section>
 
-      <section className="ct-body">
-        <div className="ct-shell">
+      <section className="ct-body page-grid">
+        <div className="ct-shell page-content">
           <div className="fd-grid">
             {dealers.map((dealer) => (
               <article className="ct-detail-block fd-card" key={`${dealer.name}-${dealer.location}`}>

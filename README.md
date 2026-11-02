@@ -36,6 +36,7 @@ src/
   utils/                   third-party script loaders
   styles/
     global.css
+    grid.css              shared 16/12/4-column layout tokens and Webflow adapters
     webflow/<page>.css     per-page stylesheet, swapped by usePageMeta
 public/
   images/                  content images (content-hashed names)
@@ -50,3 +51,17 @@ public/
 - Page content: `src/pages/<Page>/sections/`.
 
 Styling comes from the original Webflow stylesheets, so keep the existing `className`s when editing markup.
+
+Use `page-grid` on full-width sections and `page-content` on their content wrapper.
+At 1280px and above, content occupies columns 2–15 of 16, reserving exactly one
+outer column per side; tablet uses 12 columns
+with 24–32px gutters, and mobile uses 4 columns with 16–20px gutters. Do not add
+another page gutter or fixed container width inside `page-content`.
+
+Existing product sections use `page-grid page-section`: each direct child occupies
+the content tracks, with shared vertical spacing. The Super Auto hero
+uses a 14-column `hero-grid` inside `page-content`, with `hero-text` spanning 6
+tracks and `hero-image` spanning 8. Tablet uses a 12-column hero with a 5/7 split.
+Below 768px they stack in reading order. Full-bleed banner
+media retains its original presentation while its text overlay uses the page grid.
+The Home hero retains its original layout in `pages/Home/sections/hero.css`.

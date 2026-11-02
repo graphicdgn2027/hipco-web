@@ -176,8 +176,26 @@ button {
 }
 
 .nav-bar-container .div-block-99 {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
   position: relative !important;
   z-index: 2300 !important;
+}
+
+.nav-bar-container .div-block-270 {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+}
+
+#products-dialog {
+  display: none;
+}
+
+#products-dialog.is-open {
+  display: block !important;
 }
 
 .nav-bar-container .nav-link-item,
@@ -190,7 +208,7 @@ button {
 }
 
 /* Desktop Dropdown Dialog */
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .nav-bar-container .products-dialog {
     position: absolute !important;
     top: 66px !important;
@@ -363,7 +381,7 @@ button {
 }
 
 /* Mobile Dialog / Drawer */
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .nav-bar-container .products-dialog {
     position: fixed !important;
     top: 0 !important;

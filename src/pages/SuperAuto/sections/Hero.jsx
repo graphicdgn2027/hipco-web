@@ -117,7 +117,7 @@ export default function Hero() {
   return (
     <section
       ref={rootRef}
-      className="sah-hero"
+      className="sah-hero responsive-hero"
       role="region"
       aria-roledescription="carousel"
       aria-label="Super Auto colour options"
@@ -145,78 +145,82 @@ export default function Hero() {
         {heroSlides.map((slide, i) => (
           <article
             key={slide.id}
-            className={join('sah-slide', i === index && 'is-active')}
+            className={join('sah-slide page-grid', i === index && 'is-active')}
             role="group"
             aria-roledescription="slide"
             aria-label={`${i + 1} of ${count}: ${slide.color}`}
             inert={i !== index}
           >
-            <div className="sah-media">
-              <img
-                src={slide.image}
-                alt={slide.label || `Super Auto in ${slide.color}`}
-                style={{ objectPosition: slide.position || 'center' }}
-                loading={i === 0 ? 'eager' : 'lazy'}
-                fetchPriority={i === 0 ? 'high' : 'auto'}
-                draggable="false"
-              />
-            </div>
-            <div className="sah-content">
-              <div className="sah-card">
-                <span className="sah-chip">{slide.category || 'Super Auto'}</span>
-                <h2 className="sah-title">{slide.title || 'Leading the Charge in Last-Mile Mobility'}</h2>
-                <p className="sah-text">
-                  {slide.text || 'Driving smarter deliveries with powerful, efficient, and sustainable electric solutions.'}
-                </p>
-                <div className="sah-actions">
-                  <AppLink href={slide.href || '#'} className="sah-btn sah-btn--solid">
-                    Order Now
-                    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                      <path
-                        d="M5 12h14M13 6l6 6-6 6"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </AppLink>
-                  <a href="#colors" className="sah-btn sah-btn--ghost" onClick={scrollToColors}>
-                    View Colors
-                  </a>
+            <div className="page-content hero-grid">
+              <div className="sah-content hero-content hero-text">
+                <div className="sah-card">
+                  <span className="sah-chip">{slide.category || 'Super Auto'}</span>
+                  <h2 className="sah-title">{slide.title || 'Leading the Charge in Last-Mile Mobility'}</h2>
+                  <p className="sah-text">
+                    {slide.text || 'Driving smarter deliveries with powerful, efficient, and sustainable electric solutions.'}
+                  </p>
+                  <div className="sah-actions">
+                    <AppLink href={slide.href || '#'} className="sah-btn sah-btn--solid">
+                      Order Now
+                      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                        <path
+                          d="M5 12h14M13 6l6 6-6 6"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </AppLink>
+                    <a href="#colors" className="sah-btn sah-btn--ghost" onClick={scrollToColors}>
+                      View Colors
+                    </a>
+                  </div>
                 </div>
+              </div>
+              <div className="sah-media hero-image">
+                <img
+                  src={slide.image}
+                  alt={slide.label || `Super Auto in ${slide.color}`}
+                  style={{ objectPosition: slide.position || 'center' }}
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  fetchPriority={i === 0 ? 'high' : 'auto'}
+                  draggable="false"
+                />
               </div>
             </div>
           </article>
         ))}
       </div>
 
-      <div className="sah-controls">
-        <div className="sah-dots" role="tablist" aria-label="Choose colour">
-          {heroSlides.map((slide, i) => (
-            <button
-              key={slide.id}
-              type="button"
-              role="tab"
-              aria-selected={i === index}
-              className={join('sah-dot', i === index && 'is-active')}
-              onClick={() => goTo(i)}
-            >
-              <span className="sah-dot__bar">
-                <span className="sah-dot__fill" />
-              </span>
-              <span className="sah-dot__num">{String(i + 1).padStart(2, '0')}</span>
-              <span className="sah-dot__label">{slide.label || slide.color}</span>
-            </button>
-          ))}
-        </div>
-        <div className="sah-nav">
-          <span className="sah-counter" aria-hidden="true">
-            {String(index + 1).padStart(2, '0')} / {String(count).padStart(2, '0')}
-          </span>
-          <Arrow direction="prev" onClick={() => goTo(index - 1)} />
-          <Arrow direction="next" onClick={() => goTo(index + 1)} />
+      <div className="page-grid hero-controls-grid">
+        <div className="sah-controls page-content responsive-hero-controls">
+          <div className="sah-dots" role="tablist" aria-label="Choose colour">
+            {heroSlides.map((slide, i) => (
+              <button
+                key={slide.id}
+                type="button"
+                role="tab"
+                aria-selected={i === index}
+                className={join('sah-dot', i === index && 'is-active')}
+                onClick={() => goTo(i)}
+              >
+                <span className="sah-dot__bar">
+                  <span className="sah-dot__fill" />
+                </span>
+                <span className="sah-dot__num">{String(i + 1).padStart(2, '0')}</span>
+                <span className="sah-dot__label">{slide.label || slide.color}</span>
+              </button>
+            ))}
+          </div>
+          <div className="sah-nav">
+            <span className="sah-counter" aria-hidden="true">
+              {String(index + 1).padStart(2, '0')} / {String(count).padStart(2, '0')}
+            </span>
+            <Arrow direction="prev" onClick={() => goTo(index - 1)} />
+            <Arrow direction="next" onClick={() => goTo(index + 1)} />
+          </div>
         </div>
       </div>
     </section>

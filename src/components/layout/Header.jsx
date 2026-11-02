@@ -4,7 +4,7 @@ import { AppLink } from '@/components/ui/AppLink';
 import { mobileMenu, primaryNav, productCategories } from '@/data/navigation';
 import useBodyScrollLock from '@/hooks/useBodyScrollLock';
 
-const MOBILE_BREAKPOINT = 768;
+const MOBILE_BREAKPOINT = 992;
 
 function isItemActive(item, currentPath) {
   if (item.opensProducts) {
@@ -85,8 +85,8 @@ export default function Header() {
   const productsStyle = view ? { display: view === 'products' ? 'flex' : 'none' } : undefined;
 
   return (
-    <div ref={headerRef} className="nav-bar-container">
-      <div className="div-block-99">
+    <div ref={headerRef} className="nav-bar-container page-grid">
+      <div className="div-block-99 page-content">
         <AppLink href="/" className="w-inline-block" onClick={close}>
           <img className="left_logo-1" src="/images/e74656ae5af9.svg" width="110" height="24" alt="Montra Electric" />
         </AppLink>
@@ -134,7 +134,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div id="products-dialog" className="products-dialog div-block-354" style={open ? { display: 'block' } : undefined}>
+      <div id="products-dialog" className={`products-dialog div-block-354 ${open ? 'is-open' : ''}`} style={{ display: open ? 'block' : 'none' }}>
         <div className="div-block-210">
           <img
             className="image-130"

@@ -17,13 +17,13 @@ export default function SitemapPage() {
   return (
     <main className="ct-page">
       <SideActions variant="home" />
-      <section className="ct-hero ct-hero--solo">
-        <div className="ct-shell">
+      <section className="ct-hero ct-hero--solo page-grid">
+        <div className="ct-shell page-content">
           <h1 className="ct-hero__title">Sitemap</h1>
         </div>
       </section>
-      <section className="ct-body" style={{ padding: '40px 0', minHeight: '40vh' }}>
-        <div className="ct-shell">
+      <section className="ct-body page-grid" style={{ paddingBlock: '40px', minHeight: '40vh' }}>
+        <div className="ct-shell page-content">
           <ul style={{ listStyleType: 'disc', paddingLeft: '20px', lineHeight: '2' }}>
             <li><AppLink href={ROUTES.home}>Home</AppLink></li>
             <li><AppLink href={ROUTES.superAuto}>Super Auto</AppLink></li>

@@ -101,8 +101,8 @@ export default function Hero() {
           </div>
         </Slide>
       </Slider>
-      <div className="hero-container-video-eviator" style={{ opacity: '1' }}>
-        <div className="base-container-padding-flex-gap-eviator-heading" text-split="">
+      <div className="hero-container-video-eviator page-grid" style={{ opacity: '1' }}>
+        <div className="base-container-padding-flex-gap-eviator-heading page-content" text-split="">
           <div>
             <h1 className="heading-eviator">Built to Redefine Everyday Logistics</h1>
             <p className="paragraph-149-eviator">

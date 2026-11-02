@@ -2,7 +2,7 @@ import { Carousel, CarouselItem } from '@/components/ui/Carousel';
 
 export default function Highlights() {
   return (
-    <div className="base-container-padding-flex-gap-copy">
+    <div className="base-container-padding-flex-gap-copy page-grid page-section">
       <div className="div-block-389">
         <div className="carousel-header">
           <h2 className="heading-2">

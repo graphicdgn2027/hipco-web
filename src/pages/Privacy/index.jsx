@@ -15,13 +15,13 @@ export default function PrivacyPage() {
   return (
     <main className="ct-page">
       <SideActions variant="home" />
-      <section className="ct-hero ct-hero--solo">
-        <div className="ct-shell">
+      <section className="ct-hero ct-hero--solo page-grid">
+        <div className="ct-shell page-content">
           <h1 className="ct-hero__title">Privacy <span>Policy.</span></h1>
         </div>
       </section>
-      <section className="ct-body" style={{ padding: '40px 0', minHeight: '40vh' }}>
-        <div className="ct-shell">
+      <section className="ct-body page-grid" style={{ paddingBlock: '40px', minHeight: '40vh' }}>
+        <div className="ct-shell page-content">
           <div className="ab-copy" style={{ maxWidth: '800px' }}>
             <p>At HIPCO Trading Pvt. Ltd., we value your privacy. This Privacy Policy outlines how we collect, use, and protect your personal information when you visit our website.</p>
             <h3>Information Collection</h3>

@@ -8,7 +8,12 @@ function setMeta(selector, value) {
 // Applies per-page document title, meta tags, Webflow stylesheet and body class.
 export default function usePageMeta({ title, description, stylesheet, bodyClass = '' }) {
   useLayoutEffect(() => {
-    document.getElementById('page-styles')?.setAttribute('href', stylesheet);
+    if (stylesheet) {
+      const pageStyles = document.getElementById('page-styles');
+      if (pageStyles && pageStyles.getAttribute('href') !== stylesheet) {
+        pageStyles.setAttribute('href', stylesheet);
+      }
+    }
     document.body.className = bodyClass;
     document.title = title;
     setMeta('meta[name="description"]', description);

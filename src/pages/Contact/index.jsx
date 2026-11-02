@@ -77,8 +77,8 @@ export default function ContactPage() {
       <SideActions variant="home" />
 
       {/* ── Hero ── */}
-      <section className="ct-hero">
-        <div className="ct-shell">
+      <section className="ct-hero page-grid">
+        <div className="ct-shell page-content">
           <p className="ct-eyebrow">Hipco &middot; Montra Electric</p>
           <h1 className="ct-hero__title">Get in <span>touch.</span></h1>
           <p className="ct-hero__lead">
@@ -103,8 +103,8 @@ export default function ContactPage() {
       </section>
 
       {/* ── Bento grid ── */}
-      <section className="ct-body">
-        <div className="ct-shell">
+      <section className="ct-body page-grid">
+        <div className="ct-shell page-content">
           <div className="ct-bento">
 
             {/* Form */}

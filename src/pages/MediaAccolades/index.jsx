@@ -17,8 +17,8 @@ export default function MediaAccoladesPage() {
   return (
     <main className="ct-page">
       <SideActions variant="home" />
-      <section className="ct-hero ct-hero--solo">
-        <div className="ct-shell">
+      <section className="ct-hero ct-hero--solo page-grid">
+        <div className="ct-shell page-content">
           <p className="ct-eyebrow">Press Room</p>
           <h1 className="ct-hero__title">Media &amp; <span>Accolades.</span></h1>
           <p className="ct-hero__lead">
@@ -26,8 +26,8 @@ export default function MediaAccoladesPage() {
           </p>
         </div>
       </section>
-      <section className="ct-body" style={{ padding: '60px 0' }}>
-        <div className="ct-shell">
+      <section className="ct-body page-grid" style={{ paddingBlock: '60px' }}>
+        <div className="ct-shell page-content">
           <MediaTabs title="" tabs={sharedMedia} />
         </div>
       </section>

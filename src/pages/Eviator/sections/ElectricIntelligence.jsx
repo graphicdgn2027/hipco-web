@@ -2,7 +2,7 @@ import { Carousel, CarouselItem } from '@/components/ui/Carousel';
 
 export default function ElectricIntelligence() {
   return (
-    <div className="w-layout-blockcontainer base-container-padding-flex-gap-copy spacing w-container">
+    <div className="w-layout-blockcontainer base-container-padding-flex-gap-copy spacing w-container page-grid page-section">
       <div className="div-block-389">
         <div className="carousel-header w-variant-6d41f94e-9094-7379-9671-09cb17a6be86">
           <h2 className="heading-2">

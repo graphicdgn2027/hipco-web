@@ -28,6 +28,8 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const headerRef = useRef(null);
 
+  const lastClosedTime = useRef(0);
+
   useBodyScrollLock(open);
 
   useEffect(() => {
@@ -47,6 +49,7 @@ export default function Header() {
   }, []);
 
   const close = () => {
+    lastClosedTime.current = Date.now();
     setOpen(false);
     setView(null);
   };
@@ -65,6 +68,7 @@ export default function Header() {
   };
 
   const openMobileMenu = () => {
+    if (Date.now() - lastClosedTime.current < 350) return;
     setOpen(true);
     setView('menu');
   };
@@ -152,13 +156,20 @@ export default function Header() {
             className={`mobile-hamburger-btn ${open ? 'is-active' : ''}`}
             aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={open}
-            onClick={open ? close : openMobileMenu}
+            onClick={(e) => {
+              e.stopPropagation();
+              if (open) {
+                close();
+              } else {
+                openMobileMenu();
+              }
+            }}
           >
             <span className="hamburger-box">
               <span className="hamburger-inner" />
             </span>
           </button>
-          <div className="link---navbar-link-11">
+          <div className="link---navbar-link-11 desktop-distributor-logo">
             <img
               src="/navbar-logo/hipco-DGO-combine.svg"
               alt="Hipco & Diwakar Golchha Organisation"
@@ -169,7 +180,17 @@ export default function Header() {
       </div>
 
       {/* Mobile Backdrop Overlay */}
-      {open && <div className="mobile-drawer-backdrop" onClick={close} aria-hidden="true" />}
+      {open && (
+        <div
+          className="mobile-drawer-backdrop"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            close();
+          }}
+          aria-hidden="true"
+        />
+      )}
 
       {/* Mobile App Drawer & Desktop Products Dropdown */}
       <div
@@ -192,10 +213,13 @@ export default function Header() {
               <button
                 type="button"
                 className="drawer-back-btn"
-                onClick={openMobileMenu}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  openMobileMenu();
+                }}
                 aria-label="Back to menu"
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ pointerEvents: 'none' }}>
                   <path d="M19 12H5M12 19l-7-7 7-7" />
                 </svg>
                 <span>Back</span>
@@ -204,10 +228,14 @@ export default function Header() {
             <button
               type="button"
               className="drawer-close-btn"
-              onClick={close}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                close();
+              }}
               aria-label="Close menu"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style={{ pointerEvents: 'none' }}>
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
@@ -265,12 +293,12 @@ export default function Header() {
             </AppLink>
           </div>
 
-          {/* Distributor Footer */}
+          {/* Distributor Footer at bottom of mobile menu */}
           <div className="mobile-drawer-footer">
             <img
               src="/navbar-logo/hipco-DGO-combine.svg"
               alt="Hipco & Diwakar Golchha Organisation"
-              style={{ height: 30, width: 'auto' }}
+              className="mobile-drawer-footer-logo"
             />
             <p className="mobile-drawer-footer-text">Official Distributor in Nepal</p>
           </div>

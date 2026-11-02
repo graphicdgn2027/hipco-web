@@ -584,10 +584,20 @@ button {
     display: none !important;
   }
 
+  /* Mobile Navbar: Show ONLY Montra logo on left and hamburger icon on right.
+     Explicitly HIDE Hipco & DGO logo from mobile navbar header */
+  .desktop-distributor-logo,
+  .nav-bar-container .desktop-distributor-logo,
+  .nav-bar-container .link---navbar-link-11,
+  .nav-bar-container .divframer-5odmon-container-2 .link---navbar-link-11 {
+    display: none !important;
+  }
+
   .nav-bar-container .divframer-5odmon-container-2 {
     display: flex !important;
     align-items: center !important;
-    gap: 12px !important;
+    justify-content: flex-end !important;
+    gap: 0 !important;
   }
 
   .nav-bar-container .products-dialog {
@@ -624,12 +634,16 @@ button {
   }
 
   .mobile-drawer-header {
+    position: sticky !important;
+    top: -20px !important;
+    background: #ffffff !important;
+    z-index: 10 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
-    padding-bottom: 16px !important;
+    padding: 16px 0 !important;
+    margin: -20px 0 16px !important;
     border-bottom: 1px solid #f1f5f9 !important;
-    margin-bottom: 14px !important;
   }
 
   .drawer-header-actions {
@@ -661,19 +675,30 @@ button {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    width: 36px !important;
-    height: 36px !important;
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
     background: #f1f5f9 !important;
     border: none !important;
     border-radius: 50% !important;
-    color: #475569 !important;
+    color: #334155 !important;
     cursor: pointer !important;
-    transition: background 0.18s ease, color 0.18s ease !important;
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: transparent !important;
+    transition: background 0.18s ease, color 0.18s ease, transform 0.12s ease !important;
   }
 
-  .drawer-close-btn:hover {
+  .drawer-close-btn:hover,
+  .drawer-close-btn:focus-visible {
     background: #e2e8f0 !important;
     color: #0f172a !important;
+  }
+
+  .drawer-close-btn:active {
+    background: #cbd5e1 !important;
+    transform: scale(0.92) !important;
   }
 
   .mobile-menu-section-title {
@@ -790,19 +815,28 @@ button {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    gap: 6px !important;
+    justify-content: center !important;
+    gap: 8px !important;
     margin-top: 24px !important;
-    padding-top: 16px !important;
+    padding-top: 20px !important;
     border-top: 1px dashed #e2e8f0 !important;
+  }
+
+  .mobile-drawer-footer .mobile-drawer-footer-logo {
+    display: block !important;
+    height: 32px !important;
+    width: auto !important;
+    max-width: 220px !important;
+    object-fit: contain !important;
   }
 
   .mobile-drawer-footer-text {
     font-size: 11px !important;
     color: #94a3b8 !important;
     margin: 0 !important;
-    letter-spacing: 0.04em !important;
+    letter-spacing: 0.05em !important;
     text-transform: uppercase !important;
-    font-weight: 500 !important;
+    font-weight: 600 !important;
   }
 
   /* Products list in mobile drawer */
@@ -867,10 +901,21 @@ button {
 
 /* Hide mobile-only drawer elements on desktop */
 @media (min-width: 992px) {
+  #menu-dialog-items,
+  .mobile-menu-list,
+  .mobile-drawer-backdrop,
   .mobile-drawer-header,
   .mobile-drawer-cta,
   .mobile-drawer-footer,
   .mobile-hamburger-btn {
     display: none !important;
+  }
+
+  .desktop-distributor-logo,
+  .nav-bar-container .desktop-distributor-logo,
+  .nav-bar-container .link---navbar-link-11 {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 }

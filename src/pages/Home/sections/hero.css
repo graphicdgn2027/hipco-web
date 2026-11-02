@@ -2,7 +2,7 @@
   --hx-progress: 0;
   --hx-px: 0;
   --hx-py: 0;
-  --hx-pad: clamp(20px, 5vw, 80px);
+  --hx-pad: clamp(20px, 3.8vw, 64px);
   --hx-ink: #0f172a;
   --hx-muted: #52606d;
   --hx-accent: #1fb81f;
@@ -61,7 +61,7 @@
 .hx-media {
   position: absolute;
   top: 96px;
-  right: var(--hx-pad);
+  right: max(var(--hx-pad), calc((100% - 1540px) / 2 + var(--hx-pad)));
   bottom: 104px;
   left: 50%;
   overflow: hidden;
@@ -90,7 +90,7 @@
   display: flex;
   align-items: center;
   height: 100%;
-  max-width: 1280px;
+  max-width: 1540px;
   margin: 0 auto;
   padding: 88px var(--hx-pad) 112px;
   box-sizing: border-box;
@@ -101,7 +101,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: min(480px, 44vw);
+  width: min(620px, 46vw);
   pointer-events: auto;
 }
 
@@ -135,56 +135,57 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 12px;
-  border-radius: 8px;
-  background: rgba(31, 184, 31, 0.12);
+  padding: 7px 15px;
+  border-radius: 24px;
+  background: rgba(31, 184, 31, 0.13);
   color: #157a15;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 .hx-chip::before {
   content: '';
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: var(--hx-accent);
 }
 
 .hx-title {
-  margin: 16px 0 0;
-  font-size: clamp(28px, 3.4vw, 42px);
-  font-weight: 500;
+  margin: 18px 0 0;
+  font-size: clamp(34px, 4.3vw, 56px);
+  font-weight: 700;
   line-height: 1.12;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   color: var(--hx-ink);
 }
 
 .hx-text {
-  margin: 14px 0 0;
-  font-size: 16px;
-  line-height: 1.6;
+  margin: 18px 0 0;
+  font-size: clamp(16px, 1.25vw, 19px);
+  line-height: 1.62;
   color: var(--hx-muted);
+  max-width: 530px;
 }
 
 .hx-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 28px;
+  gap: 12px;
+  margin-top: 32px;
 }
 
 .hx-btn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 13px 24px;
+  padding: 15px 28px;
   border: 1px solid transparent;
   border-radius: 12px;
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 600;
   line-height: 1;
   text-decoration: none;
   cursor: pointer;
@@ -250,7 +251,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  max-width: 1280px;
+  max-width: 1540px;
   margin: 0 auto;
   padding: 0 var(--hx-pad);
   box-sizing: border-box;
@@ -271,7 +272,7 @@
 
 .hx-dots {
   display: flex;
-  gap: 22px;
+  gap: 26px;
   pointer-events: auto;
 }
 
@@ -279,8 +280,8 @@
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: baseline;
-  gap: 4px 8px;
-  min-width: 112px;
+  gap: 5px 8px;
+  min-width: 130px;
   padding: 0;
   border: 0;
   background: none;
@@ -299,7 +300,7 @@
 .hx-dot__bar {
   grid-column: 1 / -1;
   display: block;
-  height: 3px;
+  height: 3.5px;
   overflow: hidden;
   border-radius: 3px;
   background: rgba(15, 23, 42, 0.12);
@@ -321,14 +322,15 @@
 
 .hx-dot__num {
   padding-top: 8px;
-  font-size: 11px;
+  font-size: 12px;
+  font-weight: 500;
   letter-spacing: 0.08em;
 }
 
 .hx-dot__label {
   padding-top: 8px;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .hx-nav {
@@ -367,6 +369,24 @@
 
 .hx-arrow:active {
   transform: scale(0.94);
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hx-card {
+    width: min(520px, 46vw);
+  }
+  .hx-title {
+    font-size: clamp(28px, 3.8vw, 40px);
+  }
+  .hx-text {
+    font-size: 15px;
+  }
+  .hx-dots {
+    gap: 16px;
+  }
+  .hx-dot {
+    min-width: 100px;
+  }
 }
 
 @media (max-width: 767px) {

@@ -61,8 +61,8 @@
 .sah-media {
   position: absolute;
   top: 50%;
-  right: max(var(--sah-pad), calc((100% - 1540px) / 2 + var(--sah-pad)));
-  max-width: 48vw;
+  right: max(var(--sah-pad), calc((100% - 1600px) / 2 + var(--sah-pad)));
+  max-width: 54vw;
   max-height: calc(100% - 150px);
   display: flex;
   overflow: hidden;
@@ -93,7 +93,7 @@
   display: flex;
   align-items: center;
   height: 100%;
-  max-width: 1540px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 88px var(--sah-pad) 112px;
   box-sizing: border-box;
@@ -104,7 +104,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: min(620px, 46vw);
+  width: min(560px, 40vw);
   pointer-events: auto;
 }
 
@@ -160,9 +160,10 @@
 }
 
 .sah-title {
+  font-family: Poppins, sans-serif;
   margin: 16px 0 0;
-  font-size: clamp(34px, 4.3vw, 56px); font-weight: 700;
-  font-weight: 500;
+  font-size: clamp(34px, 4.3vw, 56px);
+  font-weight: 600;
   line-height: 1.12;
   letter-spacing: -0.02em;
   color: var(--sah-ink);
@@ -257,7 +258,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  max-width: 1540px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 0 var(--sah-pad);
   box-sizing: border-box;

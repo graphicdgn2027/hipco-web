@@ -80,7 +80,7 @@ export default function Header() {
     close();
   }, [pathname]);
 
-  // Click outside and escape key handling
+  // Handle Escape key
   useEffect(() => {
     if (!open) return;
     const handleClickOutside = (e) => {
@@ -98,9 +98,6 @@ export default function Header() {
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [open]);
-
-  const menuStyle = view ? { display: view === 'menu' ? 'flex' : 'none' } : undefined;
-  const productsStyle = view ? { display: view === 'products' ? 'flex' : 'none' } : undefined;
 
   return (
     <div
@@ -249,7 +246,7 @@ export default function Header() {
         </div>
 
         {/* Mobile Menu List View */}
-        <div id="menu-dialog-items" className="div-block-209 mobile-menu-list" style={menuStyle}>
+        <div id="menu-dialog-items" className="div-block-209 mobile-menu-list">
           <div className="mobile-menu-section-title">Navigation</div>
           {mobileMenu.map((item) => {
             const active = isItemActive(item, pathname);
@@ -310,7 +307,10 @@ export default function Header() {
         </div>
 
         {/* Clean Original Products Grid (Desktop Dropdown & Mobile Products Screen) */}
-        <div id="products-dialog-content" className="products-dialog-content" style={productsStyle}>
+        <div id="products-dialog-content" className="products-dialog-content">
+          <div className="mobile-products-section-header">
+            <div className="mobile-menu-section-title">Explore Montra Lineup</div>
+          </div>
           {productCategories.map((category) => (
             <div key={category.title} id={category.gridId} className="div-block-204 mobile-category-card">
               <AppLink href={category.href} className={`${category.linkClassName} w-inline-block`} onClick={close}>
@@ -327,6 +327,16 @@ export default function Header() {
               </div>
             </div>
           ))}
+
+          {/* Mobile products view footer */}
+          <div className="mobile-drawer-footer mobile-products-footer">
+            <img
+              src="/navbar-logo/hipco-DGO-combine.svg"
+              alt="Hipco & Diwakar Golchha Organisation"
+              className="mobile-drawer-footer-logo"
+            />
+            <p className="mobile-drawer-footer-text">Official Distributor in Nepal</p>
+          </div>
         </div>
       </div>
     </div>

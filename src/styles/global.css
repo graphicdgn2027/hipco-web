@@ -481,65 +481,368 @@ button {
   }
 }
 
-/* Mobile Dialog / Drawer */
+/* Mobile Drawer Backdrop */
+.mobile-drawer-backdrop {
+  display: none;
+}
+
 @media (max-width: 991px) {
+  .mobile-drawer-backdrop {
+    display: block !important;
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(15, 23, 42, 0.48) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+    z-index: 99990 !important;
+    animation: drawerBackdropFade 0.25s ease-out !important;
+  }
+
+  @keyframes drawerBackdropFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+/* Mobile Hamburger Button */
+.mobile-hamburger-btn {
+  display: none;
+  background: rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 10px;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease;
+  color: #0f172a;
+}
+
+.mobile-hamburger-btn:hover,
+.mobile-hamburger-btn:focus-visible {
+  background: rgba(15, 23, 42, 0.09);
+  border-color: rgba(15, 23, 42, 0.18);
+}
+
+.mobile-hamburger-btn .hamburger-box {
+  width: 20px;
+  height: 14px;
+  display: inline-block;
+  position: relative;
+}
+
+.mobile-hamburger-btn .hamburger-inner,
+.mobile-hamburger-btn .hamburger-inner::before,
+.mobile-hamburger-btn .hamburger-inner::after {
+  width: 20px;
+  height: 2px;
+  background-color: #0f172a;
+  border-radius: 2px;
+  position: absolute;
+  transition: transform 0.22s ease, opacity 0.22s ease;
+}
+
+.mobile-hamburger-btn .hamburger-inner {
+  top: 6px;
+}
+
+.mobile-hamburger-btn .hamburger-inner::before {
+  content: "";
+  top: -6px;
+  left: 0;
+}
+
+.mobile-hamburger-btn .hamburger-inner::after {
+  content: "";
+  bottom: -6px;
+  left: 0;
+}
+
+/* Active hamburger 'X' */
+.mobile-hamburger-btn.is-active .hamburger-inner {
+  transform: rotate(45deg);
+}
+
+.mobile-hamburger-btn.is-active .hamburger-inner::before {
+  opacity: 0;
+}
+
+.mobile-hamburger-btn.is-active .hamburger-inner::after {
+  transform: rotate(-90deg) translate(6px, 0);
+  bottom: 0;
+}
+
+/* Mobile Dialog / Native App Sheet UI */
+@media (max-width: 991px) {
+  .mobile-hamburger-btn {
+    display: flex !important;
+  }
+
+  .nav-bar-container .div-block-270 {
+    display: none !important;
+  }
+
+  .nav-bar-container .divframer-5odmon-container-2 {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+
   .nav-bar-container .products-dialog {
     position: fixed !important;
     top: 0 !important;
-    left: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
-    width: 100vw !important;
+    left: auto !important;
+    width: min(100vw, 380px) !important;
     height: 100dvh !important;
     max-width: 100vw !important;
+    max-height: 100dvh !important;
     transform: none !important;
     border-radius: 0 !important;
     overflow-y: auto !important;
-    z-index: 2200 !important;
-    background-color: #ffffff !important;
-    padding: 16px 20px 40px !important;
+    -webkit-overflow-scrolling: touch;
+    z-index: 99999 !important;
+    background: #ffffff !important;
+    padding: 20px 20px 48px !important;
     box-sizing: border-box !important;
-  }
-
-  .nav-bar-container .products-dialog .div-block-210 {
     display: flex !important;
-    justify-content: space-between !important;
+    flex-direction: column !important;
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15) !important;
+    animation: drawerSlideIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  @keyframes drawerSlideIn {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  .mobile-drawer-header {
+    display: flex !important;
     align-items: center !important;
-    padding: 8px 0 16px !important;
-    border-bottom: 1px solid #e2e8f0 !important;
-    margin-bottom: 16px !important;
-    height: auto !important;
+    justify-content: space-between !important;
+    padding-bottom: 16px !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+    margin-bottom: 14px !important;
   }
 
-  .nav-bar-container .products-dialog .image-129,
-  .nav-bar-container .products-dialog .image-130 {
+  .drawer-header-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .drawer-back-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    padding: 6px 12px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #0f172a !important;
+    background: #f1f5f9 !important;
+    border: none !important;
+    border-radius: 99px !important;
     cursor: pointer !important;
-    width: 24px !important;
-    height: 24px !important;
+    transition: background 0.18s ease;
   }
 
+  .drawer-back-btn:hover {
+    background: #e2e8f0 !important;
+  }
+
+  .drawer-close-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 36px !important;
+    height: 36px !important;
+    background: #f1f5f9 !important;
+    border: none !important;
+    border-radius: 50% !important;
+    color: #475569 !important;
+    cursor: pointer !important;
+    transition: background 0.18s ease, color 0.18s ease !important;
+  }
+
+  .drawer-close-btn:hover {
+    background: #e2e8f0 !important;
+    color: #0f172a !important;
+  }
+
+  .mobile-menu-section-title {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    color: #94a3b8 !important;
+    margin: 4px 0 10px 4px !important;
+  }
+
+  .mobile-menu-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+  }
+
+  .mobile-menu-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 13px 14px !important;
+    border-radius: 12px !important;
+    background: #f8fafc !important;
+    border: 1px solid #f1f5f9 !important;
+    text-decoration: none !important;
+    color: #0f172a !important;
+    transition: all 0.18s ease !important;
+  }
+
+  .mobile-menu-row:active {
+    background: #f1f5f9 !important;
+    transform: scale(0.99);
+  }
+
+  .mobile-menu-row.is-active {
+    background: rgba(31, 184, 31, 0.08) !important;
+    border-color: rgba(31, 184, 31, 0.25) !important;
+    color: #15803d !important;
+  }
+
+  .mobile-menu-row.is-active .mobile-menu-title {
+    font-weight: 700 !important;
+    color: #15803d !important;
+  }
+
+  .mobile-menu-title {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #0f172a !important;
+  }
+
+  .mobile-menu-label-wrap {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .mobile-menu-badge {
+    display: inline-block !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    padding: 2px 8px !important;
+    border-radius: 99px !important;
+    background: #1fb81f !important;
+    color: #ffffff !important;
+    letter-spacing: 0.02em !important;
+  }
+
+  .mobile-menu-chevron-icon {
+    color: #94a3b8 !important;
+    flex-shrink: 0 !important;
+  }
+
+  .mobile-drawer-cta {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    margin-top: 20px !important;
+    padding-top: 16px !important;
+    border-top: 1px solid #f1f5f9 !important;
+  }
+
+  .mobile-cta-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    height: 46px !important;
+    border-radius: 12px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    transition: all 0.18s ease !important;
+  }
+
+  .mobile-cta-btn.primary {
+    background: #0f172a !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15) !important;
+  }
+
+  .mobile-cta-btn.primary:active {
+    background: #000000 !important;
+  }
+
+  .mobile-cta-btn.secondary {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    border: 1.5px solid #e2e8f0 !important;
+  }
+
+  .mobile-drawer-footer {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 6px !important;
+    margin-top: 24px !important;
+    padding-top: 16px !important;
+    border-top: 1px dashed #e2e8f0 !important;
+  }
+
+  .mobile-drawer-footer-text {
+    font-size: 11px !important;
+    color: #94a3b8 !important;
+    margin: 0 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+    font-weight: 500 !important;
+  }
+
+  /* Products list in mobile drawer */
   .nav-bar-container .products-dialog .products-dialog-content {
     flex-direction: column !important;
-    gap: 20px !important;
+    gap: 16px !important;
     height: auto !important;
     overflow: visible !important;
     padding: 0 !important;
   }
 
+  .nav-bar-container .products-dialog .mobile-category-card {
+    background: #f8fafc !important;
+    border-radius: 14px !important;
+    padding: 14px !important;
+    border: 1px solid #e2e8f0 !important;
+  }
+
+  .nav-bar-container .products-dialog .products-category {
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.04em !important;
+  }
+
   .nav-bar-container .products-dialog .products-row {
     display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)) !important;
-    gap: 12px !important;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) !important;
+    gap: 10px !important;
     border: none !important;
-    padding-top: 8px !important;
+    padding-top: 10px !important;
   }
 
   .nav-bar-container .products-dialog .product-card {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    padding: 12px !important;
-    background: #f8fafc !important;
+    padding: 10px 8px !important;
+    background: #ffffff !important;
     border-radius: 10px !important;
     border: 1px solid #e2e8f0 !important;
     text-decoration: none !important;
@@ -547,16 +850,27 @@ button {
   }
 
   .nav-bar-container .products-dialog .our-product-image {
-    height: 75px !important;
+    height: 64px !important;
     width: auto !important;
     max-width: 100% !important;
     object-fit: contain !important;
   }
 
   .nav-bar-container .products-dialog .product-name {
-    font-size: 13px !important;
+    font-size: 12px !important;
     font-weight: 600 !important;
-    color: #1e293b !important;
+    color: #0f172a !important;
     margin-top: 6px !important;
+    text-align: center !important;
+  }
+}
+
+/* Hide mobile-only drawer elements on desktop */
+@media (min-width: 992px) {
+  .mobile-drawer-header,
+  .mobile-drawer-cta,
+  .mobile-drawer-footer,
+  .mobile-hamburger-btn {
+    display: none !important;
   }
 }

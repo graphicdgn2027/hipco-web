@@ -20,9 +20,36 @@ const PrivacyPage = lazy(() => import('@/pages/Privacy'));
 const PrivacyPowerDockPage = lazy(() => import('@/pages/PrivacyPowerDock'));
 const NotFoundPage = lazy(() => import('@/pages/NotFound'));
 
+/** Thin skeleton shown while a lazy page chunk loads (between navigations). */
+function PageSkeleton() {
+  return (
+    <div
+      style={{
+        minHeight: '60vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+      aria-hidden="true"
+    >
+      <div
+        style={{
+          width: 40,
+          height: 40,
+          borderRadius: '50%',
+          border: '3px solid rgba(31,184,31,0.15)',
+          borderTopColor: '#1fb81f',
+          animation: 'spin 0.7s linear infinite',
+        }}
+      />
+      <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
+    </div>
+  );
+}
+
 export default function AppRoutes() {
   return (
-    <Suspense fallback={null}>
+    <Suspense fallback={<PageSkeleton />}>
       <Routes>
         <Route element={<MainLayout />}>
           <Route path={ROUTES.home} element={<HomePage />} />

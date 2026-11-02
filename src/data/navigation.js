@@ -22,7 +22,7 @@ export const mobileMenu = [
 export const productCategories = [
   {
     title: 'Last Mile',
-    href: '/lastmile',
+    href: ROUTES.superAuto,
     linkClassName: 'link-block',
     gridId: 'w-node-b613eaa0-ff04-41dc-1e2c-b101510d68e1-9803b98a',
     products: [
@@ -32,10 +32,40 @@ export const productCategories = [
   },
   {
     title: 'Small Commercial Vehicle',
-    href: '/e-scv',
+    href: ROUTES.eviator,
     linkClassName: 'link-block-4',
     gridId: 'w-node-b613eaa0-ff04-41dc-1e2c-b101510d68f0-9803b98a',
     products: [{ name: 'Eviator', href: ROUTES.eviator, image: '/images/fd426928e166.png', width: 180 }],
+  },
+];
+
+export const allProducts = [
+  {
+    name: 'Super Auto',
+    tagline: 'Passenger Electric 3-Wheeler • 150 km True Range',
+    badge: 'Passenger 3W',
+    category: 'Last Mile Mobility',
+    href: ROUTES.superAuto,
+    image: '/images/69494312f449.png',
+    width: 150,
+  },
+  {
+    name: 'Super Cargo',
+    tagline: 'Heavy Payload Delivery Carrier • Low Running Cost',
+    badge: 'Cargo 3W',
+    category: 'Last Mile Mobility',
+    href: ROUTES.superCargo,
+    image: '/images/ad272490b010.png',
+    width: 150,
+  },
+  {
+    name: 'EVIATOR',
+    tagline: 'Electric Small Commercial Vehicle • Heavy-Lift Capability',
+    badge: 'e-SCV Truck',
+    category: 'Small Commercial Vehicle',
+    href: ROUTES.eviator,
+    image: '/images/fd426928e166.png',
+    width: 180,
   },
 ];
 

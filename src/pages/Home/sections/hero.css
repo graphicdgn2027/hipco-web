@@ -63,7 +63,7 @@
   top: 92px;
   right: max(var(--hx-pad), calc((100% - 1560px) / 2 + var(--hx-pad)));
   bottom: 100px;
-  left: max(43%, calc((100% - 1560px) / 2 + 620px));
+  left: max(48%, calc((100% - 1560px) / 2 + 700px));
   overflow: hidden;
   border-radius: 28px;
   background: #dfe6ec;
@@ -101,7 +101,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: min(530px, 39vw);
+  width: min(480px, 36vw);
   pointer-events: auto;
 }
 
@@ -155,7 +155,7 @@
 
 .hx-title {
   margin: 18px 0 0;
-  font-size: clamp(32px, 3.8vw, 50px);
+  font-size: clamp(30px, 3.4vw, 46px);
   font-weight: 600;
   line-height: 1.15;
   letter-spacing: -0.02em;
@@ -164,10 +164,10 @@
 
 .hx-text {
   margin: 18px 0 0;
-  font-size: clamp(16px, 1.25vw, 19px);
-  line-height: 1.62;
+  font-size: clamp(15px, 1.15vw, 18px);
+  line-height: 1.6;
   color: var(--hx-muted);
-  max-width: 530px;
+  max-width: 460px;
 }
 
 .hx-actions {
@@ -373,17 +373,22 @@
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .hx-media {
-    left: 45%;
+    left: 48%;
     right: var(--hx-pad);
   }
   .hx-card {
-    width: min(440px, 40vw);
+    width: min(390px, 36vw);
   }
   .hx-title {
-    font-size: clamp(26px, 3.4vw, 36px);
+    font-size: clamp(24px, 3.2vw, 34px);
     font-weight: 600;
   }
   .hx-text {
+    font-size: 14px;
+    max-width: 360px;
+  }
+  .hx-btn {
+    padding: 12px 20px;
     font-size: 14px;
   }
   .hx-dots {

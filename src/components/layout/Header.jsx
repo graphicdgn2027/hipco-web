@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { AppLink } from '@/components/ui/AppLink';
-import { mobileMenu, primaryNav, productCategories } from '@/data/navigation';
+import { allProducts, mobileMenu, primaryNav, productCategories } from '@/data/navigation';
 import { ROUTES } from '@/routes/paths';
 import useBodyScrollLock from '@/hooks/useBodyScrollLock';
 
@@ -21,15 +21,25 @@ function isItemActive(item, currentPath) {
   return currentPath === item.href || currentPath.startsWith(item.href);
 }
 
-// view: null = CSS default layout (desktop product grid), 'menu' = mobile menu list, 'products' = mobile products screen.
 export default function Header() {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
-  const [view, setView] = useState(null);
+  const [productsExpanded, setProductsExpanded] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const headerRef = useRef(null);
 
   useBodyScrollLock(open);
+
+  const isVehiclePage =
+    pathname.startsWith('/lastmile') ||
+    pathname.startsWith('/e-scv');
+
+  // Auto-expand accordion if already on a vehicle page
+  useEffect(() => {
+    if (isVehiclePage) {
+      setProductsExpanded(true);
+    }
+  }, [pathname, isVehiclePage]);
 
   useEffect(() => {
     let ticking = false;
@@ -49,38 +59,22 @@ export default function Header() {
 
   const close = () => {
     setOpen(false);
-    setView(null);
-  };
-
-  const openProducts = () => {
-    setOpen(true);
-    setView(window.innerWidth < MOBILE_BREAKPOINT ? 'products' : null);
   };
 
   const toggleProducts = () => {
-    if (open) {
-      close();
-    } else {
-      openProducts();
-    }
+    setOpen((prev) => !prev);
   };
 
-  const openMobileMenu = () => {
-    setOpen(true);
-    setView('menu');
-  };
-
-  const showMobileProducts = () => {
-    setOpen(true);
-    setView('products');
+  const toggleMobileMenu = () => {
+    setOpen((prev) => !prev);
   };
 
   // Close when pathname changes (auto-close on navigation)
   useEffect(() => {
-    close();
+    setOpen(false);
   }, [pathname]);
 
-  // Handle Escape key
+  // Handle click outside and Escape key
   useEffect(() => {
     if (!open) return;
     const handleClickOutside = (e) => {
@@ -158,11 +152,7 @@ export default function Header() {
             aria-expanded={open}
             onClick={(e) => {
               e.stopPropagation();
-              if (open) {
-                close();
-              } else {
-                openMobileMenu();
-              }
+              toggleMobileMenu();
             }}
           >
             <span className="hamburger-box">
@@ -197,7 +187,7 @@ export default function Header() {
       {/* Clean Reverted Products Dialog (Desktop 2-col clean grid & Mobile drawer) */}
       <div
         id="products-dialog"
-        className={`products-dialog div-block-354 ${open ? 'is-open' : ''} ${view === 'products' ? 'is-products-view' : 'is-menu-view'}`}
+        className={`products-dialog div-block-354 ${open ? 'is-open' : ''}`}
       >
         {/* Top Header / Close Row */}
         <div className="div-block-210">
@@ -211,22 +201,6 @@ export default function Header() {
           </AppLink>
 
           <div className="drawer-header-actions">
-            {view === 'products' && (
-              <button
-                type="button"
-                className="drawer-back-btn"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  openMobileMenu();
-                }}
-                aria-label="Back to menu"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ pointerEvents: 'none' }}>
-                  <path d="M19 12H5M12 19l-7-7 7-7" />
-                </svg>
-                <span>Back</span>
-              </button>
-            )}
             <button
               type="button"
               className="drawer-close-btn"
@@ -250,26 +224,88 @@ export default function Header() {
           <div className="mobile-menu-section-title">Navigation</div>
           {mobileMenu.map((item) => {
             const active = isItemActive(item, pathname);
+
+            // Our Products Accordion Group on Mobile
+            if (item.opensProducts) {
+              return (
+                <div key={item.label} className="mobile-menu-accordion-group">
+                  <button
+                    type="button"
+                    className={`mobile-menu-row is-accordion-trigger ${productsExpanded ? 'is-expanded' : ''} ${active ? 'is-active' : ''}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setProductsExpanded((prev) => !prev);
+                    }}
+                    aria-expanded={productsExpanded}
+                  >
+                    <div className="mobile-menu-label-wrap">
+                      <span className="mobile-menu-title">{item.label}</span>
+                      <span className="mobile-menu-badge">3 Models</span>
+                    </div>
+                    <svg
+                      className={`mobile-menu-chevron-icon ${productsExpanded ? 'is-rotated' : ''}`}
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </button>
+
+                  {productsExpanded && (
+                    <div className="mobile-products-accordion-list">
+                      {allProducts.map((product) => {
+                        const isProductActive = pathname === product.href;
+                        return (
+                          <AppLink
+                            key={product.name}
+                            href={product.href}
+                            className={`mobile-product-subitem ${isProductActive ? 'is-active' : ''}`}
+                            onClick={close}
+                          >
+                            <div className="mobile-product-thumb-wrap">
+                              <img
+                                src={product.image}
+                                alt={product.name}
+                                className="mobile-product-thumb"
+                                width="56"
+                                height="38"
+                              />
+                            </div>
+                            <div className="mobile-product-info">
+                              <div className="mobile-product-name-row">
+                                <span className="mobile-product-name">{product.name}</span>
+                                <span className="mobile-product-badge">{product.badge}</span>
+                              </div>
+                              <span className="mobile-product-category">{product.category}</span>
+                            </div>
+                            <svg className="mobile-product-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                              <polyline points="9 18 15 12 9 6" />
+                            </svg>
+                          </AppLink>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
             return (
               <AppLink
                 key={item.label}
                 href={item.href ?? '#'}
-                className={`mobile-menu-row ${active ? 'is-active' : ''} ${item.opensProducts ? 'is-products-trigger' : ''}`}
-                onClick={(e) => {
-                  if (item.opensProducts) {
-                    e.preventDefault();
-                    showMobileProducts();
-                  } else {
-                    close();
-                  }
-                }}
+                className={`mobile-menu-row ${active ? 'is-active' : ''}`}
+                onClick={close}
                 aria-current={active ? 'page' : undefined}
               >
                 <div className="mobile-menu-label-wrap">
                   <span className="mobile-menu-title">{item.label}</span>
-                  {item.opensProducts && (
-                    <span className="mobile-menu-badge">3 Models</span>
-                  )}
                 </div>
                 <svg className="mobile-menu-chevron-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="9 18 15 12 9 6" />
@@ -306,13 +342,10 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Clean Original Products Grid (Desktop Dropdown & Mobile Products Screen) */}
+        {/* Clean Original Products Grid (Desktop Dropdown) */}
         <div id="products-dialog-content" className="products-dialog-content">
-          <div className="mobile-products-section-header">
-            <div className="mobile-menu-section-title">Explore Montra Lineup</div>
-          </div>
           {productCategories.map((category) => (
-            <div key={category.title} id={category.gridId} className="div-block-204 mobile-category-card">
+            <div key={category.title} id={category.gridId} className="div-block-204">
               <AppLink href={category.href} className={`${category.linkClassName} w-inline-block`} onClick={close}>
                 <div className="products-category">{category.title}</div>
                 <img className="product-menu-chevron" src="/images/c57a213f3828.svg" alt="" />
@@ -327,16 +360,6 @@ export default function Header() {
               </div>
             </div>
           ))}
-
-          {/* Mobile products view footer */}
-          <div className="mobile-drawer-footer mobile-products-footer">
-            <img
-              src="/navbar-logo/hipco-DGO-combine.svg"
-              alt="Hipco & Diwakar Golchha Organisation"
-              className="mobile-drawer-footer-logo"
-            />
-            <p className="mobile-drawer-footer-text">Official Distributor in Nepal</p>
-          </div>
         </div>
       </div>
     </div>

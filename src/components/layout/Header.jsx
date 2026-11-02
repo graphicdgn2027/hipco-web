@@ -143,7 +143,7 @@ export default function Header() {
 
         {/* Right side container */}
         <div className="divframer-5odmon-container-2">
-          {/* Mobile Hamburger Button */}
+          {/* Mobile Hamburger Button - Perfectly centered SVG icon */}
           <button
             id="mobile-hamburger-menu"
             type="button"
@@ -155,9 +155,38 @@ export default function Header() {
               toggleMobileMenu();
             }}
           >
-            <span className="hamburger-box">
-              <span className="hamburger-inner" />
-            </span>
+            {open ? (
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="hamburger-icon-svg"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            ) : (
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="hamburger-icon-svg"
+              >
+                <line x1="3.5" y1="6" x2="20.5" y2="6" />
+                <line x1="3.5" y1="12" x2="20.5" y2="12" />
+                <line x1="3.5" y1="18" x2="20.5" y2="18" />
+              </svg>
+            )}
           </button>
 
           {/* Desktop Hipco & DGO Logo */}

@@ -1,7 +1,19 @@
-/* Prevent accidental pull-to-refresh reloads on trackpad/mobile scrolling. */
-html,
+/* Ensure smooth, natural vertical scrolling on all mobile and desktop browsers */
+html {
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
 body {
-  overscroll-behavior-y: none;
+  overflow-x: hidden;
+  overflow-y: visible;
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  -webkit-overflow-scrolling: touch;
+  touch-action: manipulation;
 }
 
 /* ==========================================================================
@@ -84,9 +96,11 @@ html body .nav-bar-container.is-scrolled {
 /* Mobile UX Fixes */
 
 /* Prevent horizontal scrolling and improve layout */
-html, body {
-  overflow-x: hidden;
+#root {
   width: 100%;
+  min-height: 100%;
+  position: relative;
+  overflow-x: clip;
 }
 
 /* Ensure media elements don't overflow and awkward crops are prevented */
@@ -526,82 +540,59 @@ button {
   }
 }
 
-/* Mobile Hamburger Button */
-.mobile-hamburger-btn {
+/* Mobile Hamburger Button - Perfectly centered gray rounded button */
+.mobile-hamburger-btn,
+button.mobile-hamburger-btn,
+#mobile-hamburger-menu {
   display: none;
-  background: rgba(15, 23, 42, 0.05);
-  border: 1px solid rgba(15, 23, 42, 0.1);
-  border-radius: 10px;
-  width: 42px;
-  height: 42px;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  padding: 0;
-  transition: all 0.2s ease;
-  color: #0f172a;
+  width: 42px !important;
+  height: 42px !important;
+  min-width: 42px !important;
+  max-width: 42px !important;
+  min-height: 42px !important;
+  max-height: 42px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 10px !important;
+  background: #f1f5f9 !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #0f172a !important;
+  cursor: pointer !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06) !important;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.15s ease !important;
 }
 
 .mobile-hamburger-btn:hover,
-.mobile-hamburger-btn:focus-visible {
-  background: rgba(15, 23, 42, 0.09);
-  border-color: rgba(15, 23, 42, 0.18);
+.mobile-hamburger-btn:active {
+  background: #e2e8f0 !important;
+  border-color: #cbd5e1 !important;
 }
 
-.mobile-hamburger-btn .hamburger-box {
-  width: 20px;
-  height: 14px;
-  display: inline-block;
-  position: relative;
-}
-
-.mobile-hamburger-btn .hamburger-inner,
-.mobile-hamburger-btn .hamburger-inner::before,
-.mobile-hamburger-btn .hamburger-inner::after {
-  width: 20px;
-  height: 2px;
-  background-color: #0f172a;
-  border-radius: 2px;
-  position: absolute;
-  transition: transform 0.22s ease, opacity 0.22s ease;
-}
-
-.mobile-hamburger-btn .hamburger-inner {
-  top: 6px;
-}
-
-.mobile-hamburger-btn .hamburger-inner::before {
-  content: "";
-  top: -6px;
-  left: 0;
-}
-
-.mobile-hamburger-btn .hamburger-inner::after {
-  content: "";
-  bottom: -6px;
-  left: 0;
-}
-
-/* Active hamburger 'X' */
-.mobile-hamburger-btn.is-active .hamburger-inner {
-  transform: rotate(45deg);
-}
-
-.mobile-hamburger-btn.is-active .hamburger-inner::before {
-  opacity: 0;
-}
-
-.mobile-hamburger-btn.is-active .hamburger-inner::after {
-  transform: rotate(-90deg) translate(6px, 0);
-  bottom: 0;
+.mobile-hamburger-btn .hamburger-icon-svg {
+  display: block !important;
+  margin: auto !important;
+  flex-shrink: 0 !important;
+  pointer-events: none !important;
+  color: #0f172a !important;
 }
 
 /* ==========================================================================
    Mobile Dialog / Native App Sheet UI (< 992px)
    ========================================================================== */
 @media (max-width: 991px) {
-  .mobile-hamburger-btn {
-    display: flex !important;
+  .mobile-hamburger-btn,
+  button.mobile-hamburger-btn,
+  #mobile-hamburger-menu {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   .nav-bar-container .div-block-270 {

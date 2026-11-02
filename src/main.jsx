@@ -12,6 +12,10 @@ function dismissLoader() {
   if (loader) {
     loader.classList.add('ldr-hidden');
     loader.addEventListener('transitionend', () => loader.remove(), { once: true });
+    // Safety fallback: ensure loader is removed even if transitionend is skipped on mobile
+    setTimeout(() => {
+      if (loader && loader.parentNode) loader.remove();
+    }, 450);
   }
 }
 

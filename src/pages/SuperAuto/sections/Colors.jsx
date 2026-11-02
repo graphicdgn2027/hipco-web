@@ -19,27 +19,27 @@ export default function Colors() {
         slides={[
           {
             src: '/super-auto/Super-auto-color/black.png',
-            sizes: '(max-width: 767px) 100vw, 800px',
+            sizes: '(max-width: 767px) 100vw, 1400px',
             className: 'image-with-6-rem-top-bottom',
-            width: '800',
+            width: '1400',
           },
           {
             src: '/super-auto/Super-auto-color/white.png',
-            sizes: '(max-width: 767px) 100vw, 800px',
+            sizes: '(max-width: 767px) 100vw, 1400px',
             className: 'image-with-6-rem-top-bottom',
-            width: '800',
+            width: '1400',
           },
           {
             src: '/super-auto/Super-auto-color/blue.png',
-            sizes: '(max-width: 767px) 100vw, 800px',
+            sizes: '(max-width: 767px) 100vw, 1400px',
             className: 'image-with-6-rem-top-bottom',
-            width: '800',
+            width: '1400',
           },
           {
             src: '/super-auto/Super-auto-color/green.png',
-            sizes: '(max-width: 767px) 100vw, 800px',
+            sizes: '(max-width: 767px) 100vw, 1400px',
             className: 'image-with-6-rem-top-bottom',
-            width: '800',
+            width: '1400',
           },
         ]}
         colors={[

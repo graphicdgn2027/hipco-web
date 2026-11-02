@@ -25,9 +25,26 @@ export default function Header() {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
   const [view, setView] = useState(null);
+  const [isScrolled, setIsScrolled] = useState(false);
   const headerRef = useRef(null);
 
   useBodyScrollLock(open);
+
+  useEffect(() => {
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 50);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const close = () => {
     setOpen(false);
@@ -85,10 +102,19 @@ export default function Header() {
   const productsStyle = view ? { display: view === 'products' ? 'flex' : 'none' } : undefined;
 
   return (
-    <div ref={headerRef} className="nav-bar-container page-grid">
+    <div
+      ref={headerRef}
+      className={`nav-bar-container page-grid ${isScrolled ? 'is-scrolled' : ''}`}
+    >
       <div className="div-block-99 page-content">
         <AppLink href="/" className="w-inline-block" onClick={close}>
-          <img className="left_logo-1" src="/images/e74656ae5af9.svg" width="110" height="24" alt="Montra Electric" />
+          <img
+            className="left_logo-1"
+            src="/navbar-logo/montra-logo-hbk.svg"
+            width="135"
+            height="28"
+            alt="Montra Electric"
+          />
         </AppLink>
         <div className="div-block-270">
           {primaryNav.map((item) => {
@@ -129,7 +155,11 @@ export default function Header() {
             onClick={openMobileMenu}
           />
           <div className="link---navbar-link-11">
-            <img src="/logo/hipco-DGO-logo.png" alt="Hipco" style={{ height: 40, width: 'auto' }} />
+            <img
+              src="/navbar-logo/hipco-DGO-combine.svg"
+              alt="Hipco & Diwakar Golchha Organisation"
+              style={{ height: 38, width: 'auto', display: 'block' }}
+            />
           </div>
         </div>
       </div>

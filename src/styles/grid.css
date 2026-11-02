@@ -83,7 +83,7 @@ html .page-section > .explore-in-3d-button {
 }
 
 /* Header and footer share exactly the same content boundaries as the hero. */
-html body .nav-bar-container.page-grid {
+html body .nav-bar-container.page-grid:not(.is-scrolled) {
   border-inline: 0;
   border-radius: 0;
 }
@@ -121,14 +121,14 @@ html .responsive-hero {
   min-height: min(100svh, 860px);
 }
 
-.responsive-hero .sah-stage {
+.responsive-hero :is(.sah-stage, .hx-stage) {
   position: relative;
   inset: auto;
   display: grid;
   min-width: 0;
 }
 
-.responsive-hero .sah-slide {
+.responsive-hero :is(.sah-slide, .hx-slide) {
   position: relative;
   inset: auto;
   grid-area: 1 / 1;
@@ -165,7 +165,7 @@ html .responsive-hero {
   padding: 0;
 }
 
-.responsive-hero .sah-card {
+.responsive-hero :is(.sah-card, .hx-card) {
   width: 100%;
   min-width: 0;
 }
@@ -205,19 +205,19 @@ html .responsive-hero {
   padding-block: 0;
 }
 
-.responsive-hero .sah-dots {
+.responsive-hero :is(.sah-dots, .hx-dots) {
   flex: 1 1 480px;
   min-width: 0;
   gap: var(--grid-gap);
 }
 
-.responsive-hero .sah-dot {
+.responsive-hero :is(.sah-dot, .hx-dot) {
   flex: 1 1 0;
   min-width: 0;
   overflow-wrap: anywhere;
 }
 
-.responsive-hero .sah-nav {
+.responsive-hero :is(.sah-nav, .hx-nav) {
   flex-shrink: 0;
   margin-left: auto;
 }
@@ -306,16 +306,16 @@ html .hero-container-video-eviator.page-grid > .page-content {
     padding-block: 88px 24px;
   }
 
-  .responsive-hero :is(.sah-title, .sah-text) {
+  .responsive-hero :is(.sah-title, .sah-text, .hx-title, .hx-text) {
     padding-inline: 0;
   }
 
-  .responsive-hero .sah-actions {
+  .responsive-hero :is(.sah-actions, .hx-actions) {
     width: 100%;
     flex-direction: column;
   }
 
-  .responsive-hero .sah-btn {
+  .responsive-hero :is(.sah-btn, .hx-btn) {
     justify-content: center;
     min-height: 44px;
   }
@@ -325,21 +325,21 @@ html .hero-container-video-eviator.page-grid > .page-content {
     align-items: stretch;
   }
 
-  .responsive-hero .sah-dots {
+  .responsive-hero :is(.sah-dots, .hx-dots) {
     flex-basis: auto;
     width: 100%;
   }
 
-  .responsive-hero .sah-dot {
+  .responsive-hero :is(.sah-dot, .hx-dot) {
     grid-template-columns: minmax(0, 1fr);
     align-content: start;
   }
 
-  .responsive-hero .sah-dot__label {
+  .responsive-hero :is(.sah-dot__label, .hx-dot__label) {
     font-size: 11px;
   }
 
-  .responsive-hero .sah-nav {
+  .responsive-hero :is(.sah-nav, .hx-nav) {
     display: flex;
   }
 }

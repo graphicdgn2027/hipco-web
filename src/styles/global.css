@@ -4,12 +4,81 @@ body {
   overscroll-behavior-y: none;
 }
 
-/* Navbar dark glass effect */
+/* ==========================================================================
+   Navbar Redesign:
+   - Initial state (at top): Touches attached to top of website, full width (100%),
+     increased height (74px), clean white background with bottom border.
+   - Scrolled state: Sticky floating bar, rounded corners (20px), 80% width,
+     elevated soft shadow.
+   ========================================================================== */
 html body .nav-bar-container {
-  background: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(20px) saturate(140%);
-  -webkit-backdrop-filter: blur(20px) saturate(140%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 74px !important;
+  min-height: 74px !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08) !important;
+  background: #ffffff !important;
+  backdrop-filter: blur(20px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.04) !important;
+  filter: none !important;
+  z-index: 2100 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding-inline: clamp(20px, 3.8vw, 64px) !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+  transition: top 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              width 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              max-width 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              min-height 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              border-radius 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              border 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              padding-inline 0.32s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Scrolled state: rounded 80% width sticky floating bar */
+html body .nav-bar-container.is-scrolled {
+  top: 14px !important;
+  width: 80% !important;
+  max-width: 1320px !important;
+  height: 68px !important;
+  min-height: 68px !important;
+  margin-inline: auto !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(15, 23, 42, 0.09) !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  box-shadow: 0 12px 32px -4px rgba(15, 23, 42, 0.1), 0 2px 8px rgba(15, 23, 42, 0.04) !important;
+  padding-inline: clamp(16px, 2.4vw, 36px) !important;
+}
+
+/* Tablet & Mobile Breakpoint */
+@media (max-width: 991px) {
+  html body .nav-bar-container {
+    height: 64px !important;
+    min-height: 64px !important;
+    padding-inline: clamp(16px, 3vw, 24px) !important;
+  }
+
+  html body .nav-bar-container.is-scrolled {
+    top: 10px !important;
+    width: 92% !important;
+    height: 58px !important;
+    min-height: 58px !important;
+    border-radius: 16px !important;
+    padding-inline: 16px !important;
+  }
 }
 
 /* Mobile UX Fixes */
@@ -93,35 +162,37 @@ button {
   }
 }
 
-/* Navigation Active Tab Indicator */
+/* Navigation Active Tab Indicator & Links on White Navbar */
 .nav-bar-container .div-block-270 .link---navbar-link-6 {
   position: relative;
-  padding: 8px 14px;
-  border-radius: 6px;
+  padding: 8px 16px;
+  border-radius: 8px;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .nav-bar-container .div-block-270 .link---navbar-link-6:hover {
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(15, 23, 42, 0.04);
 }
 
 .nav-bar-container .div-block-270 .nav-link-item .text-23 {
-  color: rgba(255, 255, 255, 0.78);
-  font-weight: 400;
+  color: #475569 !important;
+  font-weight: 500 !important;
+  font-size: 14px;
+  letter-spacing: -0.01em;
   transition: color 0.2s ease, font-weight 0.2s ease;
 }
 
 .nav-bar-container .div-block-270 .nav-link-item:hover .text-23 {
-  color: #ffffff;
+  color: #0f172a !important;
 }
 
 .nav-bar-container .div-block-270 .nav-link-item.is-active .link---navbar-link-6 {
-  background-color: rgba(255, 255, 255, 0.14);
+  background-color: rgba(15, 23, 42, 0.05);
 }
 
 .nav-bar-container .div-block-270 .nav-link-item.is-active .text-23,
 .nav-bar-container .div-block-270 .link---navbar-link-6.is-active .text-23 {
-  color: #ffffff !important;
+  color: #0f172a !important;
   font-weight: 600 !important;
 }
 
@@ -134,8 +205,30 @@ button {
   height: 3px;
   background-color: #e51b23;
   border-radius: 3px;
-  box-shadow: 0 0 8px rgba(229, 27, 35, 0.85);
+  box-shadow: 0 0 6px rgba(229, 27, 35, 0.6);
   pointer-events: none;
+}
+
+.left_logo-1 {
+  height: 28px !important;
+  width: auto !important;
+  max-height: 32px !important;
+  object-fit: contain !important;
+  display: block;
+}
+
+.link---navbar-link-11 {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.link---navbar-link-11 img {
+  height: 38px !important;
+  width: auto !important;
+  max-height: 42px !important;
+  object-fit: contain !important;
+  display: block;
 }
 
 /* Mobile drawer active indicator */
@@ -176,18 +269,26 @@ button {
 }
 
 .nav-bar-container .div-block-99 {
+  width: 100% !important;
+  max-width: 1400px !important;
+  height: 100% !important;
   display: flex !important;
   flex-direction: row !important;
   align-items: center !important;
   justify-content: space-between !important;
   position: relative !important;
   z-index: 2300 !important;
+  grid-column: 1 / -1 !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
 }
 
 .nav-bar-container .div-block-270 {
   display: flex !important;
   flex-direction: row !important;
   align-items: center !important;
+  height: 100% !important;
+  gap: 4px;
 }
 
 #products-dialog {
@@ -211,7 +312,7 @@ button {
 @media (min-width: 992px) {
   .nav-bar-container .products-dialog {
     position: absolute !important;
-    top: 66px !important;
+    top: calc(100% + 8px) !important;
     bottom: auto !important;
     left: 50% !important;
     right: auto !important;
@@ -223,7 +324,7 @@ button {
     max-height: calc(100vh - 90px) !important;
     background-color: #ffffff !important;
     border-radius: 14px !important;
-    box-shadow: 0 20px 48px -8px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 20px 48px -8px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.08) !important;
     overflow: visible !important;
     z-index: 2200 !important;
     padding: 0 0 16px 0 !important;

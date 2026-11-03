@@ -34,6 +34,7 @@ export function Slider({
   const slides = Children.toArray(children);
   const count = slides.length;
   const [index, setIndex] = useState(0);
+  const [hovered, setHovered] = useState(false);
   const pointerStart = useRef(null);
 
   const goTo = useCallback(
@@ -47,10 +48,10 @@ export function Slider({
   const prev = useCallback(() => goTo(index - 1), [goTo, index]);
 
   useEffect(() => {
-    if (!autoplay || count < 2) return undefined;
+    if (!autoplay || count < 2 || hovered) return undefined;
     const timer = setTimeout(next, delay);
     return () => clearTimeout(timer);
-  }, [autoplay, count, delay, next]);
+  }, [autoplay, count, delay, next, hovered]);
 
   const slideStyle = (i) => {
     if (animation === 'cross') {
@@ -89,7 +90,13 @@ export function Slider({
   };
 
   return (
-    <div className={join('w-slider', className)} role="region" aria-label="carousel">
+    <div
+      className={join('w-slider', className)}
+      role="region"
+      aria-label="carousel"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
       <div
         className={join('w-slider-mask', maskClassName)}
         onPointerDown={onPointerDown}

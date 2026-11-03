@@ -1,5 +1,5 @@
 import { Children, useState } from 'react';
-import { Keyboard, Mousewheel, Navigation } from 'swiper/modules';
+import { Autoplay, Keyboard, Mousewheel, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 const VARIANTS = {
@@ -39,32 +39,67 @@ export function Carousel({
   slidesPerView = 'auto',
   breakpoints,
   spaceBetween,
+  loop = true,
+  autoplay = true,
+  autoplayDelay = 3500,
+  speed = 600,
   ...restSwiperProps
 }) {
   const v = VARIANTS[variant];
   const [prevEl, setPrevEl] = useState(null);
   const [nextEl, setNextEl] = useState(null);
-  const items = Children.toArray(children);
+  const rawItems = Children.toArray(children);
+
+  // Ensure sufficient slides for smooth infinite loop in Swiper without running out of clones
+  let items = rawItems;
+  if (loop && rawItems.length > 1 && rawItems.length < 12) {
+    const repeatCount = Math.ceil(12 / rawItems.length);
+    items = Array.from({ length: repeatCount }, () => rawItems).flat();
+  }
+
+  const autoplayConfig = autoplay
+    ? {
+        delay: typeof autoplay === 'number' ? autoplay : autoplayDelay,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      }
+    : false;
 
   return (
     <div className={join(v.component, className)}>
       <Swiper
-        modules={[Navigation, Keyboard, Mousewheel]}
+        modules={[Navigation, Keyboard, Mousewheel, Autoplay]}
         className={join(v.wrap, wrapClassName)}
         wrapperClass={join(v.list, 'swiper-wrapper', listClassName)}
         slidesPerView={slidesPerView}
         breakpoints={breakpoints}
         spaceBetween={spaceBetween}
+        loop={loop && items.length > 1}
+        autoplay={autoplayConfig}
         followFinger
-        speed={300}
+        speed={speed}
         slideActiveClass="is-active"
         mousewheel={{ forceToAxis: true }}
         keyboard={{ enabled: true, onlyInViewport: true }}
         navigation={{ prevEl, nextEl }}
+        onBeforeInit={(swiper) => {
+          swiper.params.navigation.prevEl = prevEl;
+          swiper.params.navigation.nextEl = nextEl;
+        }}
+        onSwiper={(swiper) => {
+          setTimeout(() => {
+            if (swiper && !swiper.destroyed && prevEl && nextEl) {
+              swiper.params.navigation.prevEl = prevEl;
+              swiper.params.navigation.nextEl = nextEl;
+              swiper.navigation.init();
+              swiper.navigation.update();
+            }
+          });
+        }}
         {...restSwiperProps}
       >
         {items.map((item, i) => (
-          <SwiperSlide key={item.key ?? i} className={join(v.item, item.props.className)}>
+          <SwiperSlide key={`slide-${i}`} className={join(v.item, item.props.className)}>
             {item.props.children}
           </SwiperSlide>
         ))}

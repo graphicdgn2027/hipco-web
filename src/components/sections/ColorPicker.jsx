@@ -1,19 +1,38 @@
-import { useId, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import './color-picker.css';
 
 const join = (...parts) => parts.filter(Boolean).join(' ');
 
 /**
- * Vehicle colour selector with optional directional transitions and radio swatches.
+ * Vehicle colour selector with auto-loop scroll, directional transitions, and radio swatches.
  */
-export default function ColorPicker({ maskClassName, arrowClassName, stackedLabel = false, animated = false, slides, colors }) {
+export default function ColorPicker({
+  maskClassName,
+  arrowClassName,
+  stackedLabel = false,
+  animated = false,
+  autoplay = true,
+  delay = 3500,
+  slides,
+  colors,
+}) {
   const maskRef = useRef(null);
   const radioGroupName = useId();
   const swipeStart = useRef(null);
+  const interactionTimer = useRef(null);
+  const [isInteracting, setIsInteracting] = useState(false);
   const [selection, setSelection] = useState({ active: 0, previous: null, direction: 'next' });
   const { active, previous, direction } = selection;
 
-  const select = (index, moveDirection) => {
+  const pauseInteraction = useCallback((durationMs = 4000) => {
+    setIsInteracting(true);
+    if (interactionTimer.current) clearTimeout(interactionTimer.current);
+    interactionTimer.current = setTimeout(() => {
+      setIsInteracting(false);
+    }, durationMs);
+  }, []);
+
+  const select = useCallback((index, moveDirection) => {
     const target = (index + slides.length) % slides.length;
     setSelection(current => target === current.active ? current : {
       active: target,
@@ -23,7 +42,25 @@ export default function ColorPicker({ maskClassName, arrowClassName, stackedLabe
     if (!animated) {
       maskRef.current?.children[target]?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
     }
-  };
+  }, [slides.length, animated]);
+
+  // Auto-loop scroll timer
+  useEffect(() => {
+    if (!autoplay || slides.length < 2 || isInteracting) return undefined;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+
+    const interval = setInterval(() => {
+      select(active + 1, 'next');
+    }, delay);
+
+    return () => clearInterval(interval);
+  }, [autoplay, delay, slides.length, isInteracting, active, select]);
+
+  useEffect(() => {
+    return () => {
+      if (interactionTimer.current) clearTimeout(interactionTimer.current);
+    };
+  }, []);
 
   const label = (
     <div className="color-label" id="colorLabel" aria-live="polite" aria-atomic="true">
@@ -32,7 +69,15 @@ export default function ColorPicker({ maskClassName, arrowClassName, stackedLabe
   );
 
   return (
-    <div className={join('vechile-warpper', animated && 'vehicle-colors--interactive')} data-direction={direction}>
+    <div
+      className={join('vechile-warpper', animated && 'vehicle-colors--interactive')}
+      data-direction={direction}
+      onMouseEnter={() => setIsInteracting(true)}
+      onMouseLeave={() => setIsInteracting(false)}
+      onFocusCapture={() => setIsInteracting(true)}
+      onBlurCapture={() => setIsInteracting(false)}
+      onTouchStart={() => pauseInteraction(5000)}
+    >
       <div
         className="vechile-slider w-slider"
         role="region"
@@ -41,6 +86,7 @@ export default function ColorPicker({ maskClassName, arrowClassName, stackedLabe
           if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
           event.preventDefault();
           select(active + (event.key === 'ArrowRight' ? 1 : -1), event.key === 'ArrowRight' ? 'next' : 'previous');
+          pauseInteraction(5000);
         } : undefined}
         tabIndex={animated ? 0 : undefined}
       >
@@ -51,6 +97,7 @@ export default function ColorPicker({ maskClassName, arrowClassName, stackedLabe
             if (!event.isPrimary || event.button !== 0) return;
             swipeStart.current = { x: event.clientX, y: event.clientY };
             event.currentTarget.setPointerCapture(event.pointerId);
+            setIsInteracting(true);
           } : undefined}
           onPointerUp={animated ? (event) => {
             if (!swipeStart.current) return;
@@ -60,9 +107,15 @@ export default function ColorPicker({ maskClassName, arrowClassName, stackedLabe
             if (Math.abs(dx) >= 50 && Math.abs(dx) > Math.abs(dy)) {
               select(active + (dx < 0 ? 1 : -1), dx < 0 ? 'next' : 'previous');
             }
+            pauseInteraction(4000);
           } : undefined}
-          onPointerCancel={() => { swipeStart.current = null; }}
-          onLostPointerCapture={() => { swipeStart.current = null; }}
+          onPointerCancel={() => {
+            swipeStart.current = null;
+            pauseInteraction(3000);
+          }}
+          onLostPointerCapture={() => {
+            swipeStart.current = null;
+          }}
         >
           {slides.map((slide, i) => (
             <div
@@ -90,14 +143,53 @@ export default function ColorPicker({ maskClassName, arrowClassName, stackedLabe
         </div>
         {animated ? (
           <>
-            <button type="button" className="vehicle-color-arrow vehicle-color-arrow--previous" aria-label="Previous colour" onClick={() => select(active - 1, 'previous')}>
+            <button
+              type="button"
+              className="vehicle-color-arrow vehicle-color-arrow--previous"
+              aria-label="Previous colour"
+              onClick={() => {
+                select(active - 1, 'previous');
+                pauseInteraction(4000);
+              }}
+            >
               <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="m14 5-7 7 7 7" /></svg>
             </button>
-            <button type="button" className="vehicle-color-arrow vehicle-color-arrow--next" aria-label="Next colour" onClick={() => select(active + 1, 'next')}>
+            <button
+              type="button"
+              className="vehicle-color-arrow vehicle-color-arrow--next"
+              aria-label="Next colour"
+              onClick={() => {
+                select(active + 1, 'next');
+                pauseInteraction(4000);
+              }}
+            >
               <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="m10 5 7 7-7 7" /></svg>
             </button>
           </>
-        ) : <div className={join('w-slider-arrow-left', arrowClassName)} aria-hidden="true" />}
+        ) : (
+          <>
+            <div
+              className={join('w-slider-arrow-left', arrowClassName)}
+              role="button"
+              tabIndex={0}
+              aria-label="Previous colour"
+              onClick={() => {
+                select(active - 1, 'previous');
+                pauseInteraction(4000);
+              }}
+            />
+            <div
+              className={join('w-slider-arrow-right', arrowClassName)}
+              role="button"
+              tabIndex={0}
+              aria-label="Next colour"
+              onClick={() => {
+                select(active + 1, 'next');
+                pauseInteraction(4000);
+              }}
+            />
+          </>
+        )}
       </div>
       <div className="code-embed-2 w-embed">
         <div className="color-picker" style={animated ? { '--selected-color': active } : undefined}>
@@ -122,7 +214,10 @@ export default function ColorPicker({ maskClassName, arrowClassName, stackedLabe
                   className={join('vehicle-color-radio', color.className)}
                   aria-label={color.name}
                   checked={i === active}
-                  onChange={() => select(i)}
+                  onChange={() => {
+                    select(i);
+                    pauseInteraction(5000);
+                  }}
                 />
               </label>
             ) : (
@@ -133,11 +228,15 @@ export default function ColorPicker({ maskClassName, arrowClassName, stackedLabe
                 tabIndex={0}
                 aria-label={color.name}
                 aria-pressed={i === active}
-                onClick={() => select(i)}
+                onClick={() => {
+                  select(i);
+                  pauseInteraction(5000);
+                }}
                 onKeyDown={(event) => {
                   if (event.key === 'Enter' || event.key === ' ') {
                     event.preventDefault();
                     select(i);
+                    pauseInteraction(5000);
                   }
                 }}
               />

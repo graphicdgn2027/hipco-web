@@ -19,7 +19,7 @@ export default function Highlights() {
             <div className="card">
               <img
                 className="image-32"
-                src="/super-auto/SUPER Powers your day/space & comfort.png"
+                src="/super-auto/SUPER Powers your day/space-and-comfort.png"
                 loading="lazy"
                 width="Auto"
                 height="Auto"
@@ -48,7 +48,7 @@ export default function Highlights() {
             <div className="card">
               <img
                 className="image-32"
-                src="/super-auto/SUPER Powers your day/unique design.png"
+                src="/super-auto/SUPER Powers your day/unique-design.png"
                 loading="lazy"
                 width="Auto"
                 height="Auto"

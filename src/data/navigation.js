@@ -82,8 +82,8 @@ export const footerColumns = [
   {
     id: 'w-node-ad4fc399-69b2-4256-755a-c0ca2328858b-23288569',
     links: [
-      { label: 'About Us', href: ROUTES.about, className: 'link-block-54-copy', textClassName: 'text-block-155' },
-      { label: 'Sitemap', href: '/sitemap', className: 'link-block-44' },
+      { label: 'About Us', href: ROUTES.about, className: 'link-block-54-copy' },
+      { label: 'Sitemap', href: ROUTES.sitemap, className: 'link-block-44' },
     ],
   },
   {
@@ -91,12 +91,7 @@ export const footerColumns = [
     links: [
       { label: 'Find a Dealer', href: ROUTES.findDealer, className: 'link-block-46' },
       { label: 'Contact Us', href: ROUTES.contact, className: 'link-block-49' },
-    ],
-  },
-  {
-    id: 'w-node-ad4fc399-69b2-4256-755a-c0ca232885b1-23288569',
-    links: [
-      { label: 'Media & Accolades', href: '/media-accolades', className: 'link-block-42' },
+      { label: 'Media & Accolades', href: ROUTES.mediaAccolades, className: 'link-block-42' },
     ],
   },
 ];

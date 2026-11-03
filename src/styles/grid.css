@@ -235,8 +235,9 @@ html .responsive-hero {
 }
 
 .page-section .vechile-warpper > .code-embed-2 {
-  width: 100%;
-  left: 0;
+  width: max-content;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* Keep colour navigation inside its own viewport, including after resizing. */

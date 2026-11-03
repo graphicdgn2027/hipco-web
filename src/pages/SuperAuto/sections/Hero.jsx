@@ -62,7 +62,6 @@ export default function Hero() {
   const goTo = useCallback(
     (target) => {
       elapsed.current = 0;
-      rootRef.current?.style.setProperty('--sah-progress', '0');
       setIndex(((target % count) + count) % count);
     },
     [count],
@@ -76,7 +75,6 @@ export default function Hero() {
       if (!document.hidden) elapsed.current += now - last;
       last = now;
       const progress = Math.min(elapsed.current / AUTOPLAY_MS, 1);
-      rootRef.current?.style.setProperty('--sah-progress', String(progress));
       if (progress >= 1) {
         elapsed.current = 0;
         setIndex((current) => (current + 1) % count);
@@ -196,24 +194,6 @@ export default function Hero() {
 
       <div className="page-grid hero-controls-grid">
         <div className="sah-controls page-content responsive-hero-controls">
-          <div className="sah-dots" role="tablist" aria-label="Choose colour">
-            {heroSlides.map((slide, i) => (
-              <button
-                key={slide.id}
-                type="button"
-                role="tab"
-                aria-selected={i === index}
-                className={join('sah-dot', i === index && 'is-active')}
-                onClick={() => goTo(i)}
-              >
-                <span className="sah-dot__bar">
-                  <span className="sah-dot__fill" />
-                </span>
-                <span className="sah-dot__num">{String(i + 1).padStart(2, '0')}</span>
-                <span className="sah-dot__label">{slide.label || slide.color}</span>
-              </button>
-            ))}
-          </div>
           <div className="sah-nav">
             <span className="sah-counter" aria-hidden="true">
               {String(index + 1).padStart(2, '0')} / {String(count).padStart(2, '0')}

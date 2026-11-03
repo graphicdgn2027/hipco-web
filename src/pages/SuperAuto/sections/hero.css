@@ -1,5 +1,4 @@
 .sah-hero {
-  --sah-progress: 0;
   --sah-px: 0;
   --sah-py: 0;
   --sah-pad: clamp(20px, 3.8vw, 64px);
@@ -242,8 +241,7 @@
 }
 
 .sah-btn:focus-visible,
-.sah-arrow:focus-visible,
-.sah-dot:focus-visible {
+.sah-arrow:focus-visible {
   outline: 2px solid var(--sah-accent);
   outline-offset: 3px;
 }
@@ -275,68 +273,6 @@
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
   backdrop-filter: blur(16px) saturate(1.4);
   pointer-events: auto;
-}
-
-.sah-dots {
-  display: flex;
-  gap: 22px;
-  pointer-events: auto;
-}
-
-.sah-dot {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: baseline;
-  gap: 4px 8px;
-  min-width: 130px;
-  padding: 0;
-  border: 0;
-  background: none;
-  color: #7b8794;
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-
-.sah-dot:hover,
-.sah-dot.is-active {
-  color: var(--sah-ink);
-}
-
-.sah-dot__bar {
-  grid-column: 1 / -1;
-  display: block;
-  height: 3px;
-  overflow: hidden;
-  border-radius: 3px;
-  background: rgba(15, 23, 42, 0.12);
-}
-
-.sah-dot__fill {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border-radius: 3px;
-  background: var(--sah-ink);
-  transform: scaleX(0);
-  transform-origin: left;
-}
-
-.sah-dot.is-active .sah-dot__fill {
-  transform: scaleX(var(--sah-progress));
-}
-
-.sah-dot__num {
-  padding-top: 8px;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-}
-
-.sah-dot__label {
-  padding-top: 8px;
-  font-size: 13px;
-  font-weight: 500;
 }
 
 .sah-nav {
@@ -428,17 +364,6 @@
     padding: 0 16px;
   }
 
-  .sah-dots {
-    flex: 1;
-    gap: 12px;
-  }
-
-  .sah-dot {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .sah-dot__num,
   .sah-nav {
     display: none;
   }
@@ -456,7 +381,4 @@
     transform: none;
   }
 
-  .sah-hero[data-autoplay='off'] .sah-dot.is-active .sah-dot__fill {
-    transform: scaleX(1);
-  }
 }

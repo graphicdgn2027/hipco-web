@@ -13,8 +13,7 @@ export default function Colors() {
       <ColorPicker
         maskClassName="mask-3"
         arrowClassName=""
-        easing="ease-in-out-quad"
-        duration={1000}
+        animated={true}
         stackedLabel={true}
         slides={[
           {

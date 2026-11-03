@@ -22,7 +22,10 @@ function scrollToRange(event) {
   const target = document.getElementById('vehicle-range');
   if (!target) return;
   event.preventDefault();
-  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  target.scrollIntoView({
+    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+    block: 'start',
+  });
 }
 
 function Arrow({ direction, onClick }) {
@@ -53,12 +56,13 @@ export default function HeroSlider() {
   const [index, setIndex] = useState(0);
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
+  const [paused, setPaused] = useState(false);
   const reducedMotion = usePrefersReducedMotion();
   const rootRef = useRef(null);
   const elapsed = useRef(0);
   const swipeStart = useRef(null);
 
-  const running = !hovered && !focused && !reducedMotion;
+  const running = !paused && !hovered && !focused && !reducedMotion;
 
   const goTo = useCallback(
     (target) => {
@@ -89,18 +93,25 @@ export default function HeroSlider() {
   }, [running, count]);
 
   const handleKeyDown = (event) => {
+    if (!['ArrowRight', 'ArrowLeft'].includes(event.key)) return;
+    event.preventDefault();
     if (event.key === 'ArrowRight') goTo(index + 1);
     if (event.key === 'ArrowLeft') goTo(index - 1);
   };
 
   const handlePointerDown = (event) => {
-    swipeStart.current = event.clientX;
+    if (!event.isPrimary || event.button !== 0) return;
+    swipeStart.current = { x: event.clientX, y: event.clientY };
+    event.currentTarget.setPointerCapture(event.pointerId);
   };
   const handlePointerUp = (event) => {
     if (swipeStart.current === null) return;
-    const delta = event.clientX - swipeStart.current;
+    const delta = event.clientX - swipeStart.current.x;
+    const verticalDelta = event.clientY - swipeStart.current.y;
     swipeStart.current = null;
-    if (Math.abs(delta) >= SWIPE_THRESHOLD) goTo(index + (delta < 0 ? 1 : -1));
+    if (Math.abs(delta) >= SWIPE_THRESHOLD && Math.abs(delta) > Math.abs(verticalDelta)) {
+      goTo(index + (delta < 0 ? 1 : -1));
+    }
   };
 
   const handlePointerMove = (event) => {
@@ -135,15 +146,11 @@ export default function HeroSlider() {
     >
       <h1 className="hx-sr-only">Montra Electric commercial vehicles</h1>
 
-      <div
-        className="hx-stage"
-        onPointerDown={handlePointerDown}
-        onPointerUp={handlePointerUp}
-        onPointerCancel={() => (swipeStart.current = null)}
-      >
+      <div className="hx-stage">
         {heroSlides.map((slide, i) => (
           <article
             key={slide.id}
+            id={`hero-slide-${slide.id}`}
             className={join('hx-slide page-grid', i === index && 'is-active')}
             role="group"
             aria-roledescription="slide"
@@ -154,7 +161,9 @@ export default function HeroSlider() {
               <div className="hx-content hero-content hero-text">
                 <div className="hx-card">
                   <span className="hx-chip">{slide.category}</span>
-                  <h2 className="hx-title">{slide.title}</h2>
+                  <h2 className="hx-title">
+                    <span className="hx-title__reveal">{slide.title}</span>
+                  </h2>
                   <p className="hx-text">{slide.text}</p>
                   <div className="hx-actions">
                     <AppLink href={slide.href} className="hx-btn hx-btn--solid">
@@ -176,10 +185,16 @@ export default function HeroSlider() {
                   </div>
                 </div>
               </div>
-              <div className="hx-media hero-image">
+              <div
+                className="hx-media hero-image"
+                onPointerDown={handlePointerDown}
+                onPointerUp={handlePointerUp}
+                onPointerCancel={() => (swipeStart.current = null)}
+                onLostPointerCapture={() => (swipeStart.current = null)}
+              >
                 <img
                   src={slide.image}
-                  alt=""
+                  alt={`Montra Electric ${slide.label}`}
                   style={{ objectPosition: slide.position }}
                   loading={i === 0 ? 'eager' : 'lazy'}
                   fetchPriority={i === 0 ? 'high' : 'auto'}
@@ -193,20 +208,21 @@ export default function HeroSlider() {
 
       <div className="page-grid hero-controls-grid">
         <div className="hx-controls page-content responsive-hero-controls">
-          <div className="hx-dots" role="tablist" aria-label="Choose slide">
+          <div className="hx-dots" role="group" aria-label="Choose vehicle">
             {heroSlides.map((slide, i) => (
               <button
                 key={slide.id}
                 type="button"
-                role="tab"
-                aria-selected={i === index}
+                aria-pressed={i === index}
+                aria-controls={`hero-slide-${slide.id}`}
+                aria-label={`Show ${slide.label}`}
                 className={join('hx-dot', i === index && 'is-active')}
                 onClick={() => goTo(i)}
               >
                 <span className="hx-dot__bar">
                   <span className="hx-dot__fill" />
                 </span>
-                <span className="hx-dot__num">{String(i + 1).padStart(2, '0')}</span>
+                <img className="hx-dot__thumbnail" src={slide.image} alt="" loading="lazy" />
                 <span className="hx-dot__label">{slide.label}</span>
               </button>
             ))}
@@ -215,11 +231,27 @@ export default function HeroSlider() {
             <span className="hx-counter" aria-hidden="true">
               {String(index + 1).padStart(2, '0')} / {String(count).padStart(2, '0')}
             </span>
+            {!reducedMotion && (
+              <button
+                type="button"
+                className="hx-arrow hx-playback"
+                onClick={() => setPaused((current) => !current)}
+                aria-label={paused ? 'Resume slideshow' : 'Pause slideshow'}
+                title={paused ? 'Resume slideshow' : 'Pause slideshow'}
+              >
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                  {paused ? <path d="M8 5v14l11-7z" /> : <path d="M7 5h4v14H7zm6 0h4v14h-4z" />}
+                </svg>
+              </button>
+            )}
             <Arrow direction="prev" onClick={() => goTo(index - 1)} />
             <Arrow direction="next" onClick={() => goTo(index + 1)} />
           </div>
         </div>
       </div>
+      <p className="hx-sr-only" aria-live={running ? 'off' : 'polite'} aria-atomic="true">
+        {heroSlides[index].label}, vehicle {index + 1} of {count}
+      </p>
     </section>
   );
 }

@@ -76,7 +76,7 @@ export default function Footer() {
                 />
               </AppLink>
             </div>
-            <div className="div-block-380 div-block-388" style={{ height: 'auto' }}>
+            <div className="div-block-380 div-block-388 footer-desktop-copyright" style={{ height: 'auto' }}>
               <Copyright />
             </div>
           </div>
@@ -130,7 +130,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="div-block-388 div-block-380-copy">
+        <div className="div-block-388 div-block-380-copy footer-mobile-copyright">
           <Copyright />
         </div>
       </div>

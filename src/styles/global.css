@@ -117,37 +117,29 @@ img[src$=".svg"],
   object-fit: contain !important;
 }
 
-/* Footer full-width layout */
+/* Footer full-width background container */
 .footer-main-copy-copy,
 .footer-main-copy-copy.page-grid {
   width: 100% !important;
   max-width: 100% !important;
   background-color: #000 !important;
-  display: block !important;
   box-sizing: border-box !important;
   margin: 0 !important;
-  padding: 0 !important;
 }
 
 .footer-main-copy-copy .base-container-padding-flex-gap-c,
 .footer-main-copy-copy .base-container-padding-flex-gap-c.page-content {
   width: 100% !important;
-  max-width: 100% !important;
+  max-width: none !important;
   margin: 0 !important;
-  padding-inline: clamp(24px, 4vw, 64px) !important;
-  padding-top: 48px !important;
-  padding-bottom: 36px !important;
   box-sizing: border-box !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: stretch !important;
-  grid-column: 1 / -1 !important;
 }
 
 .footer-main-copy-copy .footer-grid-copy-copy {
   width: 100% !important;
-  max-width: 100% !important;
+  max-width: none !important;
   margin: 0 !important;
+  padding: 0 !important;
   box-sizing: border-box !important;
 }
 
@@ -169,26 +161,61 @@ img[src$=".svg"],
   display: block;
 }
 
-/* Footer clean column layout - Desktop full width */
+/* Footer clean column layout - Desktop full width with 1-grid left & right margins */
 @media screen and (min-width: 992px) {
-  .footer-main-copy-copy .footer-grid-copy-copy {
+  html .footer-main-copy-copy.page-grid,
+  .footer-main-copy-copy.page-grid {
     display: grid !important;
-    grid-template-columns: 2.2fr 1.2fr 2.6fr 2.4fr !important;
-    column-gap: clamp(24px, 3.5vw, 56px) !important;
-    row-gap: 24px !important;
-    align-items: start !important;
+    grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr)) !important;
+    column-gap: var(--grid-gap) !important;
+    padding-inline: var(--page-padding) !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    background-color: #000 !important;
+    box-sizing: border-box !important;
+  }
+
+  html .footer-main-copy-copy .base-container-padding-flex-gap-c.page-content,
+  .footer-main-copy-copy .base-container-padding-flex-gap-c,
+  .footer-main-copy-copy .base-container-padding-flex-gap-c.page-content {
+    grid-column: var(--content-column) !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding-inline: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 56px !important;
+    padding-bottom: 40px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    box-sizing: border-box !important;
+  }
+
+  .footer-main-copy-copy .footer-grid-copy-copy {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    gap: clamp(24px, 3vw, 48px) !important;
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 !important;
+    padding: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
   }
 
   .footer-main-copy-copy #w-node-ad4fc399-69b2-4256-755a-c0ca2328856c-23288569 {
-    grid-column: 1 / 2 !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    max-width: 290px !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
     text-align: left !important;
-    width: 100% !important;
   }
 
   .footer-main-copy-copy .div-block-387 {
@@ -266,31 +293,42 @@ img[src$=".svg"],
   }
 
   .footer-main-copy-copy #w-node-ad4fc399-69b2-4256-755a-c0ca23288579-23288569 {
-    grid-column: 2 / 3 !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: 120px !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
     text-align: left !important;
-    width: 100% !important;
   }
 
   /* Desktop 2-column info links */
   .footer-main-copy-copy .footer-info-nav-group {
-    grid-column: 3 / 4 !important;
-    display: grid !important;
-    grid-template-columns: 1fr 1.3fr !important;
-    column-gap: 28px !important;
-    align-items: start !important;
-    width: 100% !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    display: flex !important;
+    gap: clamp(32px, 3.5vw, 64px) !important;
+    align-items: flex-start !important;
   }
 
-  .footer-main-copy-copy #w-node-ad4fc399-69b2-4256-755a-c0ca232885bb-23288569 {
-    grid-column: 4 / 5 !important;
+  .footer-main-copy-copy .footer-info-nav-group .footer-info-col-1,
+  .footer-main-copy-copy .footer-info-nav-group .footer-info-col-2 {
+    flex: 0 0 auto !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
     text-align: left !important;
-    width: 100% !important;
+    min-width: 100px !important;
+  }
+
+  .footer-main-copy-copy #w-node-ad4fc399-69b2-4256-755a-c0ca232885bb-23288569 {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: 260px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
   }
 
   /* Desktop: hide bottom duplicate copyright */
@@ -302,6 +340,25 @@ img[src$=".svg"],
 
 /* Tablet layout (768px - 991px) */
 @media screen and (max-width: 991px) and (min-width: 768px) {
+  .footer-main-copy-copy,
+  .footer-main-copy-copy.page-grid {
+    display: block !important;
+    width: 100% !important;
+    background-color: #000 !important;
+  }
+
+  .footer-main-copy-copy .base-container-padding-flex-gap-c,
+  .footer-main-copy-copy .base-container-padding-flex-gap-c.page-content {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-inline: clamp(24px, 3vw, 40px) !important;
+    padding-top: 40px !important;
+    padding-bottom: 30px !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
   .footer-main-copy-copy .footer-grid-copy-copy {
     display: grid !important;
     grid-template-columns: 1fr 1.2fr 1.2fr !important;
@@ -361,12 +418,18 @@ img[src$=".svg"],
 @media screen and (max-width: 767px) {
   .footer-main-copy-copy,
   .footer-main-copy-copy.page-grid {
+    display: block !important;
+    width: 100% !important;
+    background-color: #000 !important;
     padding-top: 24px !important;
     padding-bottom: 24px !important;
   }
 
   .footer-main-copy-copy .base-container-padding-flex-gap-c,
   .footer-main-copy-copy .base-container-padding-flex-gap-c.page-content {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
     padding-inline: 16px !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;

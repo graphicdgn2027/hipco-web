@@ -104,7 +104,7 @@ html body .nav-bar-container.page-grid:not(.is-scrolled) {
 .footer-main-copy-copy.page-grid .footer-grid-copy-copy {
   min-width: 0;
   padding-inline: 0;
-  gap: var(--grid-gap);
+  width: 100%;
 }
 
 .footer-main-copy-copy.page-grid :is(.div-block-387, .div-block-388, .contact-copy, .frame-18-copy, .frame-17-copy) {

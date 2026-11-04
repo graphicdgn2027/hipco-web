@@ -257,7 +257,11 @@ img[src$=".svg"],
 
   /* Tablet: hide top copyright under logo */
   .footer-main-copy-copy .footer-desktop-copyright,
-  .footer-main-copy-copy .div-block-387 .div-block-380 {
+  .footer-main-copy-copy .div-block-380,
+  .footer-main-copy-copy .div-block-387 .footer-desktop-copyright,
+  .footer-main-copy-copy .div-block-387 .div-block-380,
+  .footer-main-copy-copy #w-node-ad4fc399-69b2-4256-755a-c0ca2328856c-23288569 .footer-desktop-copyright,
+  .footer-main-copy-copy #w-node-ad4fc399-69b2-4256-755a-c0ca2328856c-23288569 .div-block-380 {
     display: none !important;
   }
 
@@ -341,7 +345,11 @@ img[src$=".svg"],
 
   /* REMOVE top copyright on mobile - only bottom copyright needed */
   .footer-main-copy-copy .footer-desktop-copyright,
-  .footer-main-copy-copy .div-block-387 .div-block-380 {
+  .footer-main-copy-copy .div-block-380,
+  .footer-main-copy-copy .div-block-387 .footer-desktop-copyright,
+  .footer-main-copy-copy .div-block-387 .div-block-380,
+  .footer-main-copy-copy #w-node-ad4fc399-69b2-4256-755a-c0ca2328856c-23288569 .footer-desktop-copyright,
+  .footer-main-copy-copy #w-node-ad4fc399-69b2-4256-755a-c0ca2328856c-23288569 .div-block-380 {
     display: none !important;
   }
 
@@ -351,7 +359,8 @@ img[src$=".svg"],
     margin: 0 auto !important;
   }
 
-  .footer-main-copy-copy #w-node-ad4fc399-69b2-4256-755a-c0ca2328856c-23288569 .div-block-388 {
+  .footer-main-copy-copy .footer-logo-wrapper,
+  .footer-main-copy-copy #w-node-ad4fc399-69b2-4256-755a-c0ca2328856c-23288569 .footer-logo-wrapper {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;

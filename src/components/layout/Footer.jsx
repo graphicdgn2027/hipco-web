@@ -57,7 +57,7 @@ export default function Footer() {
       <div className="base-container-padding-flex-gap-c page-content">
         <div className="footer-grid-copy-copy">
           <div id="w-node-ad4fc399-69b2-4256-755a-c0ca2328856c-23288569" className="div-block-387">
-            <div className="div-block-388" style={{ height: 'auto', lineHeight: 'normal' }}>
+            <div className="div-block-388 footer-logo-wrapper" style={{ height: 'auto', lineHeight: 'normal' }}>
               <AppLink href="/" aria-label="Montra Electric" className="w-inline-block">
                 <img
                   className="image-277"
@@ -76,7 +76,7 @@ export default function Footer() {
                 />
               </AppLink>
             </div>
-            <div className="div-block-380 div-block-388 footer-desktop-copyright" style={{ height: 'auto' }}>
+            <div className="div-block-380 footer-desktop-copyright">
               <Copyright />
             </div>
           </div>

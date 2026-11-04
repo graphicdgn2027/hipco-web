@@ -13,9 +13,6 @@ export const mobileMenu = [
   { label: 'Home', href: ROUTES.home },
   { label: 'About Us', href: ROUTES.about },
   { label: 'Our Products', opensProducts: true },
-  { label: 'Book a Test Drive', href: ROUTES.bookTestDrive },
-  { label: 'Become a Dealer', href: '/become-a-dealer' },
-  { label: 'Find a Dealer', href: ROUTES.findDealer },
   { label: 'Contact Us', href: ROUTES.contact },
 ];
 
@@ -69,32 +66,34 @@ export const allProducts = [
   },
 ];
 
-export const footerColumns = [
-  {
-    id: 'w-node-ad4fc399-69b2-4256-755a-c0ca23288579-23288569',
-    heading: 'Our Product',
-    links: [
-      { label: 'Super Auto', href: ROUTES.superAuto, className: 'link-block-35' },
-      { label: 'Super Cargo', href: ROUTES.superCargo, className: 'link-block-36' },
-      { label: 'EVIATOR', href: ROUTES.eviator, className: 'link-block-37' },
-    ],
-  },
-  {
-    id: 'w-node-ad4fc399-69b2-4256-755a-c0ca2328858b-23288569',
-    links: [
-      { label: 'About Us', href: ROUTES.about, className: 'link-block-54-copy' },
-      { label: 'Sitemap', href: ROUTES.sitemap, className: 'link-block-44' },
-    ],
-  },
-  {
-    id: 'w-node-ad4fc399-69b2-4256-755a-c0ca2328859e-23288569',
-    links: [
-      { label: 'Find a Dealer', href: ROUTES.findDealer, className: 'link-block-46' },
-      { label: 'Contact Us', href: ROUTES.contact, className: 'link-block-49' },
-      { label: 'Media & Accolades', href: ROUTES.mediaAccolades, className: 'link-block-42' },
-    ],
-  },
-];
+export const footerProductColumn = {
+  id: 'w-node-ad4fc399-69b2-4256-755a-c0ca23288579-23288569',
+  heading: 'Our Product',
+  links: [
+    { label: 'Super Auto', href: ROUTES.superAuto, className: 'link-block-35' },
+    { label: 'Super Cargo', href: ROUTES.superCargo, className: 'link-block-36' },
+    { label: 'EVIATOR', href: ROUTES.eviator, className: 'link-block-37' },
+  ],
+};
+
+export const footerInfoColumn1 = {
+  id: 'w-node-ad4fc399-69b2-4256-755a-c0ca2328858b-23288569',
+  links: [
+    { label: 'About Us', href: ROUTES.about, className: 'link-block-54-copy' },
+    { label: 'Sitemap', href: ROUTES.sitemap, className: 'link-block-44' },
+  ],
+};
+
+export const footerInfoColumn2 = {
+  id: 'w-node-ad4fc399-69b2-4256-755a-c0ca2328859e-23288569',
+  links: [
+    { label: 'Find a Dealer', href: ROUTES.findDealer, className: 'link-block-46' },
+    { label: 'Contact Us', href: ROUTES.contact, className: 'link-block-49' },
+    { label: 'Media & Accolades', href: ROUTES.mediaAccolades, className: 'link-block-42' },
+  ],
+};
+
+export const footerColumns = [footerProductColumn, footerInfoColumn1, footerInfoColumn2];
 
 export const legalLinks = [
   { label: 'Privacy Policy - Power Dock', href: '/privacy-policy-powerdock' },

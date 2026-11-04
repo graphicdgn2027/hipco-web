@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom';
 import { AppLink } from '@/components/ui/AppLink';
 import { socialLinksFor } from '@/config/social';
 import { site } from '@/config/site';
-import { footerColumns, legalLinks } from '@/data/navigation';
+import { footerProductColumn, footerInfoColumn1, footerInfoColumn2, legalLinks } from '@/data/navigation';
 
 const SOCIAL_ICONS = [
   { key: 'facebook', src: '/images/c31038d3af99.svg', className: 'image-184' },
@@ -81,14 +81,29 @@ export default function Footer() {
             </div>
           </div>
 
-          {footerColumns.map((column) => (
-            <div key={column.id} id={column.id} className="div-block-383">
-              {column.heading && <div className="text-block-155-copy">{column.heading}</div>}
-              {column.links.map((link) => (
+          {/* Column 1: Our Product */}
+          <div id={footerProductColumn.id} className="div-block-383 footer-col-products">
+            {footerProductColumn.heading && (
+              <div className="text-block-155-copy">{footerProductColumn.heading}</div>
+            )}
+            {footerProductColumn.links.map((link) => (
+              <FooterLink key={link.label} link={link} />
+            ))}
+          </div>
+
+          {/* Combined Info Navigation: Desktop = 2 columns; Mobile = 1 column */}
+          <div className="footer-info-nav-group">
+            <div id={footerInfoColumn1.id} className="div-block-383 footer-info-col-1">
+              {footerInfoColumn1.links.map((link) => (
                 <FooterLink key={link.label} link={link} />
               ))}
             </div>
-          ))}
+            <div id={footerInfoColumn2.id} className="div-block-383 footer-info-col-2">
+              {footerInfoColumn2.links.map((link) => (
+                <FooterLink key={link.label} link={link} />
+              ))}
+            </div>
+          </div>
 
           <div id="w-node-ad4fc399-69b2-4256-755a-c0ca232885bb-23288569" className="div-block-381">
             <div className="frame-16-2-copy">
